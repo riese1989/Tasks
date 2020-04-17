@@ -7,12 +7,14 @@ public class Cat {
     private double maxWeight;
 
     private double allAmountEat = 0;
+    private static int count = 0;
 
     public Cat() {
         weight = 1500.0 + 3000.0 * Math.random();
         originWeight = weight;
         minWeight = 1000.0;
         maxWeight = 9000.0;
+        count++;
 
     }
 
@@ -22,8 +24,10 @@ public class Cat {
     }
 
     public void feed(Double amount) {
-        weight = weight + amount;
-        allAmountEat += amount;
+        if (getStatus() != "Dead" || getStatus() != "Exploded") {
+            weight = weight + amount;
+            allAmountEat += amount;
+        }
     }
 
     public double getAllAmountEat() {
@@ -31,22 +35,31 @@ public class Cat {
     }
 
     public void drink(Double amount) {
-        weight = weight + amount;
+        if (getStatus() != "Dead" || getStatus() != "Exploded")
+            weight = weight + amount;
     }
 
-    public void pee ()  {
-        weight -= 1;
-        System.out.println("Сходила в туалет");
+    public void pee() {
+        if (getStatus() != "Dead" || getStatus() != "Exploded") {
+            weight -= 1;
+            System.out.println("Сходила в туалет");
+        }
     }
 
     public Double getWeight() {
         return weight;
     }
 
+    public static int getCount() {
+        return count;
+    }
+
     public String getStatus() {
         if (weight < minWeight) {
+            count--;
             return "Dead";
         } else if (weight > maxWeight) {
+            count--;
             return "Exploded";
         } else if (weight > originWeight) {
             return "Sleeping";
