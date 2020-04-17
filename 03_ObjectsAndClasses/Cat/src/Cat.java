@@ -9,6 +9,10 @@ public class Cat {
     private double allAmountEat = 0;
     private static int count = 0;
 
+    private static final int COUNT_EYES = 2;
+    private static final double MAX_WEIGTH = 10000;
+    private static final double MIN_WEIGTH = 1;
+
     public Cat() {
         weight = 1500.0 + 3000.0 * Math.random();
         originWeight = weight;
