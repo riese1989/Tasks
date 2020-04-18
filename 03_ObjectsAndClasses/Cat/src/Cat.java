@@ -2,12 +2,15 @@
 public class Cat {
     private double originWeight;
     private double weight;
+    private boolean tail;
+    private boolean live;
 
     private double minWeight;
     private double maxWeight;
 
     private double allAmountEat = 0;
     private static int count = 0;
+    private Color color;
 
     private static final int COUNT_EYES = 2;
     private static final double MAX_WEIGTH = 10000;
@@ -18,12 +21,23 @@ public class Cat {
         originWeight = weight;
         minWeight = 1000.0;
         maxWeight = 9000.0;
+        tail = true;
+        live = true;
         count++;
 
     }
 
     public Cat (double weight)  {
+        this();
         this.weight = weight;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public Color getColor() {
+        return color;
     }
 
     public void meow() {
@@ -65,14 +79,24 @@ public class Cat {
     public String getStatus() {
         if (weight < minWeight) {
             count--;
+            live = false;
             return "Dead";
         } else if (weight > maxWeight) {
             count--;
+            live = false;
             return "Exploded";
         } else if (weight > originWeight) {
             return "Sleeping";
         } else {
             return "Playing";
         }
+    }
+
+    public boolean isAlive()   {
+        return live;
+    }
+
+    public boolean hasTail()    {
+        return tail;
     }
 }
