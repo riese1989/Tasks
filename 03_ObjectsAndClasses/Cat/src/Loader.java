@@ -14,6 +14,10 @@ public class Loader
         while(cat.getStatus() != "Dead")    {
             cat.meow();
         }
-        System.out.println(Cat.getCount());
+        System.out.println(getKitten().getWeight());
+    }
+
+    private static Cat getKitten()  {
+        return new Cat(1100.0);
     }
 }
