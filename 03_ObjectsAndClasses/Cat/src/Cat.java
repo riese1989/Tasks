@@ -99,4 +99,11 @@ public class Cat {
     public boolean hasTail()    {
         return tail;
     }
+
+    public Cat copyCat()    {
+        Cat copy = new Cat();
+        copy.weight = this.weight;
+        copy.originWeight = this.originWeight;
+        return copy;
+    }
 }

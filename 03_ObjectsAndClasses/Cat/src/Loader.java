@@ -8,13 +8,11 @@ public class Loader
         Cat cat3 = new Cat();
         Cat cat4 = new Cat();
         Cat cat5 = new Cat();
+        Cat cat6 = cat5.copyCat();
 
-        System.out.println(Cat.getCount());
+        System.out.println(cat5.getWeight());
+        System.out.println(cat6.getWeight());
 
-        while(cat.getStatus() != "Dead")    {
-            cat.meow();
-        }
-        System.out.println(getKitten().getWeight());
     }
 
     private static Cat getKitten()  {
