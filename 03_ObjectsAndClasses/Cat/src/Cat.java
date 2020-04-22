@@ -2,26 +2,19 @@
 public class Cat {
     private double originWeight;
     private double weight;
-    private boolean tail;
-    private boolean live;
-
-    private double minWeight;
-    private double maxWeight;
+    private boolean live = true;
 
     private double allAmountEat = 0;
     private static int count = 0;
     private Color color;
 
     private static final int COUNT_EYES = 2;
-    private static final double MAX_WEIGTH = 10000;
-    private static final double MIN_WEIGTH = 1;
+    private static final double MAX_WEIGTH = 9000;
+    private static final double MIN_WEIGTH = 1000;
 
     public Cat() {
         weight = 1500.0 + 3000.0 * Math.random();
         originWeight = weight;
-        minWeight = 1000.0;
-        maxWeight = 9000.0;
-        tail = true;
         live = true;
         count++;
 
@@ -77,13 +70,17 @@ public class Cat {
     }
 
     public String getStatus() {
-        if (weight < minWeight) {
-            count--;
-            live = false;
+        if (weight < MIN_WEIGTH) {
+            if (live)   {
+                count--;
+                live = false;
+            }
             return "Dead";
-        } else if (weight > maxWeight) {
-            count--;
-            live = false;
+        } else if (weight > MAX_WEIGTH) {
+            if (live) {
+                count--;
+                live = false;
+            }
             return "Exploded";
         } else if (weight > originWeight) {
             return "Sleeping";
@@ -97,7 +94,7 @@ public class Cat {
     }
 
     public boolean hasTail()    {
-        return tail;
+        return true;
     }
 
     public Cat copyCat()    {
