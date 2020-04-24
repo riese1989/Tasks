@@ -5,6 +5,9 @@ public class Main
         Container container = new Container();
         container.count += 7843;
         System.out.println(sumDigits(29095));
+        Character ch = '1';
+        int i = Integer.parseInt(ch.toString());
+        System.out.println(i);
     }
 
     public static Integer sumDigits(Integer number)
