@@ -7,8 +7,14 @@ public class main {
         String str = scanner.nextLine();
         int indexStart = str.indexOf(" ");
         int indexEnd = str.lastIndexOf(" ");
-        System.out.println("Фамилия: " + str.substring(0,indexStart).trim());
-        System.out.println("Имя: " + str.substring(indexStart,indexEnd).trim());
-        System.out.println("Отчество: " + str.substring(indexEnd).trim());
+        String family = str.substring(0,indexStart).trim().toLowerCase();
+        String correctFamily = family.replaceFirst(family.substring(0,1).trim(), family.substring(0,1).trim().toUpperCase());
+        System.out.println("Фамилия: " + correctFamily);
+        String name = str.substring(indexStart, indexEnd).trim().toLowerCase();
+        String correctName = name.replaceFirst(name.substring(0,1).trim(),name.substring(0,1).trim().toUpperCase());
+        System.out.println("Имя: " + correctName);
+        String surname = str.substring(indexEnd).trim();
+        String correctSurname = surname.replaceFirst(surname.substring(0,1).trim(), surname.substring(0,1).trim().toUpperCase());
+        System.out.println("Отчество: " + correctSurname);
     }
 }
