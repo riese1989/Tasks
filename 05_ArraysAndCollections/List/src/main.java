@@ -5,8 +5,6 @@ public class main {
     public static void main(String[] args) {
         boolean nextIteration = true;
         ArrayList<String> toDoList = new ArrayList<>();
-        toDoList.add("Дело 1");
-        toDoList.add("Дело 2");
         while (nextIteration) {
             System.out.println("Введите команду");
             Scanner scanner = new Scanner(System.in);
