@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 import java.util.*;
 
 public class Main {
@@ -41,10 +40,9 @@ public class Main {
         }
         number = letters[0] + digit + digit + digit + letters[1] + letters[2];
         if (region < 10) {
-            number += "0" + Integer.toString(region);
-        } else {
-            number += Integer.toString(region);
+            number += "0";
         }
+        number += Integer.toString(region);
         return number;
     }
 
