@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class Main {
@@ -48,18 +49,11 @@ public class Main {
     }
 
     public static String bruteForce(ArrayList<String> autonumbers, String findNumber, Integer start) {
-        boolean isFind = false;
         Integer time = null;
         String result;
-        for (String autonumber : autonumbers) {
-            if (autonumber.equals(findNumber)) {
-                isFind = true;
-                time = (int) System.nanoTime() - start;
-                break;
-            }
-        }
-        if (isFind) {
+        if (autonumbers.contains(findNumber)) {
             result = "номер найден,";
+            time = (int) System.nanoTime() - start;
         } else {
             result = "номер  не найден,";
             time = (int) System.nanoTime() - start;
