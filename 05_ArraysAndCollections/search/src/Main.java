@@ -2,51 +2,52 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<String> autoNumbers = new ArrayList<>();
-        for (int i = 0; i < 3000000; i++) {
-            autoNumbers.add(generator());
-        }
-        ArrayList<String> autoNumbers2 = autoNumbers;
-        System.out.println(autoNumbers.get(0));
-        System.out.println("Введите номер, который хотите найти");
+        System.out.println("Введите нужное число номеров от 1 до " + 58 * 10 * 58 * 58 * 199);
         Scanner scanner = new Scanner(System.in);
+        ArrayList<String> autoNumbers = generateNumber(scanner.nextInt());
+        ArrayList<String> autoNumbers2 = autoNumbers;
+        System.out.println("Введите номер, который хотите найти");
+        scanner = new Scanner(System.in);
         String findNumber = scanner.nextLine();
-        System.out.println(bruteForce(autoNumbers, findNumber, (int) System.nanoTime())); //поиск перебором
-        Collections.sort(autoNumbers2);
-        System.out.println(binary(autoNumbers, findNumber, (int) System.nanoTime())); //бинарный поиск
-        System.out.println(searchHashSet(autoNumbers, findNumber, (int) System.nanoTime())); //HashSet поиск
-        System.out.println(searchTreeSet(autoNumbers, findNumber, (int) System.nanoTime())); //TreeSet поиск
+        System.out.println(searchBrute(autoNumbers, findNumber, (int) System.nanoTime())); //поиск перебором
+        Collections.sort(autoNumbers);
+        System.out.println(searchBinary(autoNumbers, findNumber, (int) System.nanoTime())); //бинарный поиск
+        System.out.println(searchHashSet(autoNumbers2, findNumber, (int) System.nanoTime())); //HashSet поиск
+        System.out.println(searchTreeSet(autoNumbers2, findNumber, (int) System.nanoTime())); //TreeSet поиск
     }
 
-    public static String generator() {
-        int i = 0;
-        int codeSymb;
-        int region;
-        char[] letters = new char[3];
-        String number;
-        String digit = Integer.toString((int) (Math.random() * 10));
-        while (true) {
-            region = (int) (Math.random() * 200);
-            if (region != 0) {
-                break;
+    public static ArrayList<String> generateNumber(Integer count) {
+        ArrayList<String> result = new ArrayList<>();
+        int codeSymb = 65;
+        String autoNumber;
+        char[] symbols = new char[58];
+        for (int i = 0; i < 58; i++, codeSymb++) {
+            symbols[i] = (char) codeSymb;
+            if (codeSymb == 90) {
+                codeSymb = 1039;
             }
         }
-        while (i < 3) {
-            codeSymb = (int) (Math.random() * 100);
-            if (codeSymb >= 65 && codeSymb <= 90) {
-                letters[i] = (char) codeSymb;
-                i++;
+        for (int i = 0; i < 58 && result.size() < count; i++) {
+            for (int j = 0; j < 58 && result.size() < count; j++) {
+                for (int k = 0; k < 58 && result.size() < count; k++) {
+                    for (Integer number = 0; number <= 9 && result.size() < count; number++) {
+                        for (Integer region = 1; region <= 199 && result.size() < count; region++) {
+                            autoNumber = symbols[i] + number.toString() + number.toString() + number.toString()
+                                    + symbols[j] + symbols[k];
+                            if (region < 10) {
+                                autoNumber += "0";
+                            }
+                            autoNumber += region.toString();
+                            result.add(autoNumber);
+                        }
+                    }
+                }
             }
         }
-        number = letters[0] + digit + digit + digit + letters[1] + letters[2];
-        if (region < 10) {
-            number += "0";
-        }
-        number += Integer.toString(region);
-        return number;
+        return result;
     }
 
-    public static String bruteForce(ArrayList<String> autonumbers, String findNumber, Integer start) {
+    public static String searchBrute(ArrayList<String> autonumbers, String findNumber, Integer start) {
         Integer time = null;
         String result;
         if (autonumbers.contains(findNumber)) {
@@ -59,7 +60,7 @@ public class Main {
         return "Поиск перебором: " + result + " поиск занял " + time.toString() + " нс";
     }
 
-    public static String binary(ArrayList<String> autonumbers, String findNumber, Integer start) {
+    public static String searchBinary(ArrayList<String> autonumbers, String findNumber, Integer start) {
         Integer time;
         if (Collections.binarySearch(autonumbers, findNumber) >= 0) {
             time = (int) System.nanoTime() - start;
@@ -71,7 +72,7 @@ public class Main {
 
     public static String searchHashSet(ArrayList<String> autonumbers, String findNumber, Integer start) {
         Integer time;
-        HashSet <String> hash = new HashSet<>(autonumbers);
+        HashSet<String> hash = new HashSet<>(autonumbers);
         if (hash.contains(findNumber)) {
             time = (int) System.nanoTime() - start;
             return "Поиск в HashSet: номер найден, поиск занял " + time.toString() + " нс";
@@ -82,7 +83,7 @@ public class Main {
 
     public static String searchTreeSet(ArrayList<String> autonumbers, String findNumber, Integer start) {
         Integer time;
-        TreeSet <String> tree = new TreeSet<>(autonumbers);
+        TreeSet<String> tree = new TreeSet<>(autonumbers);
         if (tree.contains(findNumber)) {
             time = (int) System.nanoTime() - start;
             return "Поиск в TreeSet: номер найден, поиск занял " + time.toString() + " нс";
