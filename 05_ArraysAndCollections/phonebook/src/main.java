@@ -1,10 +1,9 @@
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class main {
+    public static String[] returnArray;
     public static void main(String[] args) {
         HashMap<String, String> numbers = new HashMap<>();
         String name;
@@ -14,14 +13,9 @@ public class main {
             System.out.println("Введите данные");
             Scanner scanner = new Scanner(System.in);
             String command = scanner.nextLine();
-            if (numbers.containsKey(command)) {
-                System.out.println("Имя " + command);
-                System.out.println("Телефон " + numbers.get(command));
-                continue;
-            }
-            if (numbers.containsValue(command)) {
-                System.out.println("Имя " + findKey(numbers, command));
-                System.out.println("Телефон " + command);
+            if (contains(numbers,command)){
+                System.out.println("\nИмя " + returnArray[0]);
+                System.out.println("Телефон " + returnArray[1]+"\n");
                 continue;
             }
             if (command.equals("exit")) {
@@ -38,22 +32,26 @@ public class main {
                 name = scanner.nextLine();
                 phone = command;
             } else {
-                System.out.println("Введите имя");
+                System.out.println("Введите телефон");
                 scanner = new Scanner(System.in);
                 name = command;
                 phone = scanner.nextLine();
             }
+            System.out.println("");
             numbers.put(name, phone);
         }
     }
 
-    public static String findKey(HashMap<String, String> numbers, String value) {
+    public static boolean contains (HashMap<String, String> numbers, String value)   {
+        returnArray = new String[2];
         for (Map.Entry<String, String> entry : numbers.entrySet()) {
-            if (entry.getValue().equals(value)) {
-                return entry.getKey();
+            if (entry.getKey().equalsIgnoreCase(value) || entry.getValue().equalsIgnoreCase(value)) {
+                returnArray[0] = entry.getKey();
+                returnArray[1] = entry.getValue();
+                return true;
             }
         }
-        return null;
+        return false;
     }
 
     public static void listMap(HashMap<String, String> numbers) {
