@@ -6,7 +6,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         ArrayList<String> autoNumbers = generateNumber(scanner.nextInt());
         ArrayList<String> autoNumbers2 = autoNumbers;
-        System.out.println("Введите номер, который хотите найти");
+        System.out.println("Введите номер, который хотите найт");
         scanner = new Scanner(System.in);
         String findNumber = scanner.nextLine();
         System.out.println(searchBrute(autoNumbers, findNumber, (int) System.nanoTime())); //поиск перебором
