@@ -10,7 +10,7 @@ public class checkingAccount {
     public Double getAmount() {
         return amount;
     }
-    public void setAmount(Double amount)    {
+    protected void setAmount(Double amount)    {
         this.amount = amount;
     }
 
