@@ -1,8 +1,8 @@
 package Accounts;
 
-public class cardAccount extends checkingAccount {
+public class CardAccount extends CheckingAccount {
 
-    public cardAccount(Double amount) {
+    public CardAccount(Double amount) {
         super(amount);
     }
 

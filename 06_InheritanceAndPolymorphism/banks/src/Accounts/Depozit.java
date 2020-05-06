@@ -3,10 +3,10 @@ package Accounts;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class depozit extends checkingAccount {
+public class Depozit extends CheckingAccount {
     private Calendar dateLastTransaction = new GregorianCalendar(2020, Calendar.APRIL, 5);
 
-    public depozit(Double amount) {
+    public Depozit(Double amount) {
         super(amount);
     }
 

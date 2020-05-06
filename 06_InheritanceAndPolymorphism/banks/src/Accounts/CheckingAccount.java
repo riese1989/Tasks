@@ -1,9 +1,9 @@
 package Accounts;
 
-public class checkingAccount {
+public class CheckingAccount {
     private Double amount;
 
-    public checkingAccount(Double amount) {
+    public CheckingAccount(Double amount) {
         this.amount = amount;
     }
 
