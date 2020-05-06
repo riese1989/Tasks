@@ -14,11 +14,8 @@ public class Depozit extends CheckingAccount {
     public void giveMoney(Double money) {
         Calendar currDate = Calendar.getInstance();
         if (diff(currDate)) {
-            if (super.getAmount() >= money) {
-                super.setAmount(super.getAmount() - money);
-                dateLastTransaction = currDate;
-                System.out.println("Деньги сняты, на счету " + super.getAmount());
-            }
+            dateLastTransaction = currDate;
+            super.giveMoney(money);
         } else {
             System.out.println("С момента последнего снятия не прошёл месяц");
         }
