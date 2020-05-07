@@ -24,7 +24,7 @@ public class IndividualEntrepreneur extends Client {
             setCheckingAccount(getCheckingAccount() - money);
             System.out.println("Со счета снято " + money + " баланс " + getCheckingAccount());
         } else {
-            System.out.println("На счету недостаточно средств");
+            System.out.println("На счете недостаточно средств");
         }
     }
 }

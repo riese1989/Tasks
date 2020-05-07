@@ -17,7 +17,7 @@ public class Entity extends Client {
             setCheckingAccount(getCheckingAccount() - money * 1.01);
             System.out.println("Со счета снято " + money * 1.01 + " баланс " + getCheckingAccount());
         } else {
-            System.out.println("На счету недостаточно средств");
+            System.out.println("На счете недостаточно средств");
         }
     }
 }
