@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e49dbf3b-39f9-407e-85f3-a64fdf41da59" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/company.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/company/HR/Company.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/company/HR/Employee.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/company/HR/Manager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/company/HR/Operator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/company/HR/TopManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/company/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HR/Company.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HR/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HR/Manager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HR/Operator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HR/TopManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientsBank/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientsBank/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,9 +120,9 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1588971800467" />
-    <state x="484" y="248" key="git4idea.merge.GitMergeDialog" timestamp="1588972567833">
+    <state x="484" y="248" key="git4idea.merge.GitMergeDialog" timestamp="1588972790527">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="484" y="248" key="git4idea.merge.GitMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1588972567833" />
+    <state x="484" y="248" key="git4idea.merge.GitMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1588972790527" />
   </component>
 </project>
