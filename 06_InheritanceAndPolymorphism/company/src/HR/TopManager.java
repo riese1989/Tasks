@@ -1,39 +1,22 @@
 package HR;
 
-public class TopManager extends Company implements Employee {
-    private int salary;
-    private int number;
-    private Company company;
-
-    public TopManager(int monthSalary, Company company) {
-        this.company = company;
-        this.salary = monthSalary;
+public class TopManager extends Employee {
+    public TopManager(int salary, Company company) {
+        super(salary, company);
     }
 
-    @Override
     public double getMonthSalary() {
-        if (company.getIncome() >= 10000000)  {
-            double monthSalary = salary * 2.5;
-            return monthSalary;
-        }
-        return salary;
-
+        return salary *2;
     }
 
-
-    @Override
-    public int getNumber() {
-        return number;
-    }
-
-    @Override
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    @Override
-    public TopManager clone() {
-        return new TopManager(this.salary, this.company);
-    }
+//    @Override
+//    public double getMonthSalary() {
+//        if (company.getIncome() >= 10000000)  {
+//            double monthSalary = salary * 2.5;
+//            return monthSalary;
+//        }
+//        return salary;
+//
+//    }
 
 }

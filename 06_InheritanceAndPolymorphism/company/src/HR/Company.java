@@ -5,7 +5,7 @@ import java.util.function.UnaryOperator;
 
 public class Company {
     private int income;
-    HashSet<Employee> list = new HashSet<Employee>();
+    ArrayList<Employee> list = new ArrayList<>();
 
     public void setIncome(int income) {
         this.income = income;
@@ -53,10 +53,13 @@ public class Company {
     }
 
     public List<Employee> getTopSalaryStaff(int count) {
+        //Collections.sort(list);
         return null;
     }
 
     List<Employee> getLowestSalaryStaff(int count) {
         return null;
     }
+
 }
+
