@@ -4,8 +4,8 @@ import java.util.*;
 import java.util.function.UnaryOperator;
 
 public class Company {
-    private Integer income;
-    LinkedHashSet<Employee> list = new LinkedHashSet<>();
+    private int income;
+    HashSet<Employee> list = new HashSet<Employee>();
 
     public void setIncome(Integer income) {
         this.income = income;
@@ -17,17 +17,32 @@ public class Company {
     }
 
     public void hire(Employee employee)  {
+        employee.setNumber(list.size());
         list.add(employee);
     }
 
     public void hireAll (Employee employee, int count) {
         for (int i = 1; i <= count; i++)    {
-            list.add(employee.newEmployee());
+            Employee employeeNew = employee.clone();
+            employeeNew.setNumber(list.size());
+            list.add(employeeNew);
         }
     }
 
-    public void fire(Integer i)  {
+    public void fire(int i)  {
+        if (i < list.size())   {
+            for (Employee employee: list)   {
+                if (employee.getNumber() == i)  {
+                    list.remove(employee);
+                    break;
+                }
+            }
+        }
+        else    {
+            System.out.println("Такого работника нет");
+        }
     }
+
     public Integer size ()  {
         return list.size();
     }

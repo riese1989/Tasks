@@ -1,15 +1,31 @@
 package HR;
 
 public class Manager extends Company implements Employee {
-    private Integer monthSalary;
+    private int number;
+    private int monthSalary;
+
+    public Manager (int monthSalary)    {
+        this.monthSalary = monthSalary;
+    }
+
     @Override
-    public int getMonthSalary() {
+    public float getMonthSalary(int bonus) {
         return this.monthSalary;
     }
 
     @Override
-    public Employee newEmployee() {
-        return new Manager();
+    public int getNumber() {
+        return number;
+    }
+
+    @Override
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    @Override
+    public Manager clone() {
+        return new Manager(this.monthSalary);
     }
 
 

@@ -1,6 +1,8 @@
 package HR;
 
 public interface Employee {
-    int getMonthSalary();
-    Employee newEmployee();
+    float getMonthSalary(int bonus);
+    int getNumber();
+    void setNumber(int number);
+    Employee clone ();
 }
