@@ -1,16 +1,18 @@
 package HR;
 
 public class Operator extends Company implements Employee {
-    private int monthSalary;
+    private int salary;
     private int number;
+    private Company company;
 
-    private Operator(int monthSalary) {
-        this.monthSalary = monthSalary;
+    public Operator(int salary, Company company) {
+        this.company = company;
+        this.salary = salary;
     }
 
     @Override
-    public float getMonthSalary(int bonus) {
-        return this.monthSalary;
+    public double getMonthSalary() {
+        return this.salary;
     }
 
 
@@ -26,6 +28,6 @@ public class Operator extends Company implements Employee {
 
     @Override
     public Operator clone() {
-        return new Operator(this.monthSalary);
+        return new Operator(this.salary, this.company);
     }
 }

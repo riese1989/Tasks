@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e49dbf3b-39f9-407e-85f3-a64fdf41da59" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/company/HR/Company.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/company/HR/Company.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/company/HR/Employee.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/company/HR/Employee.class" afterDir="false" />
@@ -99,11 +98,11 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1588966221307" />
-    <state x="533" y="164" key="#com.intellij.ide.util.MemberChooser" timestamp="1589013080760">
+    <state x="533" y="164" key="#com.intellij.ide.util.MemberChooser" timestamp="1589018917057">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state x="533" y="158" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1588971284165" />
-    <state x="533" y="164" key="#com.intellij.ide.util.MemberChooser/0.23.1440.805@0.23.1440.805" timestamp="1589013080760" />
+    <state x="533" y="164" key="#com.intellij.ide.util.MemberChooser/0.23.1440.805@0.23.1440.805" timestamp="1589018917057" />
     <state x="457" y="241" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1588966219124">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -117,26 +116,26 @@
     </state>
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1588972377606" />
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.23.1440.805@0.23.1440.805" timestamp="1588972461614" />
-    <state width="1398" height="206" key="GridCell.Tab.0.bottom" timestamp="1589013551813">
+    <state width="1398" height="206" key="GridCell.Tab.0.bottom" timestamp="1589020045670">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1588973021061" />
-    <state width="1398" height="206" key="GridCell.Tab.0.bottom/0.23.1440.805@0.23.1440.805" timestamp="1589013551813" />
-    <state width="1398" height="206" key="GridCell.Tab.0.center" timestamp="1589013551812">
+    <state width="1398" height="206" key="GridCell.Tab.0.bottom/0.23.1440.805@0.23.1440.805" timestamp="1589020045670" />
+    <state width="1398" height="206" key="GridCell.Tab.0.center" timestamp="1589020045670">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1588973021060" />
-    <state width="1398" height="206" key="GridCell.Tab.0.center/0.23.1440.805@0.23.1440.805" timestamp="1589013551812" />
-    <state width="1398" height="206" key="GridCell.Tab.0.left" timestamp="1589013551811">
+    <state width="1398" height="206" key="GridCell.Tab.0.center/0.23.1440.805@0.23.1440.805" timestamp="1589020045670" />
+    <state width="1398" height="206" key="GridCell.Tab.0.left" timestamp="1589020045668">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1588973020927" />
-    <state width="1398" height="206" key="GridCell.Tab.0.left/0.23.1440.805@0.23.1440.805" timestamp="1589013551811" />
-    <state width="1398" height="206" key="GridCell.Tab.0.right" timestamp="1589013551812">
+    <state width="1398" height="206" key="GridCell.Tab.0.left/0.23.1440.805@0.23.1440.805" timestamp="1589020045668" />
+    <state width="1398" height="206" key="GridCell.Tab.0.right" timestamp="1589020045670">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1588973021061" />
-    <state width="1398" height="206" key="GridCell.Tab.0.right/0.23.1440.805@0.23.1440.805" timestamp="1589013551812" />
+    <state width="1398" height="206" key="GridCell.Tab.0.right/0.23.1440.805@0.23.1440.805" timestamp="1589020045670" />
     <state x="484" y="248" key="git4idea.merge.GitMergeDialog" timestamp="1588972790527">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

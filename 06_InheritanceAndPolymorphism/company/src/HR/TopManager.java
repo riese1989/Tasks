@@ -1,16 +1,23 @@
 package HR;
 
 public class TopManager extends Company implements Employee {
-    private int monthSalary;
+    private int salary;
     private int number;
+    private Company company;
 
-    private TopManager(int monthSalary) {
-        this.monthSalary = monthSalary;
+    public TopManager(int monthSalary, Company company) {
+        this.company = company;
+        this.salary = monthSalary;
     }
 
     @Override
-    public float getMonthSalary(int bonus) {
-        return this.monthSalary;
+    public double getMonthSalary() {
+        if (company.getIncome() >= 10000000)  {
+            double monthSalary = salary * 2.5;
+            return monthSalary;
+        }
+        return salary;
+
     }
 
 
@@ -26,7 +33,7 @@ public class TopManager extends Company implements Employee {
 
     @Override
     public TopManager clone() {
-        return new TopManager(this.monthSalary);
+        return new TopManager(this.salary, this.company);
     }
 
 }

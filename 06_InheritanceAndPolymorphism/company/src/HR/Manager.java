@@ -2,15 +2,17 @@ package HR;
 
 public class Manager extends Company implements Employee {
     private int number;
-    private int monthSalary;
+    private int salary;
+    private Company company;
 
-    public Manager (int monthSalary)    {
-        this.monthSalary = monthSalary;
+    public Manager (int salary, Company company)    {
+        this.company = company;
+        this.salary = salary;
     }
 
     @Override
-    public float getMonthSalary(int bonus) {
-        return this.monthSalary;
+    public double getMonthSalary() {
+        return salary + (company.getIncome() * 0.05 * Math.pow(Math.random(),3));
     }
 
     @Override
@@ -25,7 +27,7 @@ public class Manager extends Company implements Employee {
 
     @Override
     public Manager clone() {
-        return new Manager(this.monthSalary);
+        return new Manager(salary, company);
     }
 
 

@@ -1,7 +1,7 @@
 package HR;
 
 public interface Employee {
-    float getMonthSalary(int bonus);
+    double getMonthSalary();
     int getNumber();
     void setNumber(int number);
     Employee clone ();

@@ -5,11 +5,15 @@ public class Main {
         int salaryOperator = 10000;
         int salaryManager = 30000;
         int salaryTopManager = 100000;
+        int incomeCompany = 10000000;
         Company company = new Company();
-        Manager manager = new Manager(salaryManager);
-        company.hire(manager);
-        company.hireAll(manager, 100);
-        company.fire(6);
-        System.out.println(company.size());
+        company.setIncome(incomeCompany);
+        System.out.println(company.getIncome());
+        TopManager topManager = new TopManager(salaryTopManager,company);
+        company.hireAll(topManager, 5);
+        Manager manager = new Manager(salaryManager, company);
+        company.hireAll(manager,6);
+        //company.fire(6);
+        company.listEmpoeeys();
     }
 }
