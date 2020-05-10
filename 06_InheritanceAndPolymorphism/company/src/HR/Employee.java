@@ -4,11 +4,12 @@ public abstract class Employee {
     protected int number;
     protected int salary;
     protected Company company;
-    protected  double monthSalary;
+    protected  float monthSalary;
 
     public Employee(int salary, Company company) {
         this.company = company;
         this.salary = salary;
+        monthSalary = funcSalary(salary);
     }
 
     public int getNumber() {
@@ -21,6 +22,8 @@ public abstract class Employee {
 
     public abstract Employee clone();
 
-    public double getMonthSalary() {return monthSalary;}
+    public abstract float funcSalary (int salary);
+
+    public float getMonthSalary() {return monthSalary;}
 
 }

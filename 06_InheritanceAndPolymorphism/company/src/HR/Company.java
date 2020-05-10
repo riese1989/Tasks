@@ -1,5 +1,6 @@
 package HR;
 
+import java.sql.SQLOutput;
 import java.util.*;
 import java.util.function.UnaryOperator;
 
@@ -57,14 +58,31 @@ public class Company {
         ArrayList<Employee> listSorts = new ArrayList<Employee>();
         listSorts = list;
         listSorts.sort(SalaryStaff.getTopSalaryStaff());
+        int i = 1;
+        System.out.println(count + " самых больших зарплат");
         for (Employee listSort : listSorts) {
-            System.out.println(listSort.getMonthSalary());
+            if (i <= count) {
+                System.out.println(i + ". "+listSort.getMonthSalary());
+            }
+            i++;
         }
-        return null;
+        return listSorts;
     }
 
-    List<Employee> getLowestSalaryStaff(int count) {
-        return null;
+    public List<Employee> getLowestSalaryStaff(int count) {
+        SalaryStaff salaryStaff = new SalaryStaff();
+        ArrayList<Employee> listSorts = new ArrayList<Employee>();
+        listSorts = list;
+        listSorts.sort(SalaryStaff.getLowestSalaryStaff());
+        int i = 1;
+        System.out.println(count + " самых маленьких зарплат");
+        for (Employee listSort : listSorts) {
+            if (i <= count) {
+                System.out.println(i + ". "+listSort.getMonthSalary());
+            }
+            i++;
+        }
+        return listSorts;
     }
 
 }

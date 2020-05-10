@@ -10,11 +10,15 @@ public class Main {
         company.setIncome(incomeCompany);
         Employee manager = new Manager(salaryManager, company);
         Employee topManager = new TopManager(salaryTopManager, company);
-        company.hireAll(manager,5);
-        company.hireAll(topManager, 2);
-        //company.fire(90);
-        company.listEmpoeeys();
-        company.getTopSalaryStaff(9);
+        Employee operator = new Operator(salaryOperator, company);
+        company.hireAll(manager,150);
+        company.hireAll(topManager, 200);
+        company.hireAll(operator, 2);
+        company.fire(90);
+        //company.listEmpoeeys();
+        company.getTopSalaryStaff(5);
+        System.out.println("==============");
+        company.getLowestSalaryStaff(5);
         //company.listEmpoeeys();
     }
 }
