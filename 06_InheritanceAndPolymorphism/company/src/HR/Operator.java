@@ -5,15 +5,11 @@ public class Operator extends Employee {
 
     public Operator(int salary, Company company) {
         super(salary, company);
+        monthSalary = salary;
     }
 
-    public double getMonthSalary() {
-        return salary;
+    @Override
+    public Operator clone() {
+        return new Operator(salary, company);
     }
-
-//    @Override
-//    public double getMonthSalary() {
-//        return this.salary;
-//    }
-
 }

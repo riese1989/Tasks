@@ -1,12 +1,12 @@
 package HR;
 
-public class Employee {
+public abstract class Employee {
     protected int number;
     protected int salary;
     protected Company company;
+    protected  double monthSalary;
 
-    public Employee (int salary, Company company)
-    {
+    public Employee(int salary, Company company) {
         this.company = company;
         this.salary = salary;
     }
@@ -19,11 +19,8 @@ public class Employee {
         this.number = number;
     }
 
-    public Employee clone() {
-        return new Employee(salary, company);
-    }
+    public abstract Employee clone();
 
-    public double getMonthSalary() {
-        return 0;
-    }
+    public double getMonthSalary() {return monthSalary;}
+
 }

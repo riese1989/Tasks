@@ -3,20 +3,16 @@ package HR;
 public class TopManager extends Employee {
     public TopManager(int salary, Company company) {
         super(salary, company);
+        if (company.getIncome() >= 10000000)    {
+            monthSalary = salary * 2;
+        }
+        else    {
+            monthSalary = salary;
+        }
     }
 
-    public double getMonthSalary() {
-        return salary *2;
+    @Override
+    public TopManager clone() {
+        return new TopManager(salary, company);
     }
-
-//    @Override
-//    public double getMonthSalary() {
-//        if (company.getIncome() >= 10000000)  {
-//            double monthSalary = salary * 2.5;
-//            return monthSalary;
-//        }
-//        return salary;
-//
-//    }
-
 }

@@ -53,7 +53,13 @@ public class Company {
     }
 
     public List<Employee> getTopSalaryStaff(int count) {
-        //Collections.sort(list);
+        SalaryStaff salaryStaff = new SalaryStaff();
+        ArrayList<Employee> listSorts = new ArrayList<Employee>();
+        listSorts = list;
+        listSorts.sort(SalaryStaff.getTopSalaryStaff());
+        for (Employee listSort : listSorts) {
+            System.out.println(listSort.getMonthSalary());
+        }
         return null;
     }
 
