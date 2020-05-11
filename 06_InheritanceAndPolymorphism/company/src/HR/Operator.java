@@ -13,7 +13,7 @@ public class Operator extends Employee {
     }
 
     @Override
-    public double funcSalary(int salary) {
+    public float funcSalary(int salary) {
         return salary;
     }
 }

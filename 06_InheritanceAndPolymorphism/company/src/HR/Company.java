@@ -6,7 +6,7 @@ import java.util.function.UnaryOperator;
 
 public class Company {
     private int income;
-    ArrayList<Employee> list = new ArrayList<>();
+    protected static ArrayList<Employee> list = new ArrayList<>();
 
     public void setIncome(int income) {
         this.income = income;
@@ -17,27 +17,11 @@ public class Company {
         return this.income;
     }
 
-    public void hire(Employee employee) {
-        employee.setNumber(list.size());
-        list.add(employee);
-    }
-
-    public void hireAll(Employee employee, int count) {
-        for (int i = 1; i <= count; i++) {
-            Employee employeeNew = employee.clone();
-            employeeNew.setNumber(list.size());
-            list.add(employeeNew);
-        }
-    }
 
     public void fire(int i) {
-        if (i < list.size()) {
-            for (Employee employee : list) {
-                if (employee.getNumber() == i) {
-                    list.remove(employee);
-                    break;
-                }
-            }
+        Employee employee = getEmployee(i);
+        if (employee != null) {
+            list.remove(employee);
         } else {
             System.out.println("Такого работника нет");
         }
@@ -83,6 +67,15 @@ public class Company {
             i++;
         }
         return listSorts;
+    }
+
+    private Employee getEmployee (int number)   {
+        for (Employee employee : list)  {
+            if (employee.getNumber() == number) {
+                return employee;
+            }
+        }
+        return null;
     }
 
 }

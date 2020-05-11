@@ -12,7 +12,7 @@ public class Manager extends Employee {
     }
 
     @Override
-    public double funcSalary(int salary) {
-        return salary + (company.getIncome() * 0.05 * Math.pow(Math.random(),3));
+    public float funcSalary(int salary) {
+        return (float) (salary + (company.getIncome() * 0.05 * Math.pow(Math.random(),3)));
     }
 }

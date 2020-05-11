@@ -11,7 +11,7 @@ public class TopManager extends Employee {
     }
 
     @Override
-    public double funcSalary(int salary) {
+    public float funcSalary(int salary) {
         if (company.getIncome() >= 10000000)    {
             monthSalary = salary * 2;
         }
