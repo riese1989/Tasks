@@ -6,7 +6,7 @@ import java.util.function.UnaryOperator;
 
 public class Company {
     private int income;
-    protected static ArrayList<Employee> list = new ArrayList<>();
+    protected ArrayList<Employee> list = new ArrayList<>();
 
     public void setIncome(int income) {
         this.income = income;
@@ -76,6 +76,18 @@ public class Company {
             }
         }
         return null;
+    }
+
+    public void hire(Employee employee) {
+        employee.setNumber(list.size());
+        list.add(employee);
+    }
+
+    public void hireAll(ArrayList<Employee> listEmployees) {
+        for (Employee employee : listEmployees) {
+            employee.setNumber(list.size());
+            list.add(employee);
+        }
     }
 
 }

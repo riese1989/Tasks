@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e49dbf3b-39f9-407e-85f3-a64fdf41da59" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/HR/HireEmployees.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HR/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HR/Company.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HR/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HR/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HR/HireEmployees.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HR/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HR/Manager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HR/Operator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HR/Operator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HR/TopManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HR/TopManager.java" afterDir="false" />
@@ -92,44 +93,45 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1588966221307" />
-    <state x="533" y="164" key="#com.intellij.ide.util.MemberChooser" timestamp="1589134935977">
+    <state x="533" y="164" key="#com.intellij.ide.util.MemberChooser" timestamp="1589315836027">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state x="533" y="158" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1588971284165" />
-    <state x="533" y="164" key="#com.intellij.ide.util.MemberChooser/0.23.1440.805@0.23.1440.805" timestamp="1589134935977" />
+    <state x="533" y="164" key="#com.intellij.ide.util.MemberChooser/0.23.1440.805@0.23.1440.805" timestamp="1589315836027" />
     <state x="457" y="241" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1588966219124">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="457" y="241" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1440.900@0.0.1440.900" timestamp="1588966219124" />
-    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588967279004">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="458" y="205" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589314047065">
+      <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1588967279004" />
+    <state x="458" y="205" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.805@0.23.1440.805" timestamp="1589314047065" />
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1588972461614">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1588972377606" />
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.23.1440.805@0.23.1440.805" timestamp="1588972461614" />
-    <state width="1398" height="206" key="GridCell.Tab.0.bottom" timestamp="1589226066059">
+    <state width="1398" height="206" key="GridCell.Tab.0.bottom" timestamp="1589314755517">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1588973021061" />
-    <state width="1398" height="206" key="GridCell.Tab.0.bottom/0.23.1440.805@0.23.1440.805" timestamp="1589226066059" />
-    <state width="1398" height="206" key="GridCell.Tab.0.center" timestamp="1589226066058">
+    <state width="1398" height="206" key="GridCell.Tab.0.bottom/0.23.1440.805@0.23.1440.805" timestamp="1589314755517" />
+    <state width="1398" height="206" key="GridCell.Tab.0.center" timestamp="1589314755516">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1588973021060" />
-    <state width="1398" height="206" key="GridCell.Tab.0.center/0.23.1440.805@0.23.1440.805" timestamp="1589226066058" />
-    <state width="1398" height="206" key="GridCell.Tab.0.left" timestamp="1589226066058">
+    <state width="1398" height="206" key="GridCell.Tab.0.center/0.23.1440.805@0.23.1440.805" timestamp="1589314755516" />
+    <state width="1398" height="206" key="GridCell.Tab.0.left" timestamp="1589314755515">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1588973020927" />
-    <state width="1398" height="206" key="GridCell.Tab.0.left/0.23.1440.805@0.23.1440.805" timestamp="1589226066058" />
-    <state width="1398" height="206" key="GridCell.Tab.0.right" timestamp="1589226066058">
+    <state width="1398" height="206" key="GridCell.Tab.0.left/0.23.1440.805@0.23.1440.805" timestamp="1589314755515" />
+    <state width="1398" height="206" key="GridCell.Tab.0.right" timestamp="1589314755516">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1588973021061" />
-    <state width="1398" height="206" key="GridCell.Tab.0.right/0.23.1440.805@0.23.1440.805" timestamp="1589226066058" />
+    <state width="1398" height="206" key="GridCell.Tab.0.right/0.23.1440.805@0.23.1440.805" timestamp="1589314755516" />
     <state width="1398" height="256" key="GridCell.Tab.1.bottom" timestamp="1589050505275">
       <screen x="0" y="23" width="1440" height="805" />
     </state>

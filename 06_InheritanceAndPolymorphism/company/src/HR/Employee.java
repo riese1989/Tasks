@@ -20,8 +20,6 @@ public abstract class Employee {
         this.number = number;
     }
 
-    public abstract Employee clone();
-
     public abstract float funcSalary (int salary);
 
     public float getMonthSalary() {return monthSalary;}

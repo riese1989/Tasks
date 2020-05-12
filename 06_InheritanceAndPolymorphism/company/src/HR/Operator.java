@@ -8,11 +8,6 @@ public class Operator extends Employee {
     }
 
     @Override
-    public Operator clone() {
-        return new Operator(salary, company);
-    }
-
-    @Override
     public float funcSalary(int salary) {
         return salary;
     }

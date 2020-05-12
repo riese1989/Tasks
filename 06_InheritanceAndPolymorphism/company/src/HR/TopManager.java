@@ -6,11 +6,6 @@ public class TopManager extends Employee {
     }
 
     @Override
-    public TopManager clone() {
-        return new TopManager(salary, company);
-    }
-
-    @Override
     public float funcSalary(int salary) {
         if (company.getIncome() >= 10000000)    {
             monthSalary = salary * 2;
