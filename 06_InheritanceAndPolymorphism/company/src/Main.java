@@ -28,5 +28,6 @@ public class Main {
         company.getTopSalaryStaff(5);
         System.out.println("==============");
         company.getLowestSalaryStaff(5);
+        Manager manager = new FunctionManager (salaryManager, company);
     }
 }
