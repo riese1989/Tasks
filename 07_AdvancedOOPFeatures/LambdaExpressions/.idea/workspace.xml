@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="baabd658-2e59-4748-887f-1bdd396c992b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../06_InheritanceAndPolymorphism/company/src/HR/FunctionManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/07_AdvancedOOPFeatures.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../06_InheritanceAndPolymorphism/company/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../06_InheritanceAndPolymorphism/company/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../06_InheritanceAndPolymorphism/company/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../06_InheritanceAndPolymorphism/company/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +17,14 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
@@ -39,9 +39,13 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558674161968" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -75,22 +79,26 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="570" y="346" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1440.900@0.0.1440.900" timestamp="1589477626516" />
-    <state width="1398" height="281" key="GridCell.Tab.0.bottom" timestamp="1589479192129">
+    <state width="1398" height="281" key="GridCell.Tab.0.bottom" timestamp="1589479764841">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="281" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1589479192129" />
-    <state width="1398" height="281" key="GridCell.Tab.0.center" timestamp="1589479192127">
+    <state width="1398" height="281" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1589479764841" />
+    <state width="1398" height="281" key="GridCell.Tab.0.center" timestamp="1589479764839">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="281" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1589479192127" />
-    <state width="1398" height="281" key="GridCell.Tab.0.left" timestamp="1589479192127">
+    <state width="1398" height="281" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1589479764839" />
+    <state width="1398" height="281" key="GridCell.Tab.0.left" timestamp="1589479764703">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="281" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1589479192127" />
-    <state width="1398" height="281" key="GridCell.Tab.0.right" timestamp="1589479192128">
+    <state width="1398" height="281" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1589479764703" />
+    <state width="1398" height="281" key="GridCell.Tab.0.right" timestamp="1589479764840">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="281" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1589479192128" />
+    <state width="1398" height="281" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1589479764840" />
+    <state x="337" y="248" key="git4idea.merge.GitMergeDialog" timestamp="1589479708259">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="337" y="248" key="git4idea.merge.GitMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1589479708259" />
   </component>
   <component name="masterDetails">
     <states>
