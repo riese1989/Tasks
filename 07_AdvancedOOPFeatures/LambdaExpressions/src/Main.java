@@ -1,5 +1,7 @@
+import javax.crypto.spec.PSource;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.SQLOutput;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -13,10 +15,7 @@ public class Main
     public static void main(String[] args)
     {
         ArrayList<Employee> staff = loadStaffFromFile();
-        Collections.sort(staff, Comparator.comparing((Employee employee1) -> employee1.getSalary()).thenComparing(Employee::getName));
-        for (Employee employee: staff)  {
-            System.out.println(employee);
-        }
+        staff.stream().filter(e -> e.getWorkStart().getYear()+1900 == 2017).max((e1, e2) -> e1.getSalary().compareTo(e2.getSalary())).ifPresent(e -> System.out.println(e.getSalary()));
     }
 
     private static ArrayList<Employee> loadStaffFromFile()
