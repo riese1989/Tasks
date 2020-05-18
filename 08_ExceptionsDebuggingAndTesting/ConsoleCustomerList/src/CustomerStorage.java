@@ -15,6 +15,9 @@ public class CustomerStorage
     {
        try {
            String[] components = data.split("\\s+");
+           if (components.length != 4)  {
+               throw new Exception("Wrong command");
+           }
            String name = components[0];
            String surname = components[1];
            String email = components[2];
