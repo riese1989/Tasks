@@ -21,11 +21,11 @@ public class CustomerStorage
            String phone = components[3];
            String fullName = name + " " + surname;
            String clearPhone = phone.replaceFirst("\\+","");
-           if   (email.indexOf("@") == 0 || email.indexOf(".") == email.length()-1 ||
-                   email.indexOf(".") - email.indexOf("@") == 1 ||
+           if   (email.indexOf("@") == 0 || email.indexOf("") == email.length()-1 ||
+                   email.indexOf("") - email.indexOf("@") == 1 ||
                    email.length() - email.replaceAll("@","").length() > 1 ||
                    email.length() - email.replaceAll("\\.","").length() > 1 ||
-                   !email.contains(".") ||
+                   !email.contains("\\.") ||
                    !email.contains("@")) {
                throw new Exception("Wrong email");
            }
