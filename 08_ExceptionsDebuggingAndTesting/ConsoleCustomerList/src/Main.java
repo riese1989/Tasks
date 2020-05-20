@@ -19,6 +19,9 @@ public class Main
             try {
                 String command = scanner.nextLine();
                 String[] tokens = command.split("\\s+", 2);
+                if (tokens.length == 1) {
+                    throw new CommandException(commandError);
+                }
                 if (tokens[0].equals("add")) {
                     executor.addCustomer(tokens[1]);
                 } else if (tokens[0].equals("list")) {
@@ -31,10 +34,10 @@ public class Main
                     System.out.println(helpText);
                 }
                 else    {
-                    throw new Exception(commandError);
+                    throw new CommandException(commandError);
                 }
             }
-            catch (Exception ex) {
+            catch (CommandException ex) {
                 ex.printStackTrace();
             }
         }

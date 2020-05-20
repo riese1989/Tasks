@@ -16,7 +16,7 @@ public class CustomerStorage
        try {
            String[] components = data.split("\\s+");
            if (components.length != 4)  {
-               throw new Exception("Wrong command");
+               throw new CommandException("Wrong command");
            }
            String name = components[0];
            String surname = components[1];
@@ -30,16 +30,16 @@ public class CustomerStorage
                    email.length() - email.replaceAll("\\.","").length() > 1 ||
                    !email.contains("\\.") ||
                    !email.contains("@")) {
-               throw new Exception("Wrong email");
+               throw new CommandException("Wrong email");
            }
            if   ((phone.indexOf("+") == 0 && phone.length() != 12) || clearPhone.length() != 11 ||
                    !clearPhone.matches("[-+]?\\d*\\.?\\d+") ||
                    phone.indexOf("+") > 0) {
-               throw new Exception("Wrong phone");
+               throw new CommandException("Wrong phone");
            }
            storage.put(fullName, new Customer(fullName, components[3], components[2]));
        }
-       catch (Exception ex) {
+       catch (CommandException ex) {
            ex.printStackTrace();
        }
     }
