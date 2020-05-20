@@ -19,18 +19,24 @@ public class RouteCalculator
 
     public List<Station> getShortestRoute(Station from, Station to)
     {
-        List<Station> route = getRouteOnTheLine(from, to);
-        if(route != null) {
-            return route;
+        List<Station> routeOneLine = getRouteOnTheLine(from, to);
+        if(routeOneLine != null) {
+            return routeOneLine;
         }
 
-        route = getRouteWithOneConnection(from, to);
-        if(route != null) {
-            return route;
-        }
+        List<Station> routeWithOneConnection  = getRouteWithOneConnection(from, to);
+        List<Station> routeWithTwoConnection = getRouteWithTwoConnections(from, to);
 
-        route = getRouteWithTwoConnections(from, to);
-        return route;
+        if (routeWithOneConnection == null) {
+            return  routeWithTwoConnection;
+        }
+        if (routeWithTwoConnection == null) {
+            return  routeWithOneConnection;
+        }
+        if (calculateDuration(routeWithOneConnection) < calculateDuration(routeWithTwoConnection))  {
+            return routeWithOneConnection;
+        }
+        return routeWithTwoConnection;
     }
 
     public static double calculateDuration(List<Station> route)
@@ -112,6 +118,9 @@ public class RouteCalculator
                     }
                 }
             }
+        }
+        if (route.size() == 0)  {
+            return null;
         }
         return route;
     }
