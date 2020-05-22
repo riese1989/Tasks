@@ -1,9 +1,12 @@
 import core.Line;
 import core.Station;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -17,23 +20,32 @@ public class Main
 
     private static StationIndex stationIndex;
 
-    public static void main(String[] args)
-    {
-        RouteCalculator calculator = getRouteCalculator();
+    public static void main(String[] args) {
+        try {
+            File map = new File ("src/main/resources/map.json");
+            if (!map.exists())  {
+                throw new Exception("Файл map.json не найден");
+            }
+            RouteCalculator calculator = getRouteCalculator();
 
-        System.out.println("Программа расчёта маршрутов метрополитена Санкт-Петербурга\n");
-        scanner = new Scanner(System.in);
-        for(;;)
-        {
-            Station from = takeStation("Введите станцию отправления:");
-            Station to = takeStation("Введите станцию назначения:");
+            System.out.println("Программа расчёта маршрутов метрополитена Санкт-Петербурга\n");
+            scanner = new Scanner(System.in);
+            for (; ; ) {
+                Station from = takeStation("Введите станцию отправления:");
+                Station to = takeStation("Введите станцию назначения:");
 
-            List<Station> route = calculator.getShortestRoute(from, to);
-            System.out.println("Маршрут:");
-            printRoute(route);
+                List<Station> route = calculator.getShortestRoute(from, to);
+                System.out.println("Маршрут:");
+                printRoute(route);
 
-            System.out.println("Длительность: " +
-                RouteCalculator.calculateDuration(route) + " минут");
+                System.out.println("Длительность: " +
+                        RouteCalculator.calculateDuration(route) + " минут");
+            }
+        }
+        catch (Exception ex) {
+            Logger loggerException = LogManager.getLogger("Exceptions");
+            loggerException.info(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -67,15 +79,21 @@ public class Main
     {
         for(;;)
         {
-            System.out.println(message);
-            String line = scanner.nextLine().trim();
-            Station station = stationIndex.getStation(line);
-            if(station != null) {
-                return station;
+                System.out.println(message);
+                String line = scanner.nextLine().trim();
+                //private static Logger loggerExceptions = LogManager.getLogger("Exceptions");
+                Logger loggerSearch = LogManager.getLogger("SearchStations");
+                loggerSearch.info("Ищем " + line);
+                Station station = stationIndex.getStation(line);
+                if (station != null) {
+                    return station;
+                }
+                Logger loggerIncorrect = LogManager.getLogger("IncStations");
+                loggerIncorrect.info("Станция не найдена: " + line);
+                System.out.println("Станция не найдена :(");
             }
-            System.out.println("Станция не найдена :(");
         }
-    }
+
 
     private static void createStationIndex()
     {
@@ -95,6 +113,7 @@ public class Main
             parseConnections(connectionsArray);
         }
         catch(Exception ex) {
+            //loggerExceptions.info(error.toString());
             ex.printStackTrace();
         }
     }
