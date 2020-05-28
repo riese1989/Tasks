@@ -17,7 +17,6 @@ public class Main
 {
     private static String dataFile = "src/main/resources/map.json";
     private static Scanner scanner;
-
     private static StationIndex stationIndex;
 
     public static void main(String[] args) {
@@ -44,7 +43,7 @@ public class Main
         }
         catch (Exception ex) {
             Logger loggerException = LogManager.getLogger("Exceptions");
-            loggerException.info(ex.getMessage());
+            loggerException.error(ex.getMessage());
             ex.printStackTrace();
         }
     }
@@ -81,15 +80,16 @@ public class Main
         {
                 System.out.println(message);
                 String line = scanner.nextLine().trim();
-                //private static Logger loggerExceptions = LogManager.getLogger("Exceptions");
                 Logger loggerSearch = LogManager.getLogger("SearchStations");
                 loggerSearch.info("Ищем " + line);
+                //logger.info("Ищем " + line);
                 Station station = stationIndex.getStation(line);
                 if (station != null) {
                     return station;
                 }
                 Logger loggerIncorrect = LogManager.getLogger("IncStations");
-                loggerIncorrect.info("Станция не найдена: " + line);
+                loggerIncorrect.warn("Станция не найдена: " + line);
+                //logger.warn("Станция не найдена: " + line);
                 System.out.println("Станция не найдена :(");
             }
         }
@@ -113,7 +113,9 @@ public class Main
             parseConnections(connectionsArray);
         }
         catch(Exception ex) {
-            //loggerExceptions.info(error.toString());
+            Logger loggerExceptions = LogManager.getLogger("Exceptions");
+            loggerExceptions.info(ex.toString());
+            //logger.error(ex.toString());
             ex.printStackTrace();
         }
     }
