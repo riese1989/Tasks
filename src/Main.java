@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -12,15 +13,22 @@ public class Main {
         batanov.setTaskWaiting(customScanner("У Миши в ожидании"));
         batanov.setTasksWithTasks(customScanner("У Миши с заданиями"));
         System.out.println(str + "\nРезультат\n" + str);
+        if (Tasks.getNoneAppTasks() > 0)    {
+            Tasks.listTasks = new ArrayList<>();
+        }
         for (int i = 1; i <=Tasks.getNoneAppTasks(); i++)    {
-            Employee empl = appTask(pestov, batanov);
-            System.out.println(empl.getFamily());
+            System.out.println("Введите номер инцидента");
+            Scanner scanner = new Scanner(System.in);
+            String number = scanner.nextLine();
+            Employee empl = choiceAssignTask(pestov, batanov);
+            Tasks.listTasks.add(new Tasks(number,empl, TaskStatus.NOTE_DONE));
+            System.out.println("Назначено на " + empl.getFamily());
             empl.setCountTaskOne(empl.getCountTaskOne()+1);
             Employee.setAppCountTask(Employee.getAppCountTask()+1);
         }
     }
 
-    public static Employee appTask(Employee empl1, Employee empl2) {
+    public static Employee choiceAssignTask(Employee empl1, Employee empl2) {
         if ((int) (Math.random() * 2) == 0) {
             if (empl1.getCountTaskOne() <= Tasks.countAppTasks()/2) {
                 return empl1;

@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="19be61a0-aa34-4d99-9ce0-4e8509dbeaeb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tasts/Employee.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tasts/Employee.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tasts/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tasts/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tasts/Tasks.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tasts/Tasks.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Employee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tasks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tasks.java" afterDir="false" />
     </list>
@@ -40,6 +38,11 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\alexey.pestov\IdeaProjects\Tasts" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application">
@@ -84,34 +87,34 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591016556883" />
-    <state x="488" y="47" key="#com.intellij.ide.util.MemberChooser" timestamp="1591099166205">
+    <state x="686" y="36" key="#com.intellij.ide.util.MemberChooser" timestamp="1591109983713">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="47" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591099166205" />
+    <state x="686" y="36" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591109983713" />
     <state x="412" y="147" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1591016546442">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="412" y="147" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591016546442" />
-    <state width="1323" height="263" key="GridCell.Tab.0.bottom" timestamp="1591101091353">
+    <state width="1323" height="263" key="GridCell.Tab.0.bottom" timestamp="1591110800836">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1237" height="263" key="GridCell.Tab.0.bottom/0.0.1366.728/-1280.-101.1280.984@-1280.-101.1280.984" timestamp="1591100840709" />
-    <state width="1323" height="263" key="GridCell.Tab.0.bottom/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591101091353" />
-    <state width="1323" height="263" key="GridCell.Tab.0.center" timestamp="1591101091353">
+    <state width="1323" height="263" key="GridCell.Tab.0.bottom/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591110800836" />
+    <state width="1323" height="263" key="GridCell.Tab.0.center" timestamp="1591110800836">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1237" height="263" key="GridCell.Tab.0.center/0.0.1366.728/-1280.-101.1280.984@-1280.-101.1280.984" timestamp="1591100840709" />
-    <state width="1323" height="263" key="GridCell.Tab.0.center/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591101091353" />
-    <state width="1323" height="263" key="GridCell.Tab.0.left" timestamp="1591101091353">
+    <state width="1323" height="263" key="GridCell.Tab.0.center/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591110800836" />
+    <state width="1323" height="263" key="GridCell.Tab.0.left" timestamp="1591110800836">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1237" height="263" key="GridCell.Tab.0.left/0.0.1366.728/-1280.-101.1280.984@-1280.-101.1280.984" timestamp="1591100840709" />
-    <state width="1323" height="263" key="GridCell.Tab.0.left/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591101091353" />
-    <state width="1323" height="263" key="GridCell.Tab.0.right" timestamp="1591101091353">
+    <state width="1323" height="263" key="GridCell.Tab.0.left/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591110800836" />
+    <state width="1323" height="263" key="GridCell.Tab.0.right" timestamp="1591110800836">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1237" height="263" key="GridCell.Tab.0.right/0.0.1366.728/-1280.-101.1280.984@-1280.-101.1280.984" timestamp="1591100840709" />
-    <state width="1323" height="263" key="GridCell.Tab.0.right/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591101091353" />
+    <state width="1323" height="263" key="GridCell.Tab.0.right/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591110800836" />
     <state width="1323" height="223" key="GridCell.Tab.1.bottom" timestamp="1591087014421">
       <screen x="-1280" y="-101" width="1280" height="984" />
     </state>
