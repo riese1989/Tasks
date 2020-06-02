@@ -1,14 +1,25 @@
 public class Employee {
-    private static Integer appCountTask;
-    private Integer  countTaskOne;
+    private static Integer appCountTask = 0;
+    private Integer  countTaskOne = 0;
     private String family;
+    private Integer taskWaiting = 0;
+    private Integer tasksWithTasks = 0;
+
+    public Employee(Integer countTaskOne, String family) {
+        this.countTaskOne = countTaskOne;
+        this.family = family;
+    }
+
+    public void setTasksWithTasks(Integer tasksWithTasks) {
+        this.tasksWithTasks = tasksWithTasks;
+    }
+
+    public void setTaskWaiting(Integer taskWaiting) {
+        this.taskWaiting = taskWaiting;
+    }
 
     public String getFamily() {
         return family;
-    }
-
-    public void setFamily(String family) {
-        this.family = family;
     }
 
     public static Integer getAppCountTask() {
@@ -28,12 +39,7 @@ public class Employee {
         return countTaskOne;
     }
 
-    public Employee(Integer countTaskOne, String family) {
-        this.countTaskOne = countTaskOne;
-        this.family = family;
-    }
-    public Employee(String family) {
-        this.family = family;
-        this.countTaskOne = 0;
+    public Integer getCountActiveTasks()    {
+        return countTaskOne - taskWaiting - tasksWithTasks;
     }
 }
