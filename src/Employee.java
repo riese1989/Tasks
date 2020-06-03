@@ -1,9 +1,12 @@
+import java.util.ArrayList;
+
 public class Employee {
     private static Integer appCountTask = 0;
     private Integer  countTaskOne = 0;
     private String family;
     private Integer taskWaiting = 0;
     private Integer tasksWithTasks = 0;
+    public static ArrayList<Tasks> listTasks;
 
     public Employee(Integer countTaskOne, String family) {
         this.countTaskOne = countTaskOne;

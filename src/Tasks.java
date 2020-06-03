@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Tasks {
-    public static ArrayList<Tasks> listTasks;
     private static Integer countTasksAll;
     private static Integer noneAppTasks;
     private Employee assigned;
