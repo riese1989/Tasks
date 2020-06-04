@@ -4,15 +4,17 @@ import java.util.Scanner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
+
 public class Main {
     public static void main(String[] args) {
         boolean flag = true;
         while(flag) {
-            System.out.println("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð¼Ð¼Ð°Ð½Ð´Ñƒ:");
-            System.out.println("1. ÐÐ°Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð½Ð¾Ð²Ñ‹Ñ… Ð·Ð°Ð´Ð°Ð½Ð¸Ð¹");
-            System.out.println("2. Ð ÐµÑˆÐµÐ½Ð¸Ðµ Ð¼Ð¾Ð¸Ñ… Ð·Ð°Ð´Ð°Ñ‡");
-            System.out.println("3. Ð’Ñ‹Ð²Ð¾Ð´ Ð¼Ð¾Ð¸Ñ… Ð·Ð°Ð´Ð°Ñ‡");
-            System.out.println("q. Ð’Ñ‹Ñ…Ð¾Ð´ Ð¸Ð· Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ñ‹");
+            System.out.println("Ââåäèòå êîìàíäó\n");
+            System.out.println("1. Íàçíà÷åíèå íîâûõ îáðàùåíèé");
+            System.out.println("2. Ðåøåíèå ìîèõ îáðàùåíèé");
+            System.out.println("3. Âûâîä ìîèõ îáðàùåíèé");
+            System.out.println("q. Âûõîä èç ïðîãðàììû");
             Scanner scanner = new Scanner(System.in);
             String command = scanner.nextLine();
             switch (command)  {
@@ -33,7 +35,7 @@ public class Main {
                     break;
                 }
                 default:    {
-                    System.out.println("Ð’Ð²ÐµÐ´ÐµÐ½Ð° Ð½ÐµÐ²ÐµÑ€Ð½Ð°Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°");
+                    System.out.println("??????? ???????? ???????");
                     break;
                 }
 
@@ -44,25 +46,25 @@ public class Main {
     public static void enterTasks() {
 
         String str = "=======================";
-        Tasks.setCountTasksAll(customScanner("Ð¡ÐºÐ¾Ð»ÑŒÐºÐ¾ Ð²ÑÐµÐ³Ð¾ Ð¾Ð±Ñ€Ð°Ñ‰ÐµÐ½Ð¸Ð¹"));
-        Tasks.setNoneAppTasks(customScanner("Ð¡ÐºÐ¾Ð»ÑŒÐºÐ¾ Ð½ÐµÐ½Ð°Ð·Ð½Ð°Ñ‡ÐµÐ½Ð½Ñ‹Ñ…"));
-        Employee pestov = new Employee(customScanner("Ð¡ÐºÐ¾Ð»ÑŒÐºÐ¾ Ð½Ð° Ð¼Ð½Ðµ"), "pestov");
-        pestov.setTaskWaiting(customScanner("Ð£ Ð¼ÐµÐ½Ñ Ð² Ð¾Ð¶Ð¸Ð´Ð°Ð½Ð¸Ð¸"));
-        pestov.setTasksWithTasks(customScanner("Ð£ Ð¼ÐµÐ½Ñ Ñ Ð·Ð°Ð´Ð°Ð½Ð¸ÑÐ¼Ð¸"));
+        Tasks.setCountTasksAll(customScanner("Ñêîëüêî âñåãî îáðàùåíèé?"));
+        Tasks.setNoneAppTasks(customScanner("Ñêîëüêî íåíàçíà÷åííûõ?"));
+        Employee pestov = new Employee(customScanner("Ñêîëüêî íà ìíå?"), "pestov");
+        pestov.setTaskWaiting(customScanner("Ñêîëüêî ó ìåíÿ â îæèäàíèè?"));
+        pestov.setTasksWithTasks(customScanner("Ñêîëüêî ó ìåíÿ ñ çàäàíèÿìè"));
         Employee batanov = new Employee(Tasks.getCountTasksAll() -Tasks.getNoneAppTasks() - pestov.getCountTaskOne(), "batanov");
-        batanov.setTaskWaiting(customScanner("Ð£ ÐœÐ¸ÑˆÐ¸ Ð² Ð¾Ð¶Ð¸Ð´Ð°Ð½Ð¸Ð¸"));
-        batanov.setTasksWithTasks(customScanner("Ð£ ÐœÐ¸ÑˆÐ¸ Ñ Ð·Ð°Ð´Ð°Ð½Ð¸ÑÐ¼Ð¸"));
-        System.out.println(str + "\nÐ ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚\n" + str);
+        batanov.setTaskWaiting(customScanner("Ñêîëüêî ó Ìèøè â îæèäàíèè"));
+        batanov.setTasksWithTasks(customScanner("Ñêîëüêî ó Ìèøè ñ çàäàíèÿìè"));
+        System.out.println(str + "\nÐåçóëüòàò\n" + str);
         if (Tasks.getNoneAppTasks() > 0)    {
             Employee.listTasks = new ArrayList<>();
         }
         for (int i = 1; i <=Tasks.getNoneAppTasks(); i++)    {
-            System.out.println("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€ Ð¸Ð½Ñ†Ð¸Ð´ÐµÐ½Ñ‚Ð°");
+            System.out.println("Ââåäèòå íîìåð");
             Scanner scanner = new Scanner(System.in);
             String number = scanner.nextLine();
             Employee empl = choiceAssignTask(pestov, batanov);
             Employee.listTasks.add(new Tasks(number,empl, TaskStatus.NOTE_DONE));
-            System.out.println("ÐÐ°Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¾ Ð½Ð° " + empl.getFamily());
+            System.out.println("Íàçíà÷åíî íà " + empl.getFamily());
             empl.setCountTaskOne(empl.getCountTaskOne()+1);
             Employee.setAppCountTask(Employee.getAppCountTask()+1);
         }
@@ -86,7 +88,7 @@ public class Main {
     }
 
     public static void solveMyTasks()   {
-        System.out.println("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€ Ð¸Ð½Ñ†Ð¸Ð´ÐµÐ½Ñ‚Ð°");
+        System.out.println("Ââåäèòå íîìåð");
         Scanner scanner = new Scanner(System.in);
         String number = scanner.nextLine();
         for (Tasks task : Employee.listTasks)    {
@@ -96,7 +98,7 @@ public class Main {
                 task.setDateResolved(new Date());
                 Employee.listTasks.set(index,task);
                 Logger logger = LogManager.getLogger("STasks");
-                logger.error(" Ñ€ÐµÑˆÑ‘Ð½ "+ task.getNumber());
+                logger.info(" ðåø¸í "+ task.getNumber());
                 break;
             }
         }
@@ -107,9 +109,9 @@ public class Main {
         for(Tasks task: Employee.listTasks) {
             String str = "****************\n";
             if(task.getAssigned().getFamily().equals("pestov")) {
-                System.out.println(str + "ÐÐ¾Ð¼ÐµÑ€ " + task.getNumber() + "\n" +
-                                         "Ð¡Ñ‚Ð°Ñ‚ÑƒÑ " + task.getStatus() + "\n" +
-                        "Ð ÐµÑˆÐµÐ½Ð¸Ðµ " + task.getDateResolved());
+                System.out.println(str + "Íîìåð " + task.getNumber() + "\n" +
+                                         "Ñòàòóñ  " + task.getStatus() + "\n" +
+                        "Äàòà ðåøåíèÿ " + task.getDateResolved());
             }
         }
     }
