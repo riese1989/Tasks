@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Main {
     public static void main(String[] args) {
@@ -93,6 +95,8 @@ public class Main {
                 task.setStatus(TaskStatus.DONE);
                 task.setDateResolved(new Date());
                 Employee.listTasks.set(index,task);
+                Logger logger = LogManager.getLogger("STasks");
+                logger.error(" решён "+ task.getNumber());
                 break;
             }
         }
