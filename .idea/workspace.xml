@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Tasts:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0d3f9d88-bf72-4869-814e-02947fc282ab" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/Tasts_jar/logs/NazTasks.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/Tasts_jar/logs/TasTasks.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/Tasts_jar/logs/WaitTasks.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Tasts/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tasts.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/SolvedTasks.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tasts_jar/logs/SolvedTasks.log" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Tasts_jar/logs/SolvedTasks.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Enum" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="6698d3ff30778a751114480620c51e6422ef84d2" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1cifmVHIrlrRpGNc2rA85sApydL" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea/jarlib/slf4j-simple-1.6.1.jar!/" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\alexey.pestov\IdeaProjects\Tasts\resources" />
+      <recent name="C:\Users\alexey.pestov\IdeaProjects\Tasts\src" />
+      <recent name="C:\Users\alexey.pestov\IdeaProjects\Tasts\.idea\jarlib" />
+      <recent name="C:\Users\alexey.pestov\IdeaProjects\Tasts" />
+      <recent name="C:\Users\alexey.pestov\IdeaProjects\Tasts\src\resources" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Tasts" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="19be61a0-aa34-4d99-9ce0-4e8509dbeaeb" name="Default Changelist" comment="" />
+      <created>1591016493500</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1591016493500</updated>
+    </task>
+    <task id="LOCAL-00001" summary="correct project">
+      <created>1591610924996</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1591610924996</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="correct project" />
+    <option name="LAST_COMMIT_MESSAGE" value="correct project" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="275" y="21" key="#Notifications" timestamp="1591611408530">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="21" key="#Notifications/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591611408530" />
+    <state x="275" y="21" key="#Project_Structure" timestamp="1591617454842">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="21" key="#Project_Structure/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591617454842" />
+    <state x="275" y="21" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1591269196350" />
+    <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591016556883">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591016556883" />
+    <state x="686" y="36" key="#com.intellij.ide.util.MemberChooser" timestamp="1591109983713">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="686" y="36" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591109983713" />
+    <state x="412" y="147" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1591617438476">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="412" y="147" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591617438476" />
+    <state x="412" y="147" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.728@0.0.1366.728" timestamp="1591279578447" />
+    <state x="385" y="52" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1591609805600">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="385" y="52" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591609805600" />
+    <state x="337" y="0" key="CommitChangelistDialog2" timestamp="1591610922922">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="337" y="0" key="CommitChangelistDialog2/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591610922922" />
+    <state x="721" y="85" key="FileChooserDialogImpl" timestamp="1591610986132">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="-896" y="40" key="FileChooserDialogImpl/0.0.1366.728/-1280.-101.1280.984@-1280.-101.1280.984" timestamp="1591257802072" />
+    <state x="721" y="85" key="FileChooserDialogImpl/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591610986132" />
+    <state x="410" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1591269373380" />
+    <state width="1323" height="222" key="GridCell.Tab.0.bottom" timestamp="1593527082862">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1237" height="380" key="GridCell.Tab.0.bottom/0.0.1366.728/-1280.-101.1280.984@-1280.-101.1280.984" timestamp="1591257822813" />
+    <state width="1323" height="222" key="GridCell.Tab.0.bottom/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1593527082862" />
+    <state width="1323" height="131" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1592392224309" />
+    <state width="1323" height="222" key="GridCell.Tab.0.center" timestamp="1593527082862">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1237" height="380" key="GridCell.Tab.0.center/0.0.1366.728/-1280.-101.1280.984@-1280.-101.1280.984" timestamp="1591257822813" />
+    <state width="1323" height="222" key="GridCell.Tab.0.center/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1593527082862" />
+    <state width="1323" height="131" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1592392224309" />
+    <state width="1323" height="222" key="GridCell.Tab.0.left" timestamp="1593527082862">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1237" height="380" key="GridCell.Tab.0.left/0.0.1366.728/-1280.-101.1280.984@-1280.-101.1280.984" timestamp="1591257822813" />
+    <state width="1323" height="222" key="GridCell.Tab.0.left/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1593527082862" />
+    <state width="1323" height="131" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1592392224309" />
+    <state width="1323" height="222" key="GridCell.Tab.0.right" timestamp="1593527082862">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1237" height="380" key="GridCell.Tab.0.right/0.0.1366.728/-1280.-101.1280.984@-1280.-101.1280.984" timestamp="1591257822813" />
+    <state width="1323" height="222" key="GridCell.Tab.0.right/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1593527082862" />
+    <state width="1323" height="131" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1592392224309" />
+    <state width="1323" height="222" key="GridCell.Tab.1.bottom" timestamp="1593527082862">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="223" key="GridCell.Tab.1.bottom/0.0.1366.728/-1280.-101.1280.984@-1280.-101.1280.984" timestamp="1591087014421" />
+    <state width="1323" height="222" key="GridCell.Tab.1.bottom/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1593527082862" />
+    <state width="1323" height="223" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1592392224294" />
+    <state width="1323" height="222" key="GridCell.Tab.1.center" timestamp="1593527082862">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="223" key="GridCell.Tab.1.center/0.0.1366.728/-1280.-101.1280.984@-1280.-101.1280.984" timestamp="1591087014421" />
+    <state width="1323" height="222" key="GridCell.Tab.1.center/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1593527082862" />
+    <state width="1323" height="223" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1592392224294" />
+    <state width="1323" height="222" key="GridCell.Tab.1.left" timestamp="1593527082862">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="223" key="GridCell.Tab.1.left/0.0.1366.728/-1280.-101.1280.984@-1280.-101.1280.984" timestamp="1591087014421" />
+    <state width="1323" height="222" key="GridCell.Tab.1.left/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1593527082862" />
+    <state width="1323" height="223" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1592392224294" />
+    <state width="1323" height="222" key="GridCell.Tab.1.right" timestamp="1593527082862">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="223" key="GridCell.Tab.1.right/0.0.1366.728/-1280.-101.1280.984@-1280.-101.1280.984" timestamp="1591087014421" />
+    <state width="1323" height="222" key="GridCell.Tab.1.right/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1593527082862" />
+    <state width="1323" height="223" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1592392224294" />
+    <state x="395" y="79" key="MultipleFileMergeDialog" timestamp="1591611647854">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="395" y="79" key="MultipleFileMergeDialog/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591611647854" />
+    <state x="478" y="74" key="RollbackChangesDialog" timestamp="1591080480026">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="478" y="74" key="RollbackChangesDialog/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591080480026" />
+    <state x="154" y="0" key="SettingsEditor" timestamp="1591610726355">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="-1108" y="-101" key="SettingsEditor/0.0.1366.728/-1280.-101.1280.984@-1280.-101.1280.984" timestamp="1591257814835" />
+    <state x="154" y="0" key="SettingsEditor/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591610726355" />
+    <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1591279586420" />
+    <state x="408" y="256" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1591609822975">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="408" y="256" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591609822975" />
+    <state x="474" y="154" key="git4idea.merge.GitMergeDialog" timestamp="1591611529106">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="474" y="154" key="git4idea.merge.GitMergeDialog/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591611529106" />
+    <state x="65" y="0" key="new project wizard" timestamp="1591188093826">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="65" y="0" key="new project wizard/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591188093826" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1591705745676">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591705745676" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="Employee.listTasks" language="JAVA" />
+        <watch expression="pestov" language="JAVA" />
+        <watch expression="task.getAssigned().getFamily().equals(myFamily)" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>

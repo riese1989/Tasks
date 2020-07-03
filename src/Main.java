@@ -1,41 +1,60 @@
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
+import org.apache.logging.log4j.core.util.JsonUtils;
 
 public class Main {
+
+    static Employee pestov = new Employee(0, "pestov");
+    static Employee batanov = new Employee(0, "batanov");
+
     public static void main(String[] args) {
         boolean flag = true;
-        while(flag) {
+        while (flag) {
             System.out.println("Введите команду\n");
             System.out.println("1. Назначение новых обращений");
             System.out.println("2. Решение моих обращений");
-            System.out.println("3. Вывод моих обращений");
+            System.out.println("3. В ожидание");
+            System.out.println("4. Задание");
+            System.out.println("5. Не к нам");
+            System.out.println("6. Вывод моих обращений");
             System.out.println("q. Выход из программы");
             Scanner scanner = new Scanner(System.in);
             String command = scanner.nextLine();
-            switch (command)  {
+            switch (command) {
                 case "1": {
                     enterTasks();
                     break;
                 }
-                case "2":   {
+                case "2": {
                     solveMyTasks();
                     break;
                 }
-                case "3":   {
+                case "3": {
+                    switchStatus(Employee.listTasks.get(searchTask(enterCorrectNumber(),pestov)),TaskStatus.WAITING);
+                    break;
+                }
+                case "4": {
+                    switchStatus(Employee.listTasks.get(searchTask(enterCorrectNumber(),pestov)),TaskStatus.TASK);
+                    break;
+                }
+                case "5": {
+                    switchStatus(Employee.listTasks.get(searchTask(enterCorrectNumber(),pestov)),TaskStatus.NOT_US);
+                    break;
+                }
+                case "6": {
                     printTasks();
                     break;
                 }
-                case "q":   {
+                case "q": {
                     flag = false;
                     break;
                 }
-                default:    {
-                    System.out.println("??????? ???????? ???????");
+                default: {
+                    System.out.println("Неправильная команда");
                     break;
                 }
 
@@ -48,77 +67,121 @@ public class Main {
         String str = "========================";
         Tasks.setCountTasksAll(customScanner("Сколько всего обращений?"));
         Tasks.setNoneAppTasks(customScanner("Сколько неназначенных?"));
-        Employee pestov = new Employee(customScanner("Сколько на мне?"), "pestov");
+        pestov.setCountTaskOne(customScanner("Сколько на мне?"));
         pestov.setTaskWaiting(customScanner("Сколько у меня в ожидании?"));
         pestov.setTasksWithTasks(customScanner("Сколько у меня с заданиями"));
-        Employee batanov = new Employee(Tasks.getCountTasksAll() -Tasks.getNoneAppTasks() - pestov.getCountTaskOne(), "batanov");
+        batanov.setCountTaskOne(Tasks.getCountTasksAll() - Tasks.getNoneAppTasks() - pestov.getCountTaskOne());
         batanov.setTaskWaiting(customScanner("Сколько у Миши в ожидании"));
         batanov.setTasksWithTasks(customScanner("Сколько у Миши с заданиями"));
         System.out.println(str + "\nРезультат\n" + str);
-        if (Tasks.getNoneAppTasks() > 0)    {
+        if (Tasks.getNoneAppTasks() > 0) {
             Employee.listTasks = new ArrayList<>();
         }
-        for (int i = 1; i <=Tasks.getNoneAppTasks(); i++)    {
-            System.out.println("Введите номер");
-            Scanner scanner = new Scanner(System.in);
-            String number = scanner.nextLine();
+        for (int i = 1; i <= Tasks.getNoneAppTasks(); i++) {
+            String number = enterCorrectNumber();
             Employee empl = choiceAssignTask(pestov, batanov);
-            Employee.listTasks.add(new Tasks(number,empl, TaskStatus.NOTE_DONE));
+            Employee.listTasks.add(new Tasks(number, empl, TaskStatus.NOTE_DONE));
             System.out.println("Назначено на " + empl.getFamily());
-            empl.setCountTaskOne(empl.getCountTaskOne()+1);
-            Employee.setAppCountTask(Employee.getAppCountTask()+1);
+            empl.setCountTaskOne(empl.getCountTaskOne() + 1);
+            Employee.setAppCountTask(Employee.getAppCountTask() + 1);
+            log(" назначен ", number, "NaTasks");
         }
     }
 
     public static Employee choiceAssignTask(Employee empl1, Employee empl2) {
         if ((int) (Math.random() * 2) == 0) {
-            if (empl1.getCountTaskOne() <= Tasks.countAppTasks()/2) {
+            if (empl1.getCountTaskOne() <= Tasks.countAppTasks() / 2) {
                 return empl1;
-            }
-            else    {
+            } else {
                 return empl2;
             }
-        }
-        else    {
-            if (empl2.getCountTaskOne() <= Tasks.countAppTasks()/2) {
+        } else {
+            if (empl2.getCountTaskOne() <= Tasks.countAppTasks() / 2) {
                 return empl2;
             }
         }
         return empl1;
     }
 
-    public static void solveMyTasks()   {
+    public static void solveMyTasks() {
         System.out.println("Введите номер");
         Scanner scanner = new Scanner(System.in);
         String number = scanner.nextLine();
-        for (Tasks task : Employee.listTasks)    {
-            if (task.getStatus() == TaskStatus.NOTE_DONE && task.getNumber().equals(number) && task.getAssigned().getFamily().equals("pestov"))    {
-                int index = Employee.listTasks.indexOf(task);
-                task.setStatus(TaskStatus.DONE);
-                task.setDateResolved(new Date());
-                Employee.listTasks.set(index,task);
-                Logger logger = LogManager.getLogger("STasks");
-                logger.info(" решён "+ task.getNumber());
-                break;
-            }
-        }
-
+        Tasks task = Employee.listTasks.get(searchTask(number, pestov));
+        switchStatus(task, TaskStatus.DONE);
     }
 
     public static void printTasks() {
-        for(Tasks task: Employee.listTasks) {
+        for (Tasks task : Employee.listTasks) {
             String str = "****************\n";
-            if(task.getAssigned().getFamily().equals("pestov")) {
+            if (task.getAssigned().getFamily().equals("pestov")) {
                 System.out.println(str + "Номер " + task.getNumber() + "\n" +
-                                         "Статус  " + task.getStatus() + "\n" +
+                        "Статус  " + task.getStatus() + "\n" +
                         "Дата решения " + task.getDateResolved());
             }
         }
     }
 
-    public static Integer customScanner(String message)   {
+    public static Integer customScanner(String message) {
         System.out.println(message);
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
+    }
+
+    private static void log(String message, String number, String namelogger) {
+        Logger logger = LogManager.getLogger(namelogger);
+        logger.info(message + number);
+    }
+
+    private static Integer searchTask(String number, Employee empl) {
+        nullEmplListTasks();
+        Integer index = 0;
+        for (Tasks taskEmpl : Employee.listTasks) {
+            if (taskEmpl.getNumber().equals(number)) {
+                return index;
+            }
+            index++;
+        }
+        Tasks task = new Tasks(number, empl, TaskStatus.NOTE_DONE);
+        Employee.listTasks.add(task);
+        return index;
+    }
+
+    private static void nullEmplListTasks() {
+        if (Employee.listTasks.size() == 0) {
+            Employee.listTasks = new ArrayList<>();
+        }
+    }
+
+    private static void switchStatus(Tasks task, TaskStatus status) {
+        int index = Employee.listTasks.indexOf(task);
+        task.setStatus(status);
+        task.setDateResolved(new Date());
+        Employee.listTasks.set(index, task);
+        if (status == TaskStatus.TASK)  {
+            log(" выписано задание ", task.getNumber(),"TTasks");
+        }
+        if (status == TaskStatus.WAITING)   {
+            log(" переведен в ожидание ", task.getNumber(),"WTasks");
+        }
+        if (status == TaskStatus.DONE)  {
+            log(" решён ", task.getNumber(), "STasks");
+        }
+        if (status == TaskStatus.NOT_US)  {
+            log(" переквалифицировано ", task.getNumber(), "NTasks");
+        }
+    }
+
+    private static String enterCorrectNumber() {
+        System.out.println("Введите номер");
+        Scanner scanner = new Scanner(System.in);
+        String number = scanner.nextLine();
+        String[] splitNubmer = number.split("-");
+        while ((number.length() != 13 && splitNubmer.length != 2) || (number.length() != 17 && splitNubmer.length != 3)) {
+            System.out.println("Номер неверный\nВведите номер");
+            scanner = new Scanner(System.in);
+            number = scanner.nextLine();
+        }
+        return number;
     }
 }
