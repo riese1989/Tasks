@@ -1,4 +1,6 @@
-.idea
+/.idea
 *.xml
 src/META-INF/
 target/classes/META-INF
+/logs
+/out
