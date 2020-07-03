@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.util.JsonUtils;
 
 public class Main {
 
@@ -34,15 +33,15 @@ public class Main {
                     break;
                 }
                 case "3": {
-                    switchStatus(Employee.listTasks.get(searchTask(enterCorrectNumber(),pestov)),TaskStatus.WAITING);
+                    switchStatus(Employee.listTasks.get(searchTask(enterCorrectNumber(), pestov)), TaskStatus.WAITING);
                     break;
                 }
                 case "4": {
-                    switchStatus(Employee.listTasks.get(searchTask(enterCorrectNumber(),pestov)),TaskStatus.TASK);
+                    switchStatus(Employee.listTasks.get(searchTask(enterCorrectNumber(), pestov)), TaskStatus.TASK);
                     break;
                 }
                 case "5": {
-                    switchStatus(Employee.listTasks.get(searchTask(enterCorrectNumber(),pestov)),TaskStatus.NOT_US);
+                    switchStatus(Employee.listTasks.get(searchTask(enterCorrectNumber(), pestov)), TaskStatus.NOT_US);
                     break;
                 }
                 case "6": {
@@ -84,7 +83,7 @@ public class Main {
             System.out.println("Назначено на " + empl.getFamily());
             empl.setCountTaskOne(empl.getCountTaskOne() + 1);
             Employee.setAppCountTask(Employee.getAppCountTask() + 1);
-            log(" назначен ", number, "NaTasks");
+            log(" " + empl.getFamily() + " назначен ", number, "NaTasks");
         }
     }
 
@@ -134,54 +133,53 @@ public class Main {
     }
 
     private static Integer searchTask(String number, Employee empl) {
-        nullEmplListTasks();
-        Integer index = 0;
+        //nullEmplListTasks();
         for (Tasks taskEmpl : Employee.listTasks) {
             if (taskEmpl.getNumber().equals(number)) {
-                return index;
+                return Employee.listTasks.indexOf(taskEmpl);
             }
-            index++;
         }
         Tasks task = new Tasks(number, empl, TaskStatus.NOTE_DONE);
         Employee.listTasks.add(task);
-        return index;
+        return Employee.listTasks.indexOf(task);
     }
 
-    private static void nullEmplListTasks() {
-        if (Employee.listTasks.size() == 0) {
-            Employee.listTasks = new ArrayList<>();
-        }
-    }
+//    private static void nullEmplListTasks() {
+//        if (Employee.listTasks == null) {
+//            Employee.listTasks = new ArrayList<>();
+//        }
+//    }
 
     private static void switchStatus(Tasks task, TaskStatus status) {
         int index = Employee.listTasks.indexOf(task);
         task.setStatus(status);
         task.setDateResolved(new Date());
         Employee.listTasks.set(index, task);
-        if (status == TaskStatus.TASK)  {
-            log(" выписано задание ", task.getNumber(),"TTasks");
+        if (status == TaskStatus.TASK) {
+            log(" выписано задание ", task.getNumber(), "TTasks");
         }
-        if (status == TaskStatus.WAITING)   {
-            log(" переведен в ожидание ", task.getNumber(),"WTasks");
+        if (status == TaskStatus.WAITING) {
+            log(" переведен в ожидание ", task.getNumber(), "WTasks");
         }
-        if (status == TaskStatus.DONE)  {
+        if (status == TaskStatus.DONE) {
             log(" решён ", task.getNumber(), "STasks");
         }
-        if (status == TaskStatus.NOT_US)  {
+        if (status == TaskStatus.NOT_US) {
             log(" переквалифицировано ", task.getNumber(), "NTasks");
         }
     }
 
     private static String enterCorrectNumber() {
-        System.out.println("Введите номер");
-        Scanner scanner = new Scanner(System.in);
-        String number = scanner.nextLine();
-        String[] splitNubmer = number.split("-");
-        while ((number.length() != 13 && splitNubmer.length != 2) || (number.length() != 17 && splitNubmer.length != 3)) {
-            System.out.println("Номер неверный\nВведите номер");
-            scanner = new Scanner(System.in);
-            number = scanner.nextLine();
+        for (; ; ) {
+            System.out.println("Введите номер");
+            Scanner scanner = new Scanner(System.in);
+            String number = scanner.nextLine();
+            String[] splitNubmer = number.split("-");
+            if ((number.length() == 13 && splitNubmer.length == 2) || (number.length() == 17 && splitNubmer.length == 3)) {
+                return number;
+            } else {
+                System.out.println("Номер неверный");
+            }
         }
-        return number;
     }
 }

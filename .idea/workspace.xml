@@ -7,16 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d3f9d88-bf72-4869-814e-02947fc282ab" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/Tasts_jar/logs/NazTasks.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/Tasts_jar/logs/TasTasks.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/Tasts_jar/logs/WaitTasks.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Tasts/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tasts.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/SolvedTasks.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Tasts_jar/logs/SolvedTasks.log" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Tasts_jar/logs/SolvedTasks.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Employee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
@@ -98,7 +89,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="19be61a0-aa34-4d99-9ce0-4e8509dbeaeb" name="Default Changelist" comment="" />
+      <changelist id="0d3f9d88-bf72-4869-814e-02947fc282ab" name="Default Changelist" comment="" />
       <created>1591016493500</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -111,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591610924996</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Правильное логирование назначение&#10;Изменено условие проверки правильности ввода номера обращения">
+      <created>1593765354542</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1593765354542</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -129,7 +127,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="correct project" />
-    <option name="LAST_COMMIT_MESSAGE" value="correct project" />
+    <MESSAGE value="Правильное логирование назначение&#10;Изменено условие проверки правильности ввода номера обращения" />
+    <option name="LAST_COMMIT_MESSAGE" value="Правильное логирование назначение&#10;Изменено условие проверки правильности ввода номера обращения" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="21" key="#Notifications" timestamp="1591611408530">
@@ -158,63 +157,63 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="385" y="52" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591609805600" />
-    <state x="337" y="0" key="CommitChangelistDialog2" timestamp="1591610922922">
+    <state x="337" y="0" key="CommitChangelistDialog2" timestamp="1593765352370">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="337" y="0" key="CommitChangelistDialog2/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591610922922" />
+    <state x="337" y="0" key="CommitChangelistDialog2/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1593765352370" />
     <state x="721" y="85" key="FileChooserDialogImpl" timestamp="1591610986132">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="-896" y="40" key="FileChooserDialogImpl/0.0.1366.728/-1280.-101.1280.984@-1280.-101.1280.984" timestamp="1591257802072" />
     <state x="721" y="85" key="FileChooserDialogImpl/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591610986132" />
     <state x="410" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1591269373380" />
-    <state width="1323" height="222" key="GridCell.Tab.0.bottom" timestamp="1593527082862">
+    <state width="1323" height="222" key="GridCell.Tab.0.bottom" timestamp="1593766446602">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1237" height="380" key="GridCell.Tab.0.bottom/0.0.1366.728/-1280.-101.1280.984@-1280.-101.1280.984" timestamp="1591257822813" />
-    <state width="1323" height="222" key="GridCell.Tab.0.bottom/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1593527082862" />
+    <state width="1323" height="222" key="GridCell.Tab.0.bottom/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1593766446602" />
     <state width="1323" height="131" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1592392224309" />
-    <state width="1323" height="222" key="GridCell.Tab.0.center" timestamp="1593527082862">
+    <state width="1323" height="222" key="GridCell.Tab.0.center" timestamp="1593766446602">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1237" height="380" key="GridCell.Tab.0.center/0.0.1366.728/-1280.-101.1280.984@-1280.-101.1280.984" timestamp="1591257822813" />
-    <state width="1323" height="222" key="GridCell.Tab.0.center/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1593527082862" />
+    <state width="1323" height="222" key="GridCell.Tab.0.center/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1593766446602" />
     <state width="1323" height="131" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1592392224309" />
-    <state width="1323" height="222" key="GridCell.Tab.0.left" timestamp="1593527082862">
+    <state width="1323" height="222" key="GridCell.Tab.0.left" timestamp="1593766446602">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1237" height="380" key="GridCell.Tab.0.left/0.0.1366.728/-1280.-101.1280.984@-1280.-101.1280.984" timestamp="1591257822813" />
-    <state width="1323" height="222" key="GridCell.Tab.0.left/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1593527082862" />
+    <state width="1323" height="222" key="GridCell.Tab.0.left/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1593766446602" />
     <state width="1323" height="131" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1592392224309" />
-    <state width="1323" height="222" key="GridCell.Tab.0.right" timestamp="1593527082862">
+    <state width="1323" height="222" key="GridCell.Tab.0.right" timestamp="1593766446602">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1237" height="380" key="GridCell.Tab.0.right/0.0.1366.728/-1280.-101.1280.984@-1280.-101.1280.984" timestamp="1591257822813" />
-    <state width="1323" height="222" key="GridCell.Tab.0.right/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1593527082862" />
+    <state width="1323" height="222" key="GridCell.Tab.0.right/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1593766446602" />
     <state width="1323" height="131" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1592392224309" />
-    <state width="1323" height="222" key="GridCell.Tab.1.bottom" timestamp="1593527082862">
+    <state width="1323" height="222" key="GridCell.Tab.1.bottom" timestamp="1593766446602">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="223" key="GridCell.Tab.1.bottom/0.0.1366.728/-1280.-101.1280.984@-1280.-101.1280.984" timestamp="1591087014421" />
-    <state width="1323" height="222" key="GridCell.Tab.1.bottom/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1593527082862" />
+    <state width="1323" height="222" key="GridCell.Tab.1.bottom/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1593766446602" />
     <state width="1323" height="223" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1592392224294" />
-    <state width="1323" height="222" key="GridCell.Tab.1.center" timestamp="1593527082862">
+    <state width="1323" height="222" key="GridCell.Tab.1.center" timestamp="1593766446602">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="223" key="GridCell.Tab.1.center/0.0.1366.728/-1280.-101.1280.984@-1280.-101.1280.984" timestamp="1591087014421" />
-    <state width="1323" height="222" key="GridCell.Tab.1.center/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1593527082862" />
+    <state width="1323" height="222" key="GridCell.Tab.1.center/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1593766446602" />
     <state width="1323" height="223" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1592392224294" />
-    <state width="1323" height="222" key="GridCell.Tab.1.left" timestamp="1593527082862">
+    <state width="1323" height="222" key="GridCell.Tab.1.left" timestamp="1593766446602">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="223" key="GridCell.Tab.1.left/0.0.1366.728/-1280.-101.1280.984@-1280.-101.1280.984" timestamp="1591087014421" />
-    <state width="1323" height="222" key="GridCell.Tab.1.left/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1593527082862" />
+    <state width="1323" height="222" key="GridCell.Tab.1.left/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1593766446602" />
     <state width="1323" height="223" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1592392224294" />
-    <state width="1323" height="222" key="GridCell.Tab.1.right" timestamp="1593527082862">
+    <state width="1323" height="222" key="GridCell.Tab.1.right" timestamp="1593766446602">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="223" key="GridCell.Tab.1.right/0.0.1366.728/-1280.-101.1280.984@-1280.-101.1280.984" timestamp="1591087014421" />
-    <state width="1323" height="222" key="GridCell.Tab.1.right/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1593527082862" />
+    <state width="1323" height="222" key="GridCell.Tab.1.right/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1593766446602" />
     <state width="1323" height="223" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1592392224294" />
     <state x="395" y="79" key="MultipleFileMergeDialog" timestamp="1591611647854">
       <screen x="0" y="0" width="1366" height="728" />
@@ -248,11 +247,27 @@
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/-1280.-101.1280.984@0.0.1366.728" timestamp="1591705745676" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>108</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="Employee.listTasks" language="JAVA" />
         <watch expression="pestov" language="JAVA" />
         <watch expression="task.getAssigned().getFamily().equals(myFamily)" language="JAVA" />
+        <watch expression="number.length()" language="JAVA" />
+        <watch expression="searchTask(number, pestov)" language="JAVA" />
+        <watch expression="Employee.listTasks.indexOf(taskEmpl)" language="JAVA" />
+        <watch expression="searchTask(number, pestov)" language="JAVA" />
+        <watch expression="searchTask(number, pestov)" language="JAVA" />
+        <watch expression="Employee.listTasks.get(0)" language="JAVA" />
+        <watch expression="Employee.listTasks.get(0)" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
