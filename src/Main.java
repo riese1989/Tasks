@@ -78,6 +78,9 @@ public class Main {
         }
         for (int i = 1; i <= Tasks.getNoneAppTasks(); i++) {
             String number = enterCorrectNumber();
+            if (number.equals("exit"))  {
+                break;
+            }
             Employee empl = choiceAssignTask(pestov, batanov);
             Employee.listTasks.add(new Tasks(number, empl, TaskStatus.NOTE_DONE));
             System.out.println("Назначено на " + empl.getFamily());
@@ -103,11 +106,11 @@ public class Main {
     }
 
     public static void solveMyTasks() {
-        System.out.println("Введите номер");
-        Scanner scanner = new Scanner(System.in);
-        String number = scanner.nextLine();
-        Tasks task = Employee.listTasks.get(searchTask(number, pestov));
-        switchStatus(task, TaskStatus.DONE);
+        String number = enterCorrectNumber();
+        if (!number.equals("exit")) {
+            Tasks task = Employee.listTasks.get(searchTask(number, pestov));
+            switchStatus(task, TaskStatus.DONE);
+        }
     }
 
     public static void printTasks() {
@@ -127,8 +130,8 @@ public class Main {
         return scanner.nextInt();
     }
 
-    private static void log(String message, String number, String namelogger) {
-        Logger logger = LogManager.getLogger(namelogger);
+    private static void log(String message, String number, String nameLogger) {
+        Logger logger = LogManager.getLogger(nameLogger);
         logger.info(message + number);
     }
 
@@ -175,6 +178,9 @@ public class Main {
             Scanner scanner = new Scanner(System.in);
             String number = scanner.nextLine();
             String[] splitNubmer = number.split("-");
+            if (number.equals("q")) {
+                return "exit";
+            }
             if ((number.length() == 13 && splitNubmer.length == 2) || (number.length() == 17 && splitNubmer.length == 3)) {
                 return number;
             } else {
