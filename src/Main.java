@@ -33,15 +33,15 @@ public class Main {
                     break;
                 }
                 case "3": {
-                    switchStatus(Employee.listTasks.get(searchTask(enterCorrectNumber(), pestov)), TaskStatus.WAITING);
+                    switchStatus(Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(), pestov)), TaskStatus.WAITING);
                     break;
                 }
                 case "4": {
-                    switchStatus(Employee.listTasks.get(searchTask(enterCorrectNumber(), pestov)), TaskStatus.TASK);
+                    switchStatus(Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(), pestov)), TaskStatus.TASK);
                     break;
                 }
                 case "5": {
-                    switchStatus(Employee.listTasks.get(searchTask(enterCorrectNumber(), pestov)), TaskStatus.NOT_US);
+                    switchStatus(Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(), pestov)), TaskStatus.NOT_US);
                     break;
                 }
                 case "6": {
@@ -108,7 +108,7 @@ public class Main {
     public static void solveMyTasks() {
         String number = enterCorrectNumber();
         if (!number.equals("exit")) {
-            Tasks task = Employee.listTasks.get(searchTask(number, pestov));
+            Tasks task = Employee.listTasks.get(searchAndCreateTask(number, pestov));
             switchStatus(task, TaskStatus.DONE);
         }
     }
@@ -135,24 +135,24 @@ public class Main {
         logger.info(message + number);
     }
 
-    private static Integer searchTask(String number, Employee empl) {
-        //nullEmplListTasks();
-        for (Tasks taskEmpl : Employee.listTasks) {
-            if (taskEmpl.getNumber().equals(number)) {
-                return Employee.listTasks.indexOf(taskEmpl);
-            }
+    private static Integer searchAndCreateTask(String number, Employee empl) {
+        Tasks task = returnTask(number);
+        if(task != null) {
+            return Employee.listTasks.indexOf(task);
         }
-        Tasks task = new Tasks(number, empl, TaskStatus.NOTE_DONE);
+        task = new Tasks(number, empl, TaskStatus.NOTE_DONE);
         Employee.listTasks.add(task);
         return Employee.listTasks.indexOf(task);
     }
 
-//    private static void nullEmplListTasks() {
-//        if (Employee.listTasks == null) {
-//            Employee.listTasks = new ArrayList<>();
-//        }
-//    }
-
+    private static Tasks returnTask(String number) {
+        for (Tasks taskEmpl : Employee.listTasks) {
+            if (taskEmpl.getNumber().equals(number)) {
+                return taskEmpl;
+            }
+        }
+        return null;
+    }
     private static void switchStatus(Tasks task, TaskStatus status) {
         int index = Employee.listTasks.indexOf(task);
         task.setStatus(status);
@@ -182,7 +182,13 @@ public class Main {
                 return "exit";
             }
             if ((number.length() == 13 && splitNubmer.length == 2) || (number.length() == 17 && splitNubmer.length == 3)) {
-                return number;
+                Tasks task = returnTask(number);
+                if(task != null) {
+                    System.out.println("Данное обращение уже назначено на " + task.getAssigned().getFamily());
+                }
+                else {
+                    return number;
+                }
             } else {
                 System.out.println("Номер неверный");
             }
