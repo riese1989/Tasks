@@ -78,8 +78,11 @@ public class Main {
         }
         for (int i = 1; i <= Tasks.getNoneAppTasks(); i++) {
             String number = enterCorrectNumber();
-            if (number.equals("exit"))  {
+            if (number.equals("exit")) {
                 break;
+            }
+            if (number.equals("nu")) {
+                continue;
             }
             Employee empl = choiceAssignTask(pestov, batanov);
             Employee.listTasks.add(new Tasks(number, empl, TaskStatus.NOTE_DONE));
@@ -137,7 +140,7 @@ public class Main {
 
     private static Integer searchAndCreateTask(String number, Employee empl) {
         Tasks task = returnTask(number);
-        if(task != null) {
+        if (task != null) {
             return Employee.listTasks.indexOf(task);
         }
         task = new Tasks(number, empl, TaskStatus.NOTE_DONE);
@@ -153,23 +156,30 @@ public class Main {
         }
         return null;
     }
+
     private static void switchStatus(Tasks task, TaskStatus status) {
         int index = Employee.listTasks.indexOf(task);
+        String stat = "";
         task.setStatus(status);
         task.setDateResolved(new Date());
         Employee.listTasks.set(index, task);
         if (status == TaskStatus.TASK) {
             log(" выписано задание ", task.getNumber(), "TTasks");
+            stat = "выписано задание";
         }
         if (status == TaskStatus.WAITING) {
             log(" переведен в ожидание ", task.getNumber(), "WTasks");
+            stat = "ожидание";
         }
         if (status == TaskStatus.DONE) {
             log(" решён ", task.getNumber(), "STasks");
+            stat = "решен";
         }
         if (status == TaskStatus.NOT_US) {
             log(" переквалифицировано ", task.getNumber(), "NTasks");
+            stat = "переквалифицировано";
         }
+        System.out.println("У " + task.getNumber() + " статус переключен на " + stat);
     }
 
     private static String enterCorrectNumber() {
@@ -181,12 +191,16 @@ public class Main {
             if (number.equals("q")) {
                 return "exit";
             }
+            if (number.equals("nu")) {
+                System.out.println("Функция переключения статуса вызвана");
+                switchStatus(Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(), pestov)), TaskStatus.NOT_US);
+                return "nu";
+            }
             if ((number.length() == 13 && splitNubmer.length == 2) || (number.length() == 17 && splitNubmer.length == 3)) {
                 Tasks task = returnTask(number);
-                if(task != null) {
+                if (task != null) {
                     System.out.println("Данное обращение уже назначено на " + task.getAssigned().getFamily());
-                }
-                else {
+                } else {
                     return number;
                 }
             } else {
