@@ -251,11 +251,11 @@ public class Main {
 
     public static void searchJSON   (Tasks task)    {
         JSONObject obj = (JSONObject) fullJSON.get(task.getNumber());
-        JSONArray historyTaskJSON = (JSONArray) obj.get("History");
+        JSONArray historyTaskJSON = new JSONArray();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss z");
         JSONObject partHistoryTaskJSON = new JSONObject();
-        if (obj == null)    {
-            historyTaskJSON = new JSONArray();
+        if (obj != null)    {
+            historyTaskJSON = (JSONArray) obj.get("History");
         }
         partHistoryTaskJSON.put(task.getStatus(),dateFormat.format(new Date()));
         historyTaskJSON.add(partHistoryTaskJSON);
