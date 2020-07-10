@@ -7,6 +7,7 @@ public class Employee {
     private Integer taskWaiting = 0;
     private Integer tasksWithTasks = 0;
     public static ArrayList<Tasks> listTasks = new ArrayList<>();
+    public static ArrayList<Employee> employees = new ArrayList<>();
 
     public Employee(Integer countTaskOne, String family) {
         this.countTaskOne = countTaskOne;

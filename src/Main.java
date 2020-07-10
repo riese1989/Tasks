@@ -1,16 +1,30 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 
 public class Main {
 
     static Employee pestov = new Employee(0, "pestov");
     static Employee batanov = new Employee(0, "batanov");
+    static JSONObject fullJSON = new JSONObject();
+    static JSONObject taskJSON = new JSONObject();
+    static String filePath = "map.json";
 
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws IOException, ParseException {
+        fullJSON = ParseJSON.getJSON();
+        Employee.employees.add(pestov);
+        Employee.employees.add(batanov);
         boolean flag = true;
         while (flag) {
             System.out.println("Введите команду\n");
@@ -21,8 +35,7 @@ public class Main {
             System.out.println("5. Не к нам");
             System.out.println("6. Вывод моих обращений");
             System.out.println("q. Выход из программы");
-            Scanner scanner = new Scanner(System.in);
-            String command = scanner.nextLine();
+            String command = scanLine();
             switch (command) {
                 case "1": {
                     enterTasks();
@@ -33,15 +46,15 @@ public class Main {
                     break;
                 }
                 case "3": {
-                    switchStatus(Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(), pestov)), TaskStatus.WAITING);
+                    switchStatus(Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(false), pestov)), TaskStatus.WAITING);
                     break;
                 }
                 case "4": {
-                    switchStatus(Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(), pestov)), TaskStatus.TASK);
+                    switchStatus(Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(false), pestov)), TaskStatus.TASK);
                     break;
                 }
                 case "5": {
-                    switchStatus(Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(), pestov)), TaskStatus.NOT_US);
+                    switchStatus(Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(false), pestov)), TaskStatus.NOT_US);
                     break;
                 }
                 case "6": {
@@ -61,8 +74,7 @@ public class Main {
         }
     }
 
-    public static void enterTasks() {
-
+    public static void enterTasks() throws IOException, ParseException {
         String str = "========================";
         Tasks.setCountTasksAll(customScanner("Сколько всего обращений?"));
         Tasks.setNoneAppTasks(customScanner("Сколько неназначенных?"));
@@ -77,7 +89,7 @@ public class Main {
             Employee.listTasks = new ArrayList<>();
         }
         for (int i = 1; i <= Tasks.getNoneAppTasks(); i++) {
-            String number = enterCorrectNumber();
+            String number = enterCorrectNumber(true);
             if (number.equals("exit")) {
                 break;
             }
@@ -85,11 +97,14 @@ public class Main {
                 continue;
             }
             Employee empl = choiceAssignTask(pestov, batanov);
-            Employee.listTasks.add(new Tasks(number, empl, TaskStatus.NOTE_DONE));
+            Tasks task = new Tasks(number, empl, TaskStatus.NOTE_DONE);
+            Employee.listTasks.add(task);
             System.out.println("Назначено на " + empl.getFamily());
             empl.setCountTaskOne(empl.getCountTaskOne() + 1);
             Employee.setAppCountTask(Employee.getAppCountTask() + 1);
             log(" " + empl.getFamily() + " назначен ", number, "NaTasks");
+            searchJSON(task);
+            writeJSON();
         }
     }
 
@@ -108,8 +123,8 @@ public class Main {
         return empl1;
     }
 
-    public static void solveMyTasks() {
-        String number = enterCorrectNumber();
+    public static void solveMyTasks() throws IOException {
+        String number = enterCorrectNumber(false);
         if (!number.equals("exit")) {
             Tasks task = Employee.listTasks.get(searchAndCreateTask(number, pestov));
             switchStatus(task, TaskStatus.DONE);
@@ -128,9 +143,15 @@ public class Main {
     }
 
     public static Integer customScanner(String message) {
-        System.out.println(message);
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
+        String string;
+        for(;;) {
+            System.out.println(message);
+            string = scanLine();
+            if (string.matches("[-+]?\\d+")) {
+                return Integer.parseInt(string);
+            }
+            System.out.println("Вы ввели не число");
+        }
     }
 
     private static void log(String message, String number, String nameLogger) {
@@ -157,7 +178,7 @@ public class Main {
         return null;
     }
 
-    private static void switchStatus(Tasks task, TaskStatus status) {
+    private static void switchStatus(Tasks task, TaskStatus status) throws IOException {
         int index = Employee.listTasks.indexOf(task);
         String stat = "";
         task.setStatus(status);
@@ -179,26 +200,27 @@ public class Main {
             log(" переквалифицировано ", task.getNumber(), "NTasks");
             stat = "переквалифицировано";
         }
+        searchJSON(task);
+        writeJSON();
         System.out.println("У " + task.getNumber() + " статус переключен на " + stat);
     }
 
-    private static String enterCorrectNumber() {
+    private static String enterCorrectNumber(boolean flag) throws IOException {
         for (; ; ) {
             System.out.println("Введите номер");
-            Scanner scanner = new Scanner(System.in);
-            String number = scanner.nextLine();
+            String number = scanLine();
             String[] splitNubmer = number.split("-");
             if (number.equals("q")) {
                 return "exit";
             }
             if (number.equals("nu")) {
                 System.out.println("Функция переключения статуса вызвана");
-                switchStatus(Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(), pestov)), TaskStatus.NOT_US);
+                switchStatus(Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(false), pestov)), TaskStatus.NOT_US);
                 return "nu";
             }
             if ((number.length() == 13 && splitNubmer.length == 2) || (number.length() == 17 && splitNubmer.length == 3)) {
                 Tasks task = returnTask(number);
-                if (task != null) {
+                if (task != null && flag == true) {
                     System.out.println("Данное обращение уже назначено на " + task.getAssigned().getFamily());
                 } else {
                     return number;
@@ -207,5 +229,49 @@ public class Main {
                 System.out.println("Номер неверный");
             }
         }
+    }
+
+    private static String scanLine()   {
+        String string;
+        Scanner scanner = new Scanner(System.in);
+        string = scanner.nextLine();
+        log(string,"","ETasks");
+        return string;
+    }
+
+    private static void writeJSON  () throws IOException {
+        searchFile(filePath);
+        try (FileWriter file = new FileWriter(filePath))    {
+            file.write(fullJSON.toString());
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void searchJSON   (Tasks task)    {
+        JSONObject obj = (JSONObject) fullJSON.get(task.getNumber());
+        JSONArray historyTaskJSON = (JSONArray) obj.get("History");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss z");
+        JSONObject partHistoryTaskJSON = new JSONObject();
+        if (obj == null)    {
+            historyTaskJSON = new JSONArray();
+        }
+        partHistoryTaskJSON.put(task.getStatus(),dateFormat.format(new Date()));
+        historyTaskJSON.add(partHistoryTaskJSON);
+        taskJSON.put("Assigned",pestov.getFamily());
+        taskJSON.put("Current status", task.getStatus().toString());
+        taskJSON.put("History", historyTaskJSON);
+        obj = taskJSON;
+        fullJSON.put(task.getNumber(),taskJSON);
+    }
+
+    public static boolean searchFile (String path) throws IOException {
+        File f = new File(filePath);
+        if (!f.exists())    {
+            f.createNewFile();
+            return false;
+        }
+        return true;
     }
 }
