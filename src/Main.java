@@ -17,7 +17,6 @@ public class Main {
     static Employee pestov = new Employee(0, "pestov");
     static Employee batanov = new Employee(0, "batanov");
     static JSONObject fullJSON = new JSONObject();
-    static JSONObject taskJSON = new JSONObject();
     static String filePath = "map.json";
 
 
@@ -250,6 +249,7 @@ public class Main {
     }
 
     public static void searchJSON   (Tasks task)    {
+        JSONObject taskJSON = new JSONObject();
         JSONObject obj = (JSONObject) fullJSON.get(task.getNumber());
         JSONArray historyTaskJSON = new JSONArray();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss z");
