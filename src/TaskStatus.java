@@ -3,5 +3,6 @@ public enum TaskStatus {
     NOTE_DONE,
     WAITING,
     NOT_US,
-    TASK
+    TASK,
+    ALL
 }

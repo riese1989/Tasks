@@ -19,11 +19,15 @@ public class Main {
     static String filePath = "map.json";
 
 
-    public static void main(String[] args) throws IOException, ParseException {
+    public static void main(String[] args) throws IOException, ParseException, java.text.ParseException {
         Employee.employees.add(pestov);
         Employee.employees.add(batanov);
         ParseJSON.JSONtoArray();
         fullJSON = ParseJSON.getJSON();
+        menu();
+    }
+
+    public static void menu() throws IOException, ParseException, java.text.ParseException {
         boolean flag = true;
         while (flag) {
             System.out.println("Введите команду\n");
@@ -78,15 +82,15 @@ public class Main {
         Tasks.setCountTasksAll(customScanner("Сколько всего обращений?"));
         Tasks.setNoneAppTasks(customScanner("Сколько неназначенных?"));
         //pestov.setCountTaskOne(customScanner("Сколько на мне?"));
-        Integer countAllTasks = Employee.getTaskWithStatus(pestov, null, true);
+        Integer countAllTasks = Employee.getTaskWithStatus(pestov, TaskStatus.ALL);
         pestov.setCountTaskOne(countAllTasks);
         System.out.println("На мне " + countAllTasks);
         //pestov.setTaskWaiting(customScanner("Сколько у меня в ожидании?"));
-        Integer countWaitingTasks = Employee.getTaskWithStatus(pestov, TaskStatus.WAITING, false);
+        Integer countWaitingTasks = Employee.getTaskWithStatus(pestov, TaskStatus.WAITING);
         pestov.setTaskWaiting(countWaitingTasks);
         System.out.println("У меня в ожидании "+countWaitingTasks);
         //pestov.setTasksWithTasks(customScanner("Сколько у меня с заданиями"));
-        Integer countTasksWithTasks = Employee.getTaskWithStatus(pestov, TaskStatus.TASK, false);
+        Integer countTasksWithTasks = Employee.getTaskWithStatus(pestov, TaskStatus.TASK);
         pestov.setTasksWithTasks(countTasksWithTasks);
         System.out.println("У меня с заданиями " + countTasksWithTasks);
         batanov.setCountTaskOne(Tasks.getCountTasksAll() - Tasks.getNoneAppTasks() - pestov.getCountTaskOne());
@@ -142,7 +146,7 @@ public class Main {
     }
 
     //распечатывание моих обращений
-    public static void printTasks() throws IOException, ParseException {
+    public static void printTasks() throws IOException, ParseException, java.text.ParseException {
         ParseJSON.JSONtoArray();
         for (Tasks task : Employee.listTasks) {
             String str = "****************\n";

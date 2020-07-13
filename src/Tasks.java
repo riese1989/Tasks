@@ -15,6 +15,13 @@ public class Tasks {
 
     }
 
+    public Tasks(String number, Employee assigned, TaskStatus status, Date date) {
+        this.number = number;
+        this.assigned = assigned;
+        this.status = status;
+        this.dateResolved = date;
+    }
+
     public Employee getAssigned() {
         return assigned;
     }

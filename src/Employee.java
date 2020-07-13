@@ -55,11 +55,11 @@ public class Employee {
         return new Employee(0, family);
     }
 
-    public static Integer getTaskWithStatus (Employee employee, TaskStatus status, boolean flag)   {
+    public static Integer getTaskWithStatus (Employee employee, TaskStatus status)   {
         //flag = true когда надо искать все обращения
         Integer count = 0;
         for (Tasks task : Employee.listTasks)   {
-            if (task.getStatus() == status || (flag && task.getStatus() != TaskStatus.DONE)) {
+            if (task.getStatus() == status || status == TaskStatus.ALL) {
                 count++;
             }
         }
