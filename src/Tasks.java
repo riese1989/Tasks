@@ -66,4 +66,25 @@ public class Tasks {
     public static Integer countAppTasks()   {
         return countTasksAll - noneAppTasks;
     }
+
+    public static TaskStatus toStatus (String status)   {
+        switch (status) {
+            case "DONE": {
+                return TaskStatus.DONE;
+            }
+            case "NOTE_DONE": {
+                return  TaskStatus.NOTE_DONE;
+            }
+            case "WAITING": {
+                return  TaskStatus.WAITING;
+            }
+            case "NOT_US":  {
+                return TaskStatus.NOT_US;
+            }
+            case "TASK":    {
+                return TaskStatus.TASK;
+            }
+        }
+        return TaskStatus.NOTE_DONE;
+    }
 }

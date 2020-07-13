@@ -14,7 +14,6 @@ public class Employee {
         this.family = family;
     }
 
-
     public void setTasksWithTasks(Integer tasksWithTasks) {
         this.tasksWithTasks = tasksWithTasks;
     }
@@ -35,7 +34,6 @@ public class Employee {
         Employee.appCountTask = appCountTask;
     }
 
-
     public void setCountTaskOne(Integer countTaskOne) {
         this.countTaskOne = countTaskOne;
     }
@@ -46,5 +44,25 @@ public class Employee {
 
     public Integer getCountActiveTasks()    {
         return countTaskOne - taskWaiting - tasksWithTasks;
+    }
+
+    public static Employee getEmployee  (String family) {
+        for (Employee employee : employees) {
+            if (employee.getFamily().equals(family))    {
+                return  employee;
+            }
+        }
+        return new Employee(0, family);
+    }
+
+    public static Integer getTaskWithStatus (Employee employee, TaskStatus status, boolean flag)   {
+        //flag = true когда надо искать все обращения
+        Integer count = 0;
+        for (Tasks task : Employee.listTasks)   {
+            if (task.getStatus() == status || (flag && task.getStatus() != TaskStatus.DONE)) {
+                count++;
+            }
+        }
+        return count;
     }
 }

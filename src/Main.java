@@ -13,7 +13,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 public class Main {
-
     static Employee pestov = new Employee(0, "pestov");
     static Employee batanov = new Employee(0, "batanov");
     static JSONObject fullJSON = new JSONObject();
@@ -21,9 +20,10 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException, ParseException {
-        fullJSON = ParseJSON.getJSON();
         Employee.employees.add(pestov);
         Employee.employees.add(batanov);
+        ParseJSON.JSONtoArray();
+        fullJSON = ParseJSON.getJSON();
         boolean flag = true;
         while (flag) {
             System.out.println("Введите команду\n");
@@ -72,14 +72,23 @@ public class Main {
             }
         }
     }
-
+    //ввод номера обращения
     public static void enterTasks() throws IOException, ParseException {
         String str = "========================";
         Tasks.setCountTasksAll(customScanner("Сколько всего обращений?"));
         Tasks.setNoneAppTasks(customScanner("Сколько неназначенных?"));
-        pestov.setCountTaskOne(customScanner("Сколько на мне?"));
-        pestov.setTaskWaiting(customScanner("Сколько у меня в ожидании?"));
-        pestov.setTasksWithTasks(customScanner("Сколько у меня с заданиями"));
+        //pestov.setCountTaskOne(customScanner("Сколько на мне?"));
+        Integer countAllTasks = Employee.getTaskWithStatus(pestov, null, true);
+        pestov.setCountTaskOne(countAllTasks);
+        System.out.println("На мне " + countAllTasks);
+        //pestov.setTaskWaiting(customScanner("Сколько у меня в ожидании?"));
+        Integer countWaitingTasks = Employee.getTaskWithStatus(pestov, TaskStatus.WAITING, false);
+        pestov.setTaskWaiting(countWaitingTasks);
+        System.out.println("У меня в ожидании "+countWaitingTasks);
+        //pestov.setTasksWithTasks(customScanner("Сколько у меня с заданиями"));
+        Integer countTasksWithTasks = Employee.getTaskWithStatus(pestov, TaskStatus.TASK, false);
+        pestov.setTasksWithTasks(countTasksWithTasks);
+        System.out.println("У меня с заданиями " + countTasksWithTasks);
         batanov.setCountTaskOne(Tasks.getCountTasksAll() - Tasks.getNoneAppTasks() - pestov.getCountTaskOne());
         batanov.setTaskWaiting(customScanner("Сколько у Миши в ожидании"));
         batanov.setTasksWithTasks(customScanner("Сколько у Миши с заданиями"));
@@ -107,6 +116,7 @@ public class Main {
         }
     }
 
+    //выбор исполнителя
     public static Employee choiceAssignTask(Employee empl1, Employee empl2) {
         if ((int) (Math.random() * 2) == 0) {
             if (empl1.getCountTaskOne() <= Tasks.countAppTasks() / 2) {
@@ -122,6 +132,7 @@ public class Main {
         return empl1;
     }
 
+    //решение обращения
     public static void solveMyTasks() throws IOException {
         String number = enterCorrectNumber(false);
         if (!number.equals("exit")) {
@@ -130,17 +141,19 @@ public class Main {
         }
     }
 
-    public static void printTasks() {
+    //распечатывание моих обращений
+    public static void printTasks() throws IOException, ParseException {
+        ParseJSON.JSONtoArray();
         for (Tasks task : Employee.listTasks) {
             String str = "****************\n";
-            if (task.getAssigned().getFamily().equals("pestov")) {
+            if (task.getAssigned().getFamily().equals("pestov") && task.getStatus() != TaskStatus.DONE) {
                 System.out.println(str + "Номер " + task.getNumber() + "\n" +
-                        "Статус  " + task.getStatus() + "\n" +
-                        "Дата решения " + task.getDateResolved());
+                        "Статус  " + task.getStatus());
             }
         }
     }
 
+    //сканнер числа ввода из коммандной строки
     public static Integer customScanner(String message) {
         String string;
         for(;;) {
@@ -153,11 +166,13 @@ public class Main {
         }
     }
 
+    //логирование
     private static void log(String message, String number, String nameLogger) {
         Logger logger = LogManager.getLogger(nameLogger);
         logger.info(message + number);
     }
 
+    //поиск обращения в Employess.listTasks
     private static Integer searchAndCreateTask(String number, Employee empl) {
         Tasks task = returnTask(number);
         if (task != null) {
@@ -168,6 +183,7 @@ public class Main {
         return Employee.listTasks.indexOf(task);
     }
 
+    //вовзращает обращение
     private static Tasks returnTask(String number) {
         for (Tasks taskEmpl : Employee.listTasks) {
             if (taskEmpl.getNumber().equals(number)) {
@@ -177,6 +193,7 @@ public class Main {
         return null;
     }
 
+    //переключение статуса
     private static void switchStatus(Tasks task, TaskStatus status) throws IOException {
         int index = Employee.listTasks.indexOf(task);
         String stat = "";
@@ -204,6 +221,7 @@ public class Main {
         System.out.println("У " + task.getNumber() + " статус переключен на " + stat);
     }
 
+    //правильность ввода номера обращения
     private static String enterCorrectNumber(boolean flag) throws IOException {
         for (; ; ) {
             System.out.println("Введите номер");
@@ -230,6 +248,7 @@ public class Main {
         }
     }
 
+    //сканнер строки ввода из коммандной строки
     private static String scanLine()   {
         String string;
         Scanner scanner = new Scanner(System.in);
@@ -238,6 +257,7 @@ public class Main {
         return string;
     }
 
+    //запись в json
     private static void writeJSON  () throws IOException {
         searchFile(filePath);
         try (FileWriter file = new FileWriter(filePath))    {
@@ -248,6 +268,7 @@ public class Main {
         }
     }
 
+    //поиск в json
     public static void searchJSON   (Tasks task)    {
         JSONObject taskJSON = new JSONObject();
         JSONObject obj = (JSONObject) fullJSON.get(task.getNumber());
@@ -266,6 +287,7 @@ public class Main {
         fullJSON.put(task.getNumber(),taskJSON);
     }
 
+    //поиск файла
     public static boolean searchFile (String path) throws IOException {
         File f = new File(filePath);
         if (!f.exists())    {
