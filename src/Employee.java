@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Employee {
     private static Integer appCountTask = 0;
     private Integer  countTaskOne = 0;
+    private Integer activeTask = 0;
     private String family;
     private Integer taskWaiting = 0;
     private Integer tasksWithTasks = 0;
@@ -59,10 +60,24 @@ public class Employee {
         //flag = true когда надо искать все обращения
         Integer count = 0;
         for (Tasks task : Employee.listTasks)   {
-            if (task.getStatus() == status || status == TaskStatus.ALL) {
+            if ((task.getStatus() == status ||
+                    (status == TaskStatus.ALL &&
+                            task.getStatus() != TaskStatus.DONE &&
+                            task.getStatus() != TaskStatus.NOT_US)) &&
+                    task.getAssigned() == employee) {
                 count++;
             }
         }
         return count;
     }
+
+    public Integer getActiveTask() {
+        activeTask = countTaskOne - taskWaiting - tasksWithTasks;
+        return activeTask;
+    }
+
+    public void setActiveTask(Integer activeTask) {
+        this.activeTask = activeTask;
+    }
+
 }
