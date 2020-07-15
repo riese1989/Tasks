@@ -30,6 +30,7 @@ public class Main {
     public static void menu() throws IOException, ParseException, java.text.ParseException {
         boolean flag = true;
         while (flag) {
+            waitTasks();
             System.out.println("Введите команду\n");
             System.out.println("1. Назначение новых обращений");
             System.out.println("2. Решение моих обращений");
@@ -45,7 +46,7 @@ public class Main {
                     break;
                 }
                 case "2": {
-                    solveMyTasks();
+                    solveMyTasks("");
                     break;
                 }
                 case "3": {
@@ -69,7 +70,12 @@ public class Main {
                     break;
                 }
                 default: {
-                    System.out.println("Неправильная команда");
+                    if(isCorrectNumber(command))    {
+                        solveMyTasks(command);
+                    }
+                    else    {
+                        System.out.println("Неправильная команда");
+                    }
                     break;
                 }
 
@@ -94,7 +100,7 @@ public class Main {
         //System.out.println("У меня в ожидании " + countWaitingTasks);
         pestov.setTasksWithTasks(countTasksWithTasks);
        // System.out.println("У меня с заданиями " + countTasksWithTasks);
-        batanov.setCountTaskOne(Tasks.getCountTasksAll() - Tasks.getNoneAppTasks() - pestov.getCountTaskOne());
+        batanov.setCountTaskOne(customScanner("Сколько назначено на Мишу?"));
         batanov.setTaskWaiting(customScanner("Сколько у Миши в ожидании"));
         batanov.setTasksWithTasks(customScanner("Сколько у Миши с заданиями"));
         System.out.println(str + "\nРезультат\n" + str);
@@ -123,6 +129,12 @@ public class Main {
 
     //выбор исполнителя
     public static Employee choiceAssignTask(Employee empl1, Employee empl2) {
+        if (empl1.getActiveTask() < empl2.getActiveTask()) {
+            return empl1;
+        }
+        if (empl1.getActiveTask() > empl2.getActiveTask()) {
+            return empl2;
+        }
         if ((int) (Math.random() * 2) == 0) {
             if (empl1.getActiveTask() <= Tasks.countAppTasks() / 2) {
                 return empl1;
@@ -138,8 +150,14 @@ public class Main {
     }
 
     //решение обращения
-    public static void solveMyTasks() throws IOException {
-        String number = enterCorrectNumber(false);
+    public static void solveMyTasks(String haveNumber) throws IOException {
+        String number = "";
+        if  (!haveNumber.equals(""))    {
+            number = haveNumber;
+        }
+        else    {
+            number = enterCorrectNumber(false);
+        }
         if (!number.equals("exit")) {
             Tasks task = Employee.listTasks.get(searchAndCreateTask(number, pestov));
             switchStatus(task, TaskStatus.DONE);
@@ -233,7 +251,6 @@ public class Main {
         for (; ; ) {
             System.out.println("Введите номер");
             String number = scanLine();
-            String[] splitNubmer = number.split("-");
             if (number.equals("q")) {
                 return "exit"; //проверить
             }
@@ -242,7 +259,7 @@ public class Main {
                 switchStatus(Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(false), pestov)), TaskStatus.NOT_US);
                 return "nu";
             }
-            if ((number.length() == 13 && splitNubmer.length == 2) || (number.length() == 17 && splitNubmer.length == 3)) {
+            if (isCorrectNumber(number)) {
                 Tasks task = returnTask(number);
                 if (task != null && flag == true) {
                     System.out.println("Данное обращение уже назначено на " + task.getAssigned().getFamily());
@@ -257,11 +274,8 @@ public class Main {
 
     //сканнер строки ввода из коммандной строки
     private static String scanLine() {
-        String string = "";
         Scanner scanner = new Scanner(System.in);
-        if (scanner.next() != null) {
-            string = scanner.nextLine();
-        }
+        String string = scanner.nextLine();
         log(string, "", "ETasks");
         return string;
     }
@@ -304,5 +318,32 @@ public class Main {
             return false;
         }
         return true;
+    }
+
+    private static boolean isCorrectNumber (String number)  {
+        String[] splitNubmer = number.split("-");
+        number = number.replace(" ","");
+        if ((number.length() == 13 && splitNubmer.length == 2) || (number.length() == 17 && splitNubmer.length == 3))   {
+            return true;
+        }
+        return false;
+    }
+
+    private static void waitTasks() {
+        ArrayList<Tasks> arrWait = new ArrayList<>();
+        Date date = new Date();
+        Integer countDaysWait = 2;
+        Employee.listTasks.forEach((tasks -> {
+            if(tasks.getStatus() == TaskStatus.WAITING &&
+                    (date.getTime() - tasks.getDateResolved().getTime() >= countDaysWait * 24 * 60 * 60 * 1000)) {
+                arrWait.add(tasks);
+            }
+        }));
+        if (arrWait.size() > 0) {
+            System.out.println("У этих обращений просрочено ожидание:");
+            arrWait.forEach(tasks -> {
+                System.out.println(tasks.getNumber() + " " + tasks.getDateResolved());
+            });
+        }
     }
 }

@@ -32,7 +32,6 @@ public class ParseJSON {
             JSONArray history = (JSONArray) obj.get("History");
             String stringDate = history.get(history.size()-1).toString().split("\"")[3];
             SimpleDateFormat format = new SimpleDateFormat("dd.MM.y HH:mm:ss z");
-           // 13.07.2020 10:01:31 MSK
             Date date = format.parse(stringDate);
             TaskStatus status = Tasks.toStatus(obj.get("Current status").toString());
             Tasks task = new Tasks(number, Employee.getEmployee(assigned), status, date);
