@@ -257,9 +257,11 @@ public class Main {
 
     //сканнер строки ввода из коммандной строки
     private static String scanLine() {
-        String string;
+        String string = "";
         Scanner scanner = new Scanner(System.in);
-        string = scanner.nextLine();
+        if (scanner.next() != null) {
+            string = scanner.nextLine();
+        }
         log(string, "", "ETasks");
         return string;
     }
