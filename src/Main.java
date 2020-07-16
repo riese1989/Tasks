@@ -2,9 +2,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Scanner;
+import java.util.*;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -70,10 +68,9 @@ public class Main {
                     break;
                 }
                 default: {
-                    if(isCorrectNumber(command))    {
+                    if (isCorrectNumber(command)) {
                         solveMyTasks(command);
-                    }
-                    else    {
+                    } else {
                         System.out.println("Неправильная команда");
                     }
                     break;
@@ -99,14 +96,11 @@ public class Main {
         pestov.setTaskWaiting(countWaitingTasks);
         //System.out.println("У меня в ожидании " + countWaitingTasks);
         pestov.setTasksWithTasks(countTasksWithTasks);
-       // System.out.println("У меня с заданиями " + countTasksWithTasks);
+        // System.out.println("У меня с заданиями " + countTasksWithTasks);
         batanov.setCountTaskOne(customScanner("Сколько назначено на Мишу?"));
         batanov.setTaskWaiting(customScanner("Сколько у Миши в ожидании"));
         batanov.setTasksWithTasks(customScanner("Сколько у Миши с заданиями"));
         System.out.println(str + "\nРезультат\n" + str);
-        if (Tasks.getNoneAppTasks() > 0) {
-            Employee.listTasks = new ArrayList<>();
-        }
         for (int i = 1; i <= Tasks.getNoneAppTasks(); i++) {
             String number = enterCorrectNumber(true);
             if (number.equals("exit")) {
@@ -116,7 +110,7 @@ public class Main {
                 continue;
             }
             Employee empl = choiceAssignTask(pestov, batanov);
-            Tasks task = new Tasks(number, empl, TaskStatus.NOTE_DONE);
+            Tasks task = new Tasks(number, empl, TaskStatus.NOTE_DONE, new Date());
             Employee.listTasks.add(task);
             System.out.println("Назначено на " + empl.getFamily());
             empl.setCountTaskOne(empl.getCountTaskOne() + 1);
@@ -129,33 +123,18 @@ public class Main {
 
     //выбор исполнителя
     public static Employee choiceAssignTask(Employee empl1, Employee empl2) {
-        if (empl1.getActiveTask() < empl2.getActiveTask()) {
+        if ((int) (Math.random() * 2) == 0) {
             return empl1;
         }
-        if (empl1.getActiveTask() > empl2.getActiveTask()) {
-            return empl2;
-        }
-        if ((int) (Math.random() * 2) == 0) {
-            if (empl1.getActiveTask() <= Tasks.countAppTasks() / 2) {
-                return empl1;
-            } else {
-                return empl2;
-            }
-        } else {
-            if (empl2.getActiveTask() <= Tasks.countAppTasks() / 2) {
-                return empl2;
-            }
-        }
-        return empl1;
+        return empl2;
     }
 
     //решение обращения
     public static void solveMyTasks(String haveNumber) throws IOException {
         String number = "";
-        if  (!haveNumber.equals(""))    {
+        if (!haveNumber.equals("")) {
             number = haveNumber;
-        }
-        else    {
+        } else {
             number = enterCorrectNumber(false);
         }
         if (!number.equals("exit")) {
@@ -320,10 +299,10 @@ public class Main {
         return true;
     }
 
-    private static boolean isCorrectNumber (String number)  {
+    private static boolean isCorrectNumber(String number) {
         String[] splitNubmer = number.split("-");
-        number = number.replace(" ","");
-        if ((number.length() == 13 && splitNubmer.length == 2) || (number.length() == 17 && splitNubmer.length == 3))   {
+        number = number.replace(" ", "");
+        if ((number.length() == 13 && splitNubmer.length == 2) || (number.length() == 17 && splitNubmer.length == 3)) {
             return true;
         }
         return false;
@@ -334,7 +313,7 @@ public class Main {
         Date date = new Date();
         Integer countDaysWait = 2;
         Employee.listTasks.forEach((tasks -> {
-            if(tasks.getStatus() == TaskStatus.WAITING &&
+            if (tasks.getStatus() == TaskStatus.WAITING &&
                     (date.getTime() - tasks.getDateResolved().getTime() >= countDaysWait * 24 * 60 * 60 * 1000)) {
                 arrWait.add(tasks);
             }
