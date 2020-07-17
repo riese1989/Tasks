@@ -58,6 +58,7 @@ public class Tasks {
     public static void setNoneAppTasks(Integer noneAppTasks) {
         Tasks.noneAppTasks = noneAppTasks;
     }
+
     public static Integer getNoneAppTasks() {
         return noneAppTasks;
     }
@@ -70,25 +71,25 @@ public class Tasks {
         Tasks.countTasksAll = countTasksAll;
     }
 
-    public static Integer countAppTasks()   {
+    public static Integer countAppTasks() {
         return countTasksAll - noneAppTasks;
     }
 
-    public static TaskStatus toStatus (String status)   {
+    public static TaskStatus toStatus(String status) {
         switch (status) {
             case "DONE": {
                 return TaskStatus.DONE;
             }
             case "NOTE_DONE": {
-                return  TaskStatus.NOTE_DONE;
+                return TaskStatus.NOTE_DONE;
             }
             case "WAITING": {
-                return  TaskStatus.WAITING;
+                return TaskStatus.WAITING;
             }
-            case "NOT_US":  {
+            case "NOT_US": {
                 return TaskStatus.NOT_US;
             }
-            case "TASK":    {
+            case "TASK": {
                 return TaskStatus.TASK;
             }
         }

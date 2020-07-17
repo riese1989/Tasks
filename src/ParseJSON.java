@@ -28,6 +28,9 @@ public class ParseJSON {
         for (Object map : maps) {
             JSONObject obj = (JSONObject) objs.get(map.toString());
             String number = map.toString();
+            if (number.equals("»Õ÷-001737863")) {
+                System.out.println();
+            }
             String assigned = obj.get("Assigned").toString();
             JSONArray history = (JSONArray) obj.get("History");
             String stringDate = history.get(history.size()-1).toString().split("\"")[3];

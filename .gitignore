@@ -1,6 +1,11 @@
 /.idea
 *.xml
 src/META-INF/
-target/classes/META-INF
+/target/
 /logs
 /out
+/logs/
+/out/
+/out/artifacts/Tasts_jar/logs/NazTasks.log
+target/classes/Tasks.class
+
