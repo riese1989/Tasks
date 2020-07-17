@@ -85,21 +85,6 @@ public class Main {
         String str = "========================";
         Tasks.setCountTasksAll(customScanner("Сколько всего обращений?"));
         Tasks.setNoneAppTasks(customScanner("Сколько неназначенных?"));
-//        pestov.setCountTaskOne(customScanner("Сколько на мне?"));
-//        pestov.setTaskWaiting(customScanner("Сколько у меня в ожидании?"));
-//        pestov.setTasksWithTasks(customScanner("Сколько у меня с заданиями"));
-        Integer countAllTasks = Employee.getTaskWithStatus(pestov, TaskStatus.ALL);
-        Integer countTasksWithTasks = Employee.getTaskWithStatus(pestov, TaskStatus.TASK);
-        pestov.setCountTaskOne(countAllTasks);
-        //System.out.println("На мне " + countAllTasks);
-        Integer countWaitingTasks = Employee.getTaskWithStatus(pestov, TaskStatus.WAITING);
-        pestov.setTaskWaiting(countWaitingTasks);
-        //System.out.println("У меня в ожидании " + countWaitingTasks);
-        pestov.setTasksWithTasks(countTasksWithTasks);
-        // System.out.println("У меня с заданиями " + countTasksWithTasks);
-        batanov.setCountTaskOne(customScanner("Сколько назначено на Мишу?"));
-        batanov.setTaskWaiting(customScanner("Сколько у Миши в ожидании"));
-        batanov.setTasksWithTasks(customScanner("Сколько у Миши с заданиями"));
         System.out.println(str + "\nРезультат\n" + str);
         for (int i = 1; i <= Tasks.getNoneAppTasks(); i++) {
             String number = enterCorrectNumber(true);
@@ -144,8 +129,7 @@ public class Main {
     }
 
     //распечатывание моих обращений
-    public static void printTasks() throws IOException, ParseException, java.text.ParseException {
-        //ParseJSON.JSONtoArray();
+    public static void printTasks() {
         for (Tasks task : Employee.listTasks) {
             String str = "****************\n";
             if (task.getAssigned().getFamily().equals("pestov") &&
