@@ -274,10 +274,16 @@ public class Main {
 
     //сканнер строки ввода из коммандной строки
     private static String scanLine() {
-        Scanner scanner = new Scanner(System.in);
-        String string = scanner.nextLine();
-        log(string, "", "ETasks");
-        return string;
+        try {
+            Scanner scanner = new Scanner(System.in);
+            String string = scanner.nextLine();
+            log(string, "", "ETasks");
+            return string;
+        }
+        catch (Exception ex)    {
+            log("", "", "ETasks");
+            return "";
+        }
     }
 
     //запись в json
