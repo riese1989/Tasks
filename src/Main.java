@@ -2,9 +2,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Scanner;
+import java.util.*;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -70,10 +68,9 @@ public class Main {
                     break;
                 }
                 default: {
-                    if(isCorrectNumber(command))    {
+                    if (isCorrectNumber(command)) {
                         solveMyTasks(command);
-                    }
-                    else    {
+                    } else {
                         System.out.println("Неправильная команда");
                     }
                     break;
@@ -88,25 +85,7 @@ public class Main {
         String str = "========================";
         Tasks.setCountTasksAll(customScanner("Сколько всего обращений?"));
         Tasks.setNoneAppTasks(customScanner("Сколько неназначенных?"));
-//        pestov.setCountTaskOne(customScanner("Сколько на мне?"));
-//        pestov.setTaskWaiting(customScanner("Сколько у меня в ожидании?"));
-//        pestov.setTasksWithTasks(customScanner("Сколько у меня с заданиями"));
-        Integer countAllTasks = Employee.getTaskWithStatus(pestov, TaskStatus.ALL);
-        Integer countTasksWithTasks = Employee.getTaskWithStatus(pestov, TaskStatus.TASK);
-        pestov.setCountTaskOne(countAllTasks);
-        //System.out.println("На мне " + countAllTasks);
-        Integer countWaitingTasks = Employee.getTaskWithStatus(pestov, TaskStatus.WAITING);
-        pestov.setTaskWaiting(countWaitingTasks);
-        //System.out.println("У меня в ожидании " + countWaitingTasks);
-        pestov.setTasksWithTasks(countTasksWithTasks);
-       // System.out.println("У меня с заданиями " + countTasksWithTasks);
-        batanov.setCountTaskOne(customScanner("Сколько назначено на Мишу?"));
-        batanov.setTaskWaiting(customScanner("Сколько у Миши в ожидании"));
-        batanov.setTasksWithTasks(customScanner("Сколько у Миши с заданиями"));
         System.out.println(str + "\nРезультат\n" + str);
-        if (Tasks.getNoneAppTasks() > 0) {
-            Employee.listTasks = new ArrayList<>();
-        }
         for (int i = 1; i <= Tasks.getNoneAppTasks(); i++) {
             String number = enterCorrectNumber(true);
             if (number.equals("exit")) {
@@ -116,7 +95,7 @@ public class Main {
                 continue;
             }
             Employee empl = choiceAssignTask(pestov, batanov);
-            Tasks task = new Tasks(number, empl, TaskStatus.NOTE_DONE);
+            Tasks task = new Tasks(number, empl, TaskStatus.NOTE_DONE, new Date());
             Employee.listTasks.add(task);
             System.out.println("Назначено на " + empl.getFamily());
             empl.setCountTaskOne(empl.getCountTaskOne() + 1);
@@ -129,33 +108,18 @@ public class Main {
 
     //выбор исполнителя
     public static Employee choiceAssignTask(Employee empl1, Employee empl2) {
-        if (empl1.getActiveTask() < empl2.getActiveTask()) {
+        if ((int) (Math.random() * 2) == 0) {
             return empl1;
         }
-        if (empl1.getActiveTask() > empl2.getActiveTask()) {
-            return empl2;
-        }
-        if ((int) (Math.random() * 2) == 0) {
-            if (empl1.getActiveTask() <= Tasks.countAppTasks() / 2) {
-                return empl1;
-            } else {
-                return empl2;
-            }
-        } else {
-            if (empl2.getActiveTask() <= Tasks.countAppTasks() / 2) {
-                return empl2;
-            }
-        }
-        return empl1;
+        return empl2;
     }
 
     //решение обращения
     public static void solveMyTasks(String haveNumber) throws IOException {
         String number = "";
-        if  (!haveNumber.equals(""))    {
+        if (!haveNumber.equals("")) {
             number = haveNumber;
-        }
-        else    {
+        } else {
             number = enterCorrectNumber(false);
         }
         if (!number.equals("exit")) {
@@ -165,8 +129,7 @@ public class Main {
     }
 
     //распечатывание моих обращений
-    public static void printTasks() throws IOException, ParseException, java.text.ParseException {
-        //ParseJSON.JSONtoArray();
+    public static void printTasks() {
         for (Tasks task : Employee.listTasks) {
             String str = "****************\n";
             if (task.getAssigned().getFamily().equals("pestov") &&
@@ -274,16 +237,10 @@ public class Main {
 
     //сканнер строки ввода из коммандной строки
     private static String scanLine() {
-        try {
-            Scanner scanner = new Scanner(System.in);
-            String string = scanner.nextLine();
-            log(string, "", "ETasks");
-            return string;
-        }
-        catch (Exception ex)    {
-            log("", "", "ETasks");
-            return "";
-        }
+        Scanner scanner = new Scanner(System.in);
+        String string = scanner.nextLine();
+        log(string, "", "ETasks");
+        return string;
     }
 
     //запись в json
@@ -326,10 +283,10 @@ public class Main {
         return true;
     }
 
-    private static boolean isCorrectNumber (String number)  {
+    private static boolean isCorrectNumber(String number) {
         String[] splitNubmer = number.split("-");
-        number = number.replace(" ","");
-        if ((number.length() == 13 && splitNubmer.length == 2) || (number.length() == 17 && splitNubmer.length == 3))   {
+        number = number.replace(" ", "");
+        if ((number.length() == 13 && splitNubmer.length == 2) || (number.length() == 17 && splitNubmer.length == 3)) {
             return true;
         }
         return false;
@@ -339,9 +296,10 @@ public class Main {
         ArrayList<Tasks> arrWait = new ArrayList<>();
         Date date = new Date();
         Integer countDaysWait = 2;
+
         Employee.listTasks.forEach((tasks -> {
-            if(tasks.getStatus() == TaskStatus.WAITING &&
-                    (date.getTime() - tasks.getDateResolved().getTime() >= countDaysWait * 24 * 60 * 60 * 1000)) {
+            if (tasks.getStatus() == TaskStatus.WAITING &&
+                    !isDifTrue(date, tasks.getDateResolved(), countDaysWait)) {
                 arrWait.add(tasks);
             }
         }));
@@ -351,5 +309,25 @@ public class Main {
                 System.out.println(tasks.getNumber() + " " + tasks.getDateResolved());
             });
         }
+    }
+
+    private static boolean isDifTrue (Date date, Date taskDate, Integer countWaitDays)  {
+        Integer difference = 0;
+        Calendar calNov = new GregorianCalendar();
+        Calendar calStart = new GregorianCalendar();
+        calStart.setTime(taskDate);
+        Integer dayOfWeekStart = calStart.get(Calendar.DAY_OF_WEEK);
+        Integer dayOfWeekNov = calNov.get(Calendar.DAY_OF_WEEK);
+        Long differenceDate = date.getTime() - taskDate.getTime();
+        difference = dayOfWeekNov - dayOfWeekStart;
+        if (dayOfWeekStart == 5 || dayOfWeekStart == 6)   {
+            difference = dayOfWeekNov + 5 - dayOfWeekStart;
+            differenceDate -= 2 * 24 * 60 * 60 * 1000;
+        }
+
+        if(differenceDate >= countWaitDays * 24 * 60 * 60 * 1000 && difference >= 2)    {
+            return false;
+        }
+        return true;
     }
 }
