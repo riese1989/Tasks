@@ -1,12 +1,10 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
@@ -15,17 +13,19 @@ public class Main {
     static Employee batanov = new Employee(0, "batanov");
     static JSONObject fullJSON = new JSONObject();
     static String filePath = "map.json";
+    static String filePathVactions = "vacations.json";
 
 
     public static void main(String[] args) throws IOException, ParseException, java.text.ParseException {
         Employee.employees.add(pestov);
         Employee.employees.add(batanov);
-        ParseJSON.JSONtoArray();
-        fullJSON = ParseJSON.getJSON();
+        JSONOperations.JSONtoArray();
+        fullJSON = JSONOperations.getJSON(filePath);
         menu();
     }
 
     public static void menu() throws IOException, ParseException, java.text.ParseException {
+        HashMap <Date, Date> bVacations = batanov.getVacations();
         boolean flag = true;
         while (flag) {
             waitTasks();
@@ -101,8 +101,8 @@ public class Main {
             empl.setCountTaskOne(empl.getCountTaskOne() + 1);
             Employee.setAppCountTask(Employee.getAppCountTask() + 1);
             log(" " + empl.getFamily() + " назначен ", number, "NaTasks");
-            makeJSON(task);
-            writeJSON();
+            JSONOperations.makeJSON(task);
+            JSONOperations.writeJSON();
         }
     }
 
@@ -204,8 +204,8 @@ public class Main {
             log(" переквалифицировано ", task.getNumber(), "NTasks");
             stat = "переквалифицировано";
         }
-        makeJSON(task);
-        writeJSON();
+        JSONOperations.makeJSON(task);
+        JSONOperations.writeJSON();
         System.out.println("У " + task.getNumber() + " статус переключен на " + stat);
     }
 
@@ -243,45 +243,6 @@ public class Main {
         return string;
     }
 
-    //запись в json
-    private static void writeJSON() throws IOException {
-        searchFile(filePath);
-        try (FileWriter file = new FileWriter(filePath)) {
-            file.write(fullJSON.toString());
-            file.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    //поиск в json
-    public static void makeJSON(Tasks task) {
-        JSONObject taskJSON = new JSONObject();
-        JSONObject obj = (JSONObject) fullJSON.get(task.getNumber());
-        JSONArray historyTaskJSON = new JSONArray();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss z");
-        JSONObject partHistoryTaskJSON = new JSONObject();
-        if (obj != null) {
-            historyTaskJSON = (JSONArray) obj.get("History");
-        }
-        partHistoryTaskJSON.put(task.getStatus(), dateFormat.format(new Date()));
-        historyTaskJSON.add(partHistoryTaskJSON);
-        taskJSON.put("Assigned", task.getAssigned().getFamily());
-        taskJSON.put("Current status", task.getStatus().toString());
-        taskJSON.put("History", historyTaskJSON);
-        obj = taskJSON;
-        fullJSON.put(task.getNumber(), taskJSON);
-    }
-
-    //поиск файла
-    public static boolean searchFile(String path) throws IOException {
-        File f = new File(filePath);
-        if (!f.exists()) {
-            f.createNewFile();
-            return false;
-        }
-        return true;
-    }
 
     private static boolean isCorrectNumber(String number) {
         String[] splitNubmer = number.split("-");

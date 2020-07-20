@@ -1,4 +1,10 @@
+import org.json.simple.parser.ParseException;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Employee {
     private static Integer appCountTask = 0;
@@ -9,6 +15,15 @@ public class Employee {
     private Integer tasksWithTasks = 0;
     public static ArrayList<Tasks> listTasks = new ArrayList<>();
     public static ArrayList<Employee> employees = new ArrayList<>();
+    private HashMap<Date, Date> vacations = new HashMap<>();
+
+    public HashMap<Date, Date> getVacations() {
+        return vacations;
+    }
+
+    public void putVacations(Date start, Date end)   {
+        vacations.put(start, end);
+    }
 
     public Employee(Integer countTaskOne, String family) {
         this.countTaskOne = countTaskOne;
