@@ -296,9 +296,10 @@ public class Main {
         ArrayList<Tasks> arrWait = new ArrayList<>();
         Date date = new Date();
         Integer countDaysWait = 2;
+
         Employee.listTasks.forEach((tasks -> {
             if (tasks.getStatus() == TaskStatus.WAITING &&
-                    (date.getTime() - tasks.getDateResolved().getTime() >= countDaysWait * 24 * 60 * 60 * 1000)) {
+                    !isDifTrue(date, tasks.getDateResolved(), countDaysWait)) {
                 arrWait.add(tasks);
             }
         }));
@@ -308,5 +309,25 @@ public class Main {
                 System.out.println(tasks.getNumber() + " " + tasks.getDateResolved());
             });
         }
+    }
+
+    private static boolean isDifTrue (Date date, Date taskDate, Integer countWaitDays)  {
+        Integer difference = 0;
+        Calendar calNov = new GregorianCalendar();
+        Calendar calStart = new GregorianCalendar();
+        calStart.setTime(taskDate);
+        Integer dayOfWeekStart = calStart.get(Calendar.DAY_OF_WEEK);
+        Integer dayOfWeekNov = calNov.get(Calendar.DAY_OF_WEEK);
+        Long differenceDate = date.getTime() - taskDate.getTime();
+        difference = dayOfWeekNov - dayOfWeekStart;
+        if (dayOfWeekStart == 5 || dayOfWeekStart == 6)   {
+            difference = dayOfWeekNov + 5 - dayOfWeekStart;
+            differenceDate -= 2 * 24 * 60 * 60 * 1000;
+        }
+
+        if(differenceDate >= countWaitDays * 24 * 60 * 60 * 1000 && difference >= 2)    {
+            return false;
+        }
+        return true;
     }
 }
