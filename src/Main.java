@@ -1,5 +1,3 @@
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
@@ -20,12 +18,13 @@ public class Main {
         Employee.employees.add(pestov);
         Employee.employees.add(batanov);
         JSONOperations.JSONtoArray();
+        JSONOperations.JSONtoHashMap(pestov);
+        JSONOperations.JSONtoHashMap(batanov);
         fullJSON = JSONOperations.getJSON(filePath);
         menu();
     }
 
     public static void menu() throws IOException, ParseException, java.text.ParseException {
-        HashMap <Date, Date> bVacations = batanov.getVacations();
         boolean flag = true;
         while (flag) {
             waitTasks();
@@ -36,6 +35,7 @@ public class Main {
             System.out.println("4. Задание");
             System.out.println("5. Не к нам");
             System.out.println("6. Вывод моих обращений");
+            System.out.println("7. Сколько сегодня я решил");
             System.out.println("q. Выход из программы");
             String command = scanLine();
             switch (command) {
@@ -63,6 +63,10 @@ public class Main {
                     printTasks();
                     break;
                 }
+                case "7": {
+                    countSolvedTasksNov();
+                    break;
+                }
                 case "q": {
                     flag = false;
                     break;
@@ -83,8 +87,7 @@ public class Main {
     //ввод номера обращения
     public static void enterTasks() throws IOException, ParseException {
         String str = "========================";
-        Tasks.setCountTasksAll(customScanner("Сколько всего обращений?"));
-        Tasks.setNoneAppTasks(customScanner("Сколько неназначенных?"));
+        Tasks.setNoneAppTasks(scanInteger("Сколько неназначенных?"));
         System.out.println(str + "\nРезультат\n" + str);
         for (int i = 1; i <= Tasks.getNoneAppTasks(); i++) {
             String number = enterCorrectNumber(true);
@@ -95,7 +98,8 @@ public class Main {
                 continue;
             }
             Employee empl = choiceAssignTask(pestov, batanov);
-            Tasks task = new Tasks(number, empl, TaskStatus.NOTE_DONE, new Date());
+            System.out.println("Инициатор");
+            Tasks task = new Tasks(number, empl, TaskStatus.NOTE_DONE, new Date(), scanLine());
             Employee.listTasks.add(task);
             System.out.println("Назначено на " + empl.getFamily());
             empl.setCountTaskOne(empl.getCountTaskOne() + 1);
@@ -108,6 +112,12 @@ public class Main {
 
     //выбор исполнителя
     public static Employee choiceAssignTask(Employee empl1, Employee empl2) {
+        if (empl1.currentVacation())    {
+            return empl2;
+        }
+        if (empl2.currentVacation())    {
+            return empl1;
+        }
         if ((int) (Math.random() * 2) == 0) {
             return empl1;
         }
@@ -142,7 +152,7 @@ public class Main {
     }
 
     //сканнер числа ввода из коммандной строки
-    public static Integer customScanner(String message) {
+    public static Integer scanInteger(String message) {
         String string;
         for (; ; ) {
             System.out.println(message);
@@ -290,5 +300,9 @@ public class Main {
             return false;
         }
         return true;
+    }
+
+    private static void countSolvedTasksNov()   {
+        
     }
 }

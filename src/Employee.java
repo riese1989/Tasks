@@ -21,8 +21,8 @@ public class Employee {
         return vacations;
     }
 
-    public void putVacations(Date start, Date end)   {
-        vacations.put(start, end);
+    public void setVacations(HashMap<Date, Date> vacations) {
+        this.vacations = vacations;
     }
 
     public Employee(Integer countTaskOne, String family) {
@@ -93,6 +93,18 @@ public class Employee {
 
     public void setActiveTask(Integer activeTask) {
         this.activeTask = activeTask;
+    }
+
+    public boolean currentVacation()    {
+        Date date = new Date();
+        for (Map.Entry <Date, Date> vacation : vacations.entrySet()) {
+            Long start = vacation.getKey().getTime();
+            Long end = vacation.getValue().getTime();
+            if (date.getTime() >= start && date.getTime() <= end)   {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

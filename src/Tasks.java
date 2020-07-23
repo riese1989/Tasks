@@ -8,6 +8,8 @@ public class Tasks {
     private String number;
     private Date dateResolved;
 
+    private String author;
+
     public Tasks(String number, Employee assigned, TaskStatus status) {
         this.number = number;
         this.assigned = assigned;
@@ -15,11 +17,20 @@ public class Tasks {
 
     }
 
-    public Tasks(String number, Employee assigned, TaskStatus status, Date date) {
+    public Tasks(String number, Employee assigned, TaskStatus status, Date date, String author) {
         this.number = number;
         this.assigned = assigned;
         this.status = status;
         this.dateResolved = date;
+        this.author = author;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public Employee getAssigned() {

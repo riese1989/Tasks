@@ -29,12 +29,19 @@ public class JSONOperations {
             JSONObject obj = (JSONObject) objs.get(map.toString());
             String number = map.toString();
             String assigned = obj.get("Assigned").toString();
+            String author;
+            try {
+                author = obj.get("Author").toString();
+            }
+            catch (Exception ex)    {
+                author = "";
+            }
             JSONArray history = (JSONArray) obj.get("History");
             String stringDate = history.get(history.size()-1).toString().split("\"")[3];
             SimpleDateFormat format = new SimpleDateFormat("dd.MM.y HH:mm:ss z");
             Date date = format.parse(stringDate);
             TaskStatus status = Tasks.toStatus(obj.get("Current status").toString());
-            Tasks task = new Tasks(number, Employee.getEmployee(assigned), status, date);
+            Tasks task = new Tasks(number, Employee.getEmployee(assigned), status, date, author);
             Employee.listTasks.add(task);
         }
     }
@@ -51,6 +58,7 @@ public class JSONOperations {
         partHistoryTaskJSON.put(task.getStatus(), dateFormat.format(new Date()));
         historyTaskJSON.add(partHistoryTaskJSON);
         taskJSON.put("Assigned", task.getAssigned().getFamily());
+        taskJSON.put("Author", task.getAuthor());
         taskJSON.put("Current status", task.getStatus().toString());
         taskJSON.put("History", historyTaskJSON);
         obj = taskJSON;
@@ -78,26 +86,25 @@ public class JSONOperations {
         return true;
     }
 
-    public static HashMap<Date, Date> JSONtoHashMap(String family) throws IOException, ParseException, java.text.ParseException {
+    public static HashMap<Date, Date> JSONtoHashMap(Employee employee) throws IOException, ParseException, java.text.ParseException {
         HashMap<Date, Date> vacations = new HashMap<>();
-        Employee employee = Employee.getEmployee(family);
         JSONObject objs = getJSON(Main.filePathVactions);
         Set maps = objs.keySet();
         for (Object map : maps) {
             JSONObject obj = (JSONObject) objs.get(map.toString());
             String familyJSON = map.toString();
-            if (familyJSON.equals(family))  {
+            if (familyJSON.equals(employee.getFamily()))  {
                 JSONArray vacationsFamilyJSON = (JSONArray)obj.get("vacations");
                 for (Object vacationFamily : vacationsFamilyJSON)   {
                     String[] parts = vacationFamily.toString().split("\"");
                     Date start = dateFormat.parse(parts[3]);
                     Date end = dateFormat.parse(parts[7]);
-                    employee.putVacations(start, end);
-                    //Date start = dateFormat.parse();
+                    vacations.put(start,end);
                 }
 
             }
         }
+        employee.setVacations(vacations);
         return vacations;
 
     }
