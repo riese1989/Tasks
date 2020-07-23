@@ -29,19 +29,14 @@ public class JSONOperations {
             JSONObject obj = (JSONObject) objs.get(map.toString());
             String number = map.toString();
             String assigned = obj.get("Assigned").toString();
-            String author;
-            try {
-                author = obj.get("Author").toString();
-            }
-            catch (Exception ex)    {
-                author = "";
-            }
+            String author = newStringField(obj, "Author");
+            String comment = newStringField(obj, "Comment");
             JSONArray history = (JSONArray) obj.get("History");
             String stringDate = history.get(history.size()-1).toString().split("\"")[3];
             SimpleDateFormat format = new SimpleDateFormat("dd.MM.y HH:mm:ss z");
             Date date = format.parse(stringDate);
             TaskStatus status = Tasks.toStatus(obj.get("Current status").toString());
-            Tasks task = new Tasks(number, Employee.getEmployee(assigned), status, date, author);
+            Tasks task = new Tasks(number, Employee.getEmployee(assigned), status, date, author, comment);
             Employee.listTasks.add(task);
         }
     }
@@ -59,6 +54,7 @@ public class JSONOperations {
         historyTaskJSON.add(partHistoryTaskJSON);
         taskJSON.put("Assigned", task.getAssigned().getFamily());
         taskJSON.put("Author", task.getAuthor());
+        taskJSON.put("Comment", task.getComment());
         taskJSON.put("Current status", task.getStatus().toString());
         taskJSON.put("History", historyTaskJSON);
         obj = taskJSON;
@@ -107,5 +103,16 @@ public class JSONOperations {
         employee.setVacations(vacations);
         return vacations;
 
+    }
+
+    private static String newStringField (JSONObject obj, String field) {
+        String returnValue;
+        try {
+            returnValue = obj.get(field).toString();
+        }
+        catch (Exception ex)    {
+            returnValue = "";
+        }
+        return returnValue;
     }
 }

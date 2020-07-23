@@ -7,7 +7,7 @@ public class Tasks {
     private TaskStatus status;
     private String number;
     private Date dateResolved;
-
+    private String comment;
     private String author;
 
     public Tasks(String number, Employee assigned, TaskStatus status) {
@@ -17,12 +17,30 @@ public class Tasks {
 
     }
 
+
     public Tasks(String number, Employee assigned, TaskStatus status, Date date, String author) {
         this.number = number;
         this.assigned = assigned;
         this.status = status;
         this.dateResolved = date;
         this.author = author;
+    }
+
+    public Tasks(String number, Employee assigned, TaskStatus status, Date date, String author, String comment) {
+        this.number = number;
+        this.assigned = assigned;
+        this.status = status;
+        this.dateResolved = date;
+        this.author = author;
+        this.comment = comment;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public String getAuthor() {

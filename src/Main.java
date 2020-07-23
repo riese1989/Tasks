@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
@@ -7,19 +10,17 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 public class Main {
-    static Employee pestov = new Employee(0, "pestov");
-    static Employee batanov = new Employee(0, "batanov");
     static JSONObject fullJSON = new JSONObject();
     static String filePath = "map.json";
     static String filePathVactions = "vacations.json";
+    static String fileEmployees = "Employees.txt";
 
 
     public static void main(String[] args) throws IOException, ParseException, java.text.ParseException {
-        Employee.employees.add(pestov);
-        Employee.employees.add(batanov);
+        readEmployees();
         JSONOperations.JSONtoArray();
-        JSONOperations.JSONtoHashMap(pestov);
-        JSONOperations.JSONtoHashMap(batanov);
+//        JSONOperations.JSONtoHashMap(Employee.getEmployee("pestov"));
+//        JSONOperations.JSONtoHashMap(Employee.getEmployee("batanov"));
         fullJSON = JSONOperations.getJSON(filePath);
         menu();
     }
@@ -29,13 +30,13 @@ public class Main {
         while (flag) {
             waitTasks();
             System.out.println("Введите команду\n");
-            System.out.println("1. Назначение новых обращений");
+            System.out.println("1. Автоматическое назначение новых обращений");
             System.out.println("2. Решение моих обращений");
             System.out.println("3. В ожидание");
             System.out.println("4. Задание");
             System.out.println("5. Не к нам");
             System.out.println("6. Вывод моих обращений");
-            System.out.println("7. Сколько сегодня я решил");
+            System.out.println("7. Ручное назначение обращений");
             System.out.println("q. Выход из программы");
             String command = scanLine();
             switch (command) {
@@ -48,15 +49,15 @@ public class Main {
                     break;
                 }
                 case "3": {
-                    switchStatus(Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(false), pestov)), TaskStatus.WAITING);
+                    switchStatus(Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(false), Employee.getEmployee("pestov"))), TaskStatus.WAITING);
                     break;
                 }
                 case "4": {
-                    switchStatus(Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(false), pestov)), TaskStatus.TASK);
+                    switchStatus(Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(false), Employee.getEmployee("pestov"))), TaskStatus.TASK);
                     break;
                 }
                 case "5": {
-                    switchStatus(Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(false), pestov)), TaskStatus.NOT_US);
+                    switchStatus(Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(false), Employee.getEmployee("pestov"))), TaskStatus.NOT_US);
                     break;
                 }
                 case "6": {
@@ -64,7 +65,7 @@ public class Main {
                     break;
                 }
                 case "7": {
-                    countSolvedTasksNov();
+                    manualAssignment();
                     break;
                 }
                 case "q": {
@@ -97,7 +98,7 @@ public class Main {
             if (number.equals("nu")) {
                 continue;
             }
-            Employee empl = choiceAssignTask(pestov, batanov);
+            Employee empl = choiceAssignTask();
             System.out.println("Инициатор");
             Tasks task = new Tasks(number, empl, TaskStatus.NOTE_DONE, new Date(), scanLine());
             Employee.listTasks.add(task);
@@ -111,17 +112,17 @@ public class Main {
     }
 
     //выбор исполнителя
-    public static Employee choiceAssignTask(Employee empl1, Employee empl2) {
-        if (empl1.currentVacation())    {
-            return empl2;
+    public static Employee choiceAssignTask() {
+        Integer size = Employee.employees.size();
+        Integer random = (int) (Math.random() * size);
+        Employee empl = Employee.employees.get(random);
+        for(;;) {
+            if(empl.currentVacation())    {
+                random = (int) (Math.random() * size);
+                continue;
+            }
+            return empl;
         }
-        if (empl2.currentVacation())    {
-            return empl1;
-        }
-        if ((int) (Math.random() * 2) == 0) {
-            return empl1;
-        }
-        return empl2;
     }
 
     //решение обращения
@@ -133,7 +134,7 @@ public class Main {
             number = enterCorrectNumber(false);
         }
         if (!number.equals("exit")) {
-            Tasks task = Employee.listTasks.get(searchAndCreateTask(number, pestov));
+            Tasks task = Employee.listTasks.get(searchAndCreateTask(number, Employee.getEmployee("pestov")));
             switchStatus(task, TaskStatus.DONE);
         }
     }
@@ -197,6 +198,8 @@ public class Main {
         String stat = "";
         task.setStatus(status);
         task.setDateResolved(new Date());
+        System.out.println("Комментарий ");
+        task.setComment(scanLine());
         Employee.listTasks.set(index, task);
         if (status == TaskStatus.TASK) {
             log(" выписано задание ", task.getNumber(), "TTasks");
@@ -229,7 +232,7 @@ public class Main {
             }
             if (number.equals("nu")) {
                 System.out.println("Функция переключения статуса вызвана");
-                switchStatus(Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(false), pestov)), TaskStatus.NOT_US);
+                switchStatus(Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(false), Employee.getEmployee("pestov"))), TaskStatus.NOT_US);
                 return "nu";
             }
             if (isCorrectNumber(number)) {
@@ -282,7 +285,7 @@ public class Main {
         }
     }
 
-    private static boolean isDifTrue (Date date, Date taskDate, Integer countWaitDays)  {
+    private static boolean isDifTrue(Date date, Date taskDate, Integer countWaitDays) {
         Integer difference = 0;
         Calendar calNov = new GregorianCalendar();
         Calendar calStart = new GregorianCalendar();
@@ -291,18 +294,65 @@ public class Main {
         Integer dayOfWeekNov = calNov.get(Calendar.DAY_OF_WEEK);
         Long differenceDate = date.getTime() - taskDate.getTime();
         difference = dayOfWeekNov - dayOfWeekStart;
-        if (dayOfWeekStart == 5 || dayOfWeekStart == 6)   {
+        if (dayOfWeekStart == 5 || dayOfWeekStart == 6) {
             difference = dayOfWeekNov + 5 - dayOfWeekStart;
             differenceDate -= 2 * 24 * 60 * 60 * 1000;
         }
 
-        if(differenceDate >= countWaitDays * 24 * 60 * 60 * 1000 && difference >= 2)    {
+        if (differenceDate >= countWaitDays * 24 * 60 * 60 * 1000 && difference >= 2) {
             return false;
         }
         return true;
     }
 
-    private static void countSolvedTasksNov()   {
-        
+    private static void manualAssignment() throws IOException {
+        Employee assignee = null;
+        Integer i = 0;
+        Integer enterNumber = 0;
+        Tasks task;
+        boolean flag = true;
+        boolean flag2 = false;
+        task = Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(false), assignee));
+        if (task != null) {
+            System.out.println("Сейчас оно назначено на " + task.getAssigned().getFamily());
+        }
+
+        while (flag) {
+            if (enterNumber < i+1 && enterNumber != 0) {
+                assignee = Employee.employees.get(enterNumber-1);
+                task.setAssigned(assignee);
+                flag = false;
+                continue;
+            }
+            if (enterNumber == 0 && flag2 == true && enterNumber > i-1) {
+                System.out.println("Значение должно быть больше 0 и меньше " + (i-1));
+            }
+            for (Employee empl : Employee.employees) {
+                i++;
+                System.out.println(i + " " + empl.getFamily());
+                flag2 = true;
+            }
+            enterNumber = scanInteger("На кого назначить это обращение (введите номер)?");
+        }
+        JSONOperations.makeJSON(task);
+        JSONOperations.writeJSON();
+    }
+
+    private static void readEmployees() {
+        try {
+            File file = new File(fileEmployees);
+            FileReader fr = new FileReader(file);
+            BufferedReader reader = new BufferedReader(fr);
+            String line = reader.readLine();
+            while (line != null) {
+                System.out.println(line);
+                Employee empl = new Employee(0, line);
+                Employee.employees.add(empl);
+                JSONOperations.JSONtoHashMap(empl);
+                line = reader.readLine();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
