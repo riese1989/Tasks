@@ -345,7 +345,6 @@ public class Main {
             BufferedReader reader = new BufferedReader(fr);
             String line = reader.readLine();
             while (line != null) {
-                System.out.println(line);
                 Employee empl = new Employee(0, line);
                 Employee.employees.add(empl);
                 JSONOperations.JSONtoHashMap(empl);
