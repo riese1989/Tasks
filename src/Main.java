@@ -114,9 +114,9 @@ public class Main {
     //выбор исполнителя
     public static Employee choiceAssignTask() {
         Integer size = Employee.employees.size();
-        Integer random = (int) (Math.random() * size);
-        Employee empl = Employee.employees.get(random);
         for(;;) {
+            Integer random = (int) (Math.random() * size);
+            Employee empl = Employee.employees.get(random);
             if(empl.currentVacation())    {
                 random = (int) (Math.random() * size);
                 continue;
