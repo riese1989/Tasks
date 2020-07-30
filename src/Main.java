@@ -22,6 +22,7 @@ public class Main {
 //        JSONOperations.JSONtoHashMap(Employee.getEmployee("pestov"));
 //        JSONOperations.JSONtoHashMap(Employee.getEmployee("batanov"));
         fullJSON = JSONOperations.getJSON(filePath);
+        System.out.println("За сегодняшний день я обработал " + counter() + " обращений");
         menu();
     }
 
@@ -353,5 +354,33 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private static Integer counter()    {
+        Integer count = 0;
+        Employee empl = Employee.getEmployee("pestov");
+        for (Tasks task : Employee.listTasks)   {
+            if (task.getAssigned() == empl && compareDate(task.getDateResolved()))  {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private static boolean compareDate(Date dateResolved)  {
+        Calendar calNow =dateToCalendar(new Date());
+        Calendar calResolved = dateToCalendar(dateResolved);
+        if ((calNow.get(Calendar.DAY_OF_MONTH) == calResolved.get(Calendar.DAY_OF_MONTH)) &&
+                (calNow.get(Calendar.MONTH) == calResolved.get(Calendar.MONTH)) &&
+                (calNow.get(Calendar.YEAR) == calResolved. get(Calendar.YEAR))) {
+            return true;
+        }
+        return false;
+    }
+
+    private static Calendar dateToCalendar(Date date)   {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        return cal;
     }
 }
