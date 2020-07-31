@@ -22,7 +22,6 @@ public class Main {
 //        JSONOperations.JSONtoHashMap(Employee.getEmployee("pestov"));
 //        JSONOperations.JSONtoHashMap(Employee.getEmployee("batanov"));
         fullJSON = JSONOperations.getJSON(filePath);
-        System.out.println("За сегодняшний день я обработал " + counter() + " обращений");
         menu();
     }
 
@@ -30,6 +29,7 @@ public class Main {
         boolean flag = true;
         while (flag) {
             waitTasks();
+            System.out.println("За сегодняшний день я обработал " + counter() + " обращений");
             System.out.println("Введите команду\n");
             System.out.println("1. Автоматическое назначение новых обращений");
             System.out.println("2. Решение моих обращений");
@@ -323,7 +323,7 @@ public class Main {
                 assignee = Employee.employees.get(enterNumber-1);
                 task.setAssigned(assignee);
                 task.setStatus(TaskStatus.NOTE_DONE);
-                System.out.println("Обращение " + task.getNumber() + "назначено на " + assignee.getFamily());
+                System.out.println("Обращение " + task.getNumber() + " назначено на " + assignee.getFamily());
                 flag = false;
                 continue;
             }
