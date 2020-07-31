@@ -322,6 +322,8 @@ public class Main {
             if (enterNumber < i+1 && enterNumber != 0) {
                 assignee = Employee.employees.get(enterNumber-1);
                 task.setAssigned(assignee);
+                task.setStatus(TaskStatus.NOTE_DONE);
+                System.out.println("Обращение " + task.getNumber() + "назначено на " + assignee.getFamily());
                 flag = false;
                 continue;
             }
