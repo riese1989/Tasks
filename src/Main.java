@@ -314,7 +314,8 @@ public class Main {
         boolean flag = true;
         boolean flag2 = false;
         task = Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(false), assignee));
-        if (task != null) {
+        task.setDateResolved(new Date());
+        if (task.getAssigned()!=null) {
             System.out.println("Сейчас оно назначено на " + task.getAssigned().getFamily());
         }
 
@@ -362,7 +363,7 @@ public class Main {
         Integer count = 0;
         Employee empl = Employee.getEmployee("pestov");
         for (Tasks task : Employee.listTasks)   {
-            if (task.getAssigned() == empl && compareDate(task.getDateResolved()))  {
+            if (task.getAssigned() == empl && compareDate(task.getDateResolved()) && task.getStatus() != TaskStatus.NOTE_DONE)  {
                 count++;
             }
         }
