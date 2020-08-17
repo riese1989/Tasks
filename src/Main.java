@@ -99,9 +99,10 @@ public class Main {
             if (number.equals("nu")) {
                 continue;
             }
-            Employee empl = choiceAssignTask();
             System.out.println("Инициатор");
-            Tasks task = new Tasks(number, empl, TaskStatus.NOTE_DONE, new Date(), scanLine());
+            String author = scanLine();
+            Employee empl = choiceAssignTask(author);
+            Tasks task = new Tasks(number, empl, TaskStatus.NOTE_DONE, new Date(), author);
             Employee.listTasks.add(task);
             System.out.println("Назначено на " + empl.getFamily());
             empl.setCountTaskOne(empl.getCountTaskOne() + 1);
@@ -113,7 +114,11 @@ public class Main {
     }
 
     //выбор исполнителя
-    public static Employee choiceAssignTask() {
+    public static Employee choiceAssignTask(String author) {
+        Employee employee = tasksOfAuthor(author);
+        if (!employee.currentVacation())    {
+            return employee;
+        }
         Integer size = Employee.employees.size();
         for(;;) {
             Integer random = (int) (Math.random() * size);
@@ -385,5 +390,14 @@ public class Main {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         return cal;
+    }
+
+    public static Employee tasksOfAuthor (String author) {
+        for(Employee employee : Employee.employees) {
+            Long count = Employee.listTasks.stream().filter(t -> t.getAssigned() == employee && t.getAuthor().equals(author)).count();
+            employee.setCountTasksOfAuthor(count);
+        }
+        Employee empl = Employee.employees.stream().max(Comparator.comparing(Employee::getCountTasksOfAuthor)).get();
+        return empl;
     }
 }

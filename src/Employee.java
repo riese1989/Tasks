@@ -16,6 +16,7 @@ public class Employee {
     public static ArrayList<Tasks> listTasks = new ArrayList<>();
     public static ArrayList<Employee> employees = new ArrayList<>();
     private HashMap<Date, Date> vacations = new HashMap<>();
+    private  Long countTasksOfAuthor;
 
     public HashMap<Date, Date> getVacations() {
         return vacations;
@@ -106,5 +107,14 @@ public class Employee {
         }
         return false;
     }
+
+    public Long getCountTasksOfAuthor() {
+        return countTasksOfAuthor;
+    }
+
+    public void setCountTasksOfAuthor(Long countTasksOfAuthor) {
+        this.countTasksOfAuthor = countTasksOfAuthor;
+    }
+
 
 }
