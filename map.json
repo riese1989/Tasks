@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "Ð—ÐÐž-001480181": {
     "Assigned": "pestov",
@@ -11656,3 +11657,6 @@
     ]
   }
 }
+=======
+{"ÇÍÎ-001483134":{"Assigned":"batanov","Comment":null,"Current status":"NOTE_DONE","Author":"Valentin.Drozdov","History":[{"NOTE_DONE":"17.08.2020 17:56:28 MSK"}]},"ÇÍÎ-001483130":{"Assigned":"batanov","Comment":"","Current status":"DONE","Author":"Valentin.Drozdov","History":[{"NOTE_DONE":"30.07.2020 12:09:33 MSK"},{"DONE":"30.07.2020 16:33:30 MSK"}]},"ÇÍÎ-001483139":{"Assigned":"pestov","Comment":"","Current status":"DONE","Author":"Valentin.Drozdov","History":[{"NOTE_DONE":"30.07.2020 12:09:33 MSK"},{"DONE":"30.07.2020 16:33:30 MSK"}]},"ÇÍÎ-001483136":{"Assigned":"pestov","Comment":null,"Current status":"NOTE_DONE","Author":"Valentin.Drozdov","History":[{"NOTE_DONE":"17.08.2020 17:58:02 MSK"}]}}
+>>>>>>> 3ef7cc5... Add choice assigned with count tasks of this author
