@@ -406,7 +406,6 @@ public class Main {
         Employee empl = Employee.employees.stream().max(Comparator.comparing(Employee::getCountTasksOfAuthor)).get();
         return empl;
     }
-<<<<<<< HEAD:src/main/java/Main.java
 
     public static void search() throws IOException {
         String number = enterCorrectNumber(false);
@@ -432,6 +431,4 @@ public class Main {
             System.out.println("Обращение не найдено");
         }
     }
-=======
->>>>>>> 3ef7cc5... Add choice assigned with count tasks of this author:src/Main.java
 }
