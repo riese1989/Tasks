@@ -268,7 +268,7 @@ public class Main {
     }
 
     private static void waitTasks() {
-        ArrayList<Tasks> arrWait = new ArrayList<>();
+        ArrayList<Tasks> arrWait = new ArrayList<Tasks>();
         Date date = new Date();
         Integer countDaysWait = 2;
 
