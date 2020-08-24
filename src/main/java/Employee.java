@@ -13,9 +13,10 @@ public class Employee {
     private String family;
     private Integer taskWaiting = 0;
     private Integer tasksWithTasks = 0;
-    public static ArrayList<Tasks> listTasks = new ArrayList<Tasks>();
-    public static ArrayList<Employee> employees = new ArrayList<Employee>();
-    private HashMap<Date, Date> vacations = new HashMap<Date, Date>();
+    public static ArrayList<Tasks> listTasks = new ArrayList<>();
+    public static ArrayList<Employee> employees = new ArrayList<>();
+    private HashMap<Date, Date> vacations = new HashMap<>();
+    private  Long countTasksOfAuthor;
 
     public HashMap<Date, Date> getVacations() {
         return vacations;
@@ -106,5 +107,14 @@ public class Employee {
         }
         return false;
     }
+
+    public Long getCountTasksOfAuthor() {
+        return countTasksOfAuthor;
+    }
+
+    public void setCountTasksOfAuthor(Long countTasksOfAuthor) {
+        this.countTasksOfAuthor = countTasksOfAuthor;
+    }
+
 
 }
