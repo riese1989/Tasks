@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import org.apache.logging.log4j.LogManager;
@@ -9,7 +10,9 @@ import org.apache.logging.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
+
 public class Main {
+    static SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss z");
     static JSONObject fullJSON = new JSONObject();
     static String filePath = "map.json";
     static String filePathVactions = "vacations.json";
@@ -19,8 +22,6 @@ public class Main {
     public static void main(String[] args) throws IOException, ParseException, java.text.ParseException {
         readEmployees();
         JSONOperations.JSONtoArray();
-//        JSONOperations.JSONtoHashMap(Employee.getEmployee("pestov"));
-//        JSONOperations.JSONtoHashMap(Employee.getEmployee("batanov"));
         fullJSON = JSONOperations.getJSON(filePath);
         menu();
     }
@@ -38,6 +39,7 @@ public class Main {
             System.out.println("5. Не к нам");
             System.out.println("6. Вывод моих обращений");
             System.out.println("7. Ручное назначение обращений");
+            System.out.println("8. Поиск обращения");
             System.out.println("q. Выход из программы");
             String command = scanLine();
             switch (command) {
@@ -67,6 +69,10 @@ public class Main {
                 }
                 case "7": {
                     manualAssignment();
+                    break;
+                }
+                case "8":   {
+                    search();
                     break;
                 }
                 case "q": {
@@ -399,5 +405,30 @@ public class Main {
         }
         Employee empl = Employee.employees.stream().max(Comparator.comparing(Employee::getCountTasksOfAuthor)).get();
         return empl;
+    }
+
+    public static void search() throws IOException {
+        String number = enterCorrectNumber(false);
+        Tasks task = returnTask(number);
+        if (task != null)   {
+            System.out.println("Текущий статус " + Tasks.statusToString(task.getStatus()));
+            String author = task.getAuthor();
+            if (author != null) {
+                System.out.println("Автор " + task.getAuthor());
+            }
+            System.out.println("Назначен на " + task.getAssigned().getFamily());
+            System.out.println("История изменения статусов:");
+            HashMap <Date, TaskStatus> history = task.getHistory();
+            for (Map.Entry <Date, TaskStatus> hist : history.entrySet())    {
+                String status = Tasks.statusToString(hist.getValue());
+                String date = hist.getKey().toString();
+                System.out.println("Статус " + status);
+                System.out.println("Дата " + date);
+                System.out.println();
+            }
+        }
+        else    {
+            System.out.println("Обращение не найдено");
+        }
     }
 }
