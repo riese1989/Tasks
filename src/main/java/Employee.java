@@ -16,6 +16,9 @@ public class Employee {
     public static ArrayList<Tasks> listTasks = new ArrayList<>();
     public static ArrayList<Employee> employees = new ArrayList<>();
     private HashMap<Date, Date> vacations = new HashMap<>();
+    private  Long countTasksOfAuthor;
+
+    private Integer taskOfThisSession = 0;
 
     public HashMap<Date, Date> getVacations() {
         return vacations;
@@ -62,6 +65,10 @@ public class Employee {
         return countTaskOne - taskWaiting - tasksWithTasks;
     }
 
+    public void incTaskOfThisSession()  {
+        this.taskOfThisSession++;
+    }
+
     public static Employee getEmployee  (String family) {
         for (Employee employee : employees) {
             if (employee.getFamily().equals(family))    {
@@ -90,6 +97,9 @@ public class Employee {
         activeTask = countTaskOne - taskWaiting - tasksWithTasks;
         return activeTask;
     }
+    public Integer getTaskOfThisSession() {
+        return taskOfThisSession;
+    }
 
     public void setActiveTask(Integer activeTask) {
         this.activeTask = activeTask;
@@ -106,5 +116,14 @@ public class Employee {
         }
         return false;
     }
+
+    public Long getCountTasksOfAuthor() {
+        return countTasksOfAuthor;
+    }
+
+    public void setCountTasksOfAuthor(Long countTasksOfAuthor) {
+        this.countTasksOfAuthor = countTasksOfAuthor;
+    }
+
 
 }

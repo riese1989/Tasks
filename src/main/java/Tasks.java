@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.util.HashMap;
 
 public class Tasks {
     private static Integer countTasksAll;
@@ -9,6 +10,12 @@ public class Tasks {
     private Date dateResolved;
     private String comment;
     private String author;
+
+    public HashMap<Date, TaskStatus> getHistory() {
+        return history;
+    }
+
+    private HashMap <Date, TaskStatus> history;
 
     public Tasks(String number, Employee assigned, TaskStatus status) {
         this.number = number;
@@ -26,13 +33,14 @@ public class Tasks {
         this.author = author;
     }
 
-    public Tasks(String number, Employee assigned, TaskStatus status, Date date, String author, String comment) {
+    public Tasks(String number, Employee assigned, TaskStatus status, Date date, String author, String comment, HashMap<Date, TaskStatus> history) {
         this.number = number;
         this.assigned = assigned;
         this.status = status;
         this.dateResolved = date;
         this.author = author;
         this.comment = comment;
+        this.history = history;
     }
 
     public String getComment() {
@@ -123,5 +131,26 @@ public class Tasks {
             }
         }
         return TaskStatus.NOTE_DONE;
+    }
+
+    public static String statusToString(TaskStatus status)  {
+        switch (status) {
+            case DONE:   {
+                return "DONE";
+            }
+            case NOTE_DONE: {
+                return "NOTE_DONE";
+            }
+            case NOT_US: {
+                return "NOT_US";
+            }
+            case WAITING: {
+                return "WAITING";
+            }
+            case TASK: {
+                return "TASK";
+            }
+        }
+        return "";
     }
 }

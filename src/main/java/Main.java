@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import org.apache.logging.log4j.LogManager;
@@ -9,7 +10,9 @@ import org.apache.logging.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
+
 public class Main {
+    static SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss z");
     static JSONObject fullJSON = new JSONObject();
     static String filePath = "map.json";
     static String filePathVactions = "vacations.json";
@@ -19,8 +22,6 @@ public class Main {
     public static void main(String[] args) throws IOException, ParseException, java.text.ParseException {
         readEmployees();
         JSONOperations.JSONtoArray();
-//        JSONOperations.JSONtoHashMap(Employee.getEmployee("pestov"));
-//        JSONOperations.JSONtoHashMap(Employee.getEmployee("batanov"));
         fullJSON = JSONOperations.getJSON(filePath);
         menu();
     }
@@ -38,6 +39,7 @@ public class Main {
             System.out.println("5. Не к нам");
             System.out.println("6. Вывод моих обращений");
             System.out.println("7. Ручное назначение обращений");
+            System.out.println("8. Поиск обращения");
             System.out.println("q. Выход из программы");
             String command = scanLine();
             switch (command) {
@@ -67,6 +69,10 @@ public class Main {
                 }
                 case "7": {
                     manualAssignment();
+                    break;
+                }
+                case "8":   {
+                    search();
                     break;
                 }
                 case "q": {
@@ -99,9 +105,10 @@ public class Main {
             if (number.equals("nu")) {
                 continue;
             }
-            Employee empl = choiceAssignTask();
             System.out.println("Инициатор");
-            Tasks task = new Tasks(number, empl, TaskStatus.NOTE_DONE, new Date(), scanLine());
+            String author = scanLine();
+            Employee empl = choiceAssignTask(author);
+            Tasks task = new Tasks(number, empl, TaskStatus.NOTE_DONE, new Date(), author);
             Employee.listTasks.add(task);
             System.out.println("Назначено на " + empl.getFamily());
             empl.setCountTaskOne(empl.getCountTaskOne() + 1);
@@ -113,7 +120,14 @@ public class Main {
     }
 
     //выбор исполнителя
-    public static Employee choiceAssignTask() {
+    public static Employee choiceAssignTask(String author) {
+        Employee employee = tasksOfAuthor(author);
+        if (employee.getTaskOfThisSession() < 0.6 * Tasks.getNoneAppTasks())    {
+            return employee;
+        }
+        if (!employee.currentVacation())    {
+            return employee;
+        }
         Integer size = Employee.employees.size();
         for(;;) {
             Integer random = (int) (Math.random() * size);
@@ -268,7 +282,7 @@ public class Main {
     }
 
     private static void waitTasks() {
-        ArrayList<Tasks> arrWait = new ArrayList<>();
+        ArrayList<Tasks> arrWait = new ArrayList<Tasks>();
         Date date = new Date();
         Integer countDaysWait = 2;
 
@@ -314,7 +328,8 @@ public class Main {
         boolean flag = true;
         boolean flag2 = false;
         task = Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(false), assignee));
-        if (task != null) {
+        task.setDateResolved(new Date());
+        if (task.getAssigned()!=null) {
             System.out.println("Сейчас оно назначено на " + task.getAssigned().getFamily());
         }
 
@@ -362,7 +377,7 @@ public class Main {
         Integer count = 0;
         Employee empl = Employee.getEmployee("pestov");
         for (Tasks task : Employee.listTasks)   {
-            if (task.getAssigned() == empl && compareDate(task.getDateResolved()))  {
+            if (task.getAssigned() == empl && compareDate(task.getDateResolved()) && task.getStatus() != TaskStatus.NOTE_DONE)  {
                 count++;
             }
         }
@@ -384,5 +399,40 @@ public class Main {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         return cal;
+    }
+
+    public static Employee tasksOfAuthor (String author) {
+        for(Employee employee : Employee.employees) {
+            Long count = Employee.listTasks.stream().filter(t -> t.getAssigned() == employee && t.getAuthor().equals(author)).count();
+            employee.setCountTasksOfAuthor(count);
+        }
+        Employee empl = Employee.employees.stream().max(Comparator.comparing(Employee::getCountTasksOfAuthor)).get();
+        empl.incTaskOfThisSession();
+        return empl;
+    }
+
+    public static void search() throws IOException {
+        String number = enterCorrectNumber(false);
+        Tasks task = returnTask(number);
+        if (task != null)   {
+            System.out.println("Текущий статус " + Tasks.statusToString(task.getStatus()));
+            String author = task.getAuthor();
+            if (author != null) {
+                System.out.println("Автор " + task.getAuthor());
+            }
+            System.out.println("Назначен на " + task.getAssigned().getFamily());
+            System.out.println("История изменения статусов:");
+            HashMap <Date, TaskStatus> history = task.getHistory();
+            for (Map.Entry <Date, TaskStatus> hist : history.entrySet())    {
+                String status = Tasks.statusToString(hist.getValue());
+                String date = hist.getKey().toString();
+                System.out.println("Статус " + status);
+                System.out.println("Дата " + date);
+                System.out.println();
+            }
+        }
+        else    {
+            System.out.println("Обращение не найдено");
+        }
     }
 }

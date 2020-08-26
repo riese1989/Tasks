@@ -31,10 +31,17 @@ public class JSONOperations {
             String comment = newStringField(obj, "Comment");
             JSONArray history = (JSONArray) obj.get("History");
             String stringDate = history.get(history.size()-1).toString().split("\"")[3];
+            HashMap <Date, TaskStatus> historyTask = new HashMap<>();
             SimpleDateFormat format = new SimpleDateFormat("dd.MM.y HH:mm:ss z");
             Date date = format.parse(stringDate);
+            for (int i = 0; i < history.size(); i++)    {
+                String[] str = history.get(i).toString().split("\"");
+                Date dateHist = format.parse(str[3]);
+                TaskStatus status = Tasks.toStatus(str[1]);
+                historyTask.put(dateHist, status);
+            }
             TaskStatus status = Tasks.toStatus(obj.get("Current status").toString());
-            Tasks task = new Tasks(number, Employee.getEmployee(assigned), status, date, author, comment);
+            Tasks task = new Tasks(number, Employee.getEmployee(assigned), status, date, author, comment, historyTask);
             Employee.listTasks.add(task);
         }
     }
