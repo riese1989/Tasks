@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Stream;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -108,6 +109,7 @@ public class Main {
             System.out.println("Инициатор");
             String author = scanLine();
             Employee empl = choiceAssignTask(author);
+            empl.incTaskOfThisSession();
             Tasks task = new Tasks(number, empl, TaskStatus.NOTE_DONE, new Date(), author);
             Employee.listTasks.add(task);
             System.out.println("Назначено на " + empl.getFamily());
@@ -121,13 +123,13 @@ public class Main {
 
     //выбор исполнителя
     public static Employee choiceAssignTask(String author) {
-        Employee employee = tasksOfAuthor(author);
-        if (employee.getTaskOfThisSession() < 0.6 * Tasks.getNoneAppTasks())    {
-            return employee;
-        }
-        if (!employee.currentVacation())    {
-            return employee;
-        }
+//        Employee employee = tasksOfAuthor(author);
+//        if (employee.getTaskOfThisSession() < 0.6 * Tasks.getNoneAppTasks())    {
+//            return employee;
+//        }
+//        if (!employee.currentVacation())    {
+//            return employee;
+//        }
         Integer size = Employee.employees.size();
         for(;;) {
             Integer random = (int) (Math.random() * size);
@@ -406,8 +408,8 @@ public class Main {
             Long count = Employee.listTasks.stream().filter(t -> t.getAssigned() == employee && t.getAuthor().equals(author)).count();
             employee.setCountTasksOfAuthor(count);
         }
-        Employee empl = Employee.employees.stream().max(Comparator.comparing(Employee::getCountTasksOfAuthor)).get();
-        empl.incTaskOfThisSession();
+        Stream<Employee> stream = Employee.employees.stream();
+        Employee empl = stream.max(Comparator.comparing(Employee::getCountTasksOfAuthor)).get();
         return empl;
     }
 

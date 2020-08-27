@@ -17,7 +17,6 @@ public class Employee {
     public static ArrayList<Employee> employees = new ArrayList<>();
     private HashMap<Date, Date> vacations = new HashMap<>();
     private  Long countTasksOfAuthor;
-
     private Integer taskOfThisSession = 0;
 
     public HashMap<Date, Date> getVacations() {
