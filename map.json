@@ -69,12 +69,18 @@
   },
   "ИНЦ-002001956": {
     "Assigned": "pestov",
-    "Comment": null,
-    "Current status": "NOTE_DONE",
+    "Comment": "",
+    "Current status": "DONE",
     "Author": "Roman.Gromov",
     "History": [
       {
         "NOTE_DONE": "27.08.2020 11:21:53 MSK"
+      },
+      {
+        "DONE": "27.08.2020 15:52:14 MSK"
+      },
+      {
+        "DONE": "28.08.2020 10:33:00 MSK"
       }
     ]
   },
@@ -92,6 +98,17 @@
       },
       {
         "DONE": "10.08.2020 16:31:01 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002008102": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Denis.Ishchenko",
+    "History": [
+      {
+        "NOTE_DONE": "28.08.2020 11:15:45 MSK"
       }
     ]
   },
@@ -167,17 +184,6 @@
     "History": [
       {
         "NOTE_DONE": "16.07.2020 16:08:39 MSK"
-      }
-    ]
-  },
-  "ИНЦ-002001957": {
-    "Assigned": "pestov",
-    "Comment": null,
-    "Current status": "NOTE_DONE",
-    "Author": "Sergey.Toluzakov",
-    "History": [
-      {
-        "NOTE_DONE": "27.08.2020 11:31:34 MSK"
       }
     ]
   },
@@ -289,6 +295,17 @@
       }
     ]
   },
+  "ЗНО-001618480": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Eli.Kalashnikova",
+    "History": [
+      {
+        "NOTE_DONE": "02.09.2020 15:43:01 MSK"
+      }
+    ]
+  },
   "ИНЦ-001818782": {
     "Assigned": "pestov",
     "Comment": "",
@@ -385,6 +402,17 @@
     "History": [
       {
         "NOT_US": "19.08.2020 14:45:41 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002009410": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Irina.Akimushkina",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 09:55:42 MSK"
       }
     ]
   },
@@ -502,6 +530,53 @@
       }
     ]
   },
+  "ЗНО-001612977": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Konstanti.Tratsevsky",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 16:12:22 MSK"
+      }
+    ]
+  },
+  "ЗНО-001612978": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Konstanti.Tratsevsky",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 16:12:48 MSK"
+      },
+      {
+        "DONE": "01.09.2020 16:39:52 MSK"
+      }
+    ]
+  },
+  "ЗНО-001612971": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Aleksey.Levchuk",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 16:11:14 MSK"
+      }
+    ]
+  },
+  "ЗНО-001612973": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Konstanti.Tratsevsky",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 16:11:36 MSK"
+      }
+    ]
+  },
   "ИНЦ-001751785": {
     "Assigned": "pestov",
     "Current status": "DONE",
@@ -511,6 +586,20 @@
       },
       {
         "DONE": "15.07.2020 17:39:46 MSK"
+      }
+    ]
+  },
+  "ЗНО-001612974": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Konstanti.Tratsevsky",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 16:12:01 MSK"
+      },
+      {
+        "DONE": "01.09.2020 16:37:42 MSK"
       }
     ]
   },
@@ -579,6 +668,34 @@
     "History": [
       {
         "NOTE_DONE": "14.07.2020 10:07:12 MSK"
+      }
+    ]
+  },
+  "ЗНО-001612958": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Aleksandr.Tedeev",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 16:07:56 MSK"
+      },
+      {
+        "DONE": "01.09.2020 16:36:33 MSK"
+      }
+    ]
+  },
+  "ЗНО-001612959": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Aleksandr.Tedeev",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 16:08:26 MSK"
+      },
+      {
+        "DONE": "01.09.2020 16:36:05 MSK"
       }
     ]
   },
@@ -669,6 +786,17 @@
       }
     ]
   },
+  "ЗНО-001612965": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Aleksey.Levchuk",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 16:10:18 MSK"
+      }
+    ]
+  },
   "ИНЦ-001795799": {
     "Assigned": "pestov",
     "Current status": "DONE",
@@ -692,6 +820,31 @@
       }
     ]
   },
+  "ЗНО-001612960": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Aleksandr.Tedeev",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 16:08:52 MSK"
+      },
+      {
+        "DONE": "01.09.2020 16:37:12 MSK"
+      }
+    ]
+  },
+  "ЗНО-001612961": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Aleksandr.Tedeev",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 16:09:17 MSK"
+      }
+    ]
+  },
   "ЗНО-001539131": {
     "Assigned": "batanov",
     "Comment": null,
@@ -700,6 +853,17 @@
     "History": [
       {
         "NOTE_DONE": "13.08.2020 09:56:28 MSK"
+      }
+    ]
+  },
+  "ЗНО-001612962": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Konstanti.Tratsevsky",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 16:09:46 MSK"
       }
     ]
   },
@@ -797,6 +961,17 @@
       }
     ]
   },
+  "ИНЦ-002021521": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Oleg.Nikitaev",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 15:10:17 MSK"
+      }
+    ]
+  },
   "ЗНО-001583263": {
     "Assigned": "pestov",
     "Comment": "",
@@ -816,12 +991,15 @@
   },
   "ИНЦ-002001756": {
     "Assigned": "pestov",
-    "Comment": null,
-    "Current status": "NOTE_DONE",
+    "Comment": "",
+    "Current status": "DONE",
     "Author": "Alexey.Lompa",
     "History": [
       {
         "NOTE_DONE": "27.08.2020 11:20:59 MSK"
+      },
+      {
+        "DONE": "27.08.2020 15:50:22 MSK"
       }
     ]
   },
@@ -962,6 +1140,20 @@
       }
     ]
   },
+  "ИНЦ-002023714": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "SerSmirnov",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 15:21:51 MSK"
+      },
+      {
+        "DONE": "31.08.2020 15:40:38 MSK"
+      }
+    ]
+  },
   "ЗНО-001504271": {
     "Assigned": "pestov",
     "Comment": "",
@@ -990,12 +1182,51 @@
       }
     ]
   },
+  "ИНЦ-002008138": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Denis.Ishchenko",
+    "History": [
+      {
+        "NOTE_DONE": "28.08.2020 11:16:08 MSK"
+      },
+      {
+        "DONE": "28.08.2020 15:13:24 MSK"
+      }
+    ]
+  },
   "\u20ACЌ\u2013-001764049": {
     "Assigned": "batanov",
     "Current status": "NOTE_DONE",
     "History": [
       {
         "NOTE_DONE": "17.07.2020 15:57:47 MSK"
+      }
+    ]
+  },
+  "ЗНО-001612980": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Aleksey.Levchuk",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 16:13:28 MSK"
+      }
+    ]
+  },
+  "ЗНО-001612981": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Aleksandr.Tedeev",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 16:13:56 MSK"
+      },
+      {
+        "DONE": "01.09.2020 16:38:43 MSK"
       }
     ]
   },
@@ -1021,6 +1252,17 @@
       },
       {
         "DONE": "21.08.2020 15:32:30 MSK"
+      }
+    ]
+  },
+  "ЗНО-001608252": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "S.Mansurov",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 15:17:17 MSK"
       }
     ]
   },
@@ -1070,6 +1312,20 @@
     "History": [
       {
         "NOTE_DONE": "06.08.2020 10:21:00 MSK"
+      }
+    ]
+  },
+  "ЗНО-001612983": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Aleksey.Levchuk",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 16:14:17 MSK"
+      },
+      {
+        "DONE": "01.09.2020 16:38:07 MSK"
       }
     ]
   },
@@ -1145,6 +1401,17 @@
     "History": [
       {
         "NOTE_DONE": "16.07.2020 16:09:54 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002007279": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Artem.Tkachev",
+    "History": [
+      {
+        "NOTE_DONE": "28.08.2020 11:15:14 MSK"
       }
     ]
   },
@@ -1413,6 +1680,17 @@
       }
     ]
   },
+  "ЗНО-001624503": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "L.Sukhareva",
+    "History": [
+      {
+        "NOTE_DONE": "03.09.2020 11:52:26 MSK"
+      }
+    ]
+  },
   "ИНЦ-001944283": {
     "Assigned": "pestov",
     "Comment": "",
@@ -1424,6 +1702,20 @@
       },
       {
         "DONE": "18.08.2020 10:26:59 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002022644": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Dmitry.Epimakhov",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 15:15:48 MSK"
+      },
+      {
+        "DONE": "31.08.2020 15:32:27 MSK"
       }
     ]
   },
@@ -1530,6 +1822,32 @@
       },
       {
         "DONE": "15.07.2020 10:44:44 MSK"
+      }
+    ]
+  },
+  "ЗНО-001610346": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Artem.Firstov",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 11:35:13 MSK"
+      },
+      {
+        "DONE": "01.09.2020 16:56:52 MSK"
+      },
+      {
+        "WAITING": "02.09.2020 11:30:50 MSK"
+      },
+      {
+        "WAITING": "02.09.2020 15:33:07 MSK"
+      },
+      {
+        "DONE": "02.09.2020 16:34:08 MSK"
+      },
+      {
+        "DONE": "03.09.2020 11:44:14 MSK"
       }
     ]
   },
@@ -1661,12 +1979,15 @@
   },
   "ИНЦ-002001795": {
     "Assigned": "pestov",
-    "Comment": null,
-    "Current status": "NOTE_DONE",
+    "Comment": "",
+    "Current status": "DONE",
     "Author": "Eg.Simonov",
     "History": [
       {
         "NOTE_DONE": "27.08.2020 11:21:28 MSK"
+      },
+      {
+        "DONE": "28.08.2020 10:49:49 MSK"
       }
     ]
   },
@@ -1678,6 +1999,20 @@
     "History": [
       {
         "NOTE_DONE": "10.08.2020 10:14:20 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002036890": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "WAITING",
+    "Author": "Natalia.Khaperskaya",
+    "History": [
+      {
+        "NOTE_DONE": "02.09.2020 15:45:27 MSK"
+      },
+      {
+        "WAITING": "02.09.2020 16:47:07 MSK"
       }
     ]
   },
@@ -2029,6 +2364,17 @@
       }
     ]
   },
+  "ИНЦ-002038850": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Sergey.Lyamzin",
+    "History": [
+      {
+        "NOTE_DONE": "03.09.2020 11:48:09 MSK"
+      }
+    ]
+  },
   "ЗНО-001509755": {
     "Assigned": "pestov",
     "Comment": "",
@@ -2099,7 +2445,7 @@
   "ЗНО-001590649": {
     "Assigned": "pestov",
     "Comment": "",
-    "Current status": "WAITING",
+    "Current status": "DONE",
     "Author": "V.Kozlovskaya",
     "History": [
       {
@@ -2110,6 +2456,31 @@
       },
       {
         "WAITING": "27.08.2020 10:38:51 MSK"
+      },
+      {
+        "DONE": "28.08.2020 14:50:47 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002009263": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "M.Khromov",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 09:54:25 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002002628": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Farida.Demidova",
+    "History": [
+      {
+        "NOTE_DONE": "27.08.2020 15:27:41 MSK"
       }
     ]
   },
@@ -2152,6 +2523,28 @@
       },
       {
         "DONE": "07.08.2020 13:31:29 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002024222": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Mariya.Mikhaylova",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 15:22:24 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002024228": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Anna.Shepelenko",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 15:22:51 MSK"
       }
     ]
   },
@@ -2239,6 +2632,20 @@
       }
     ]
   },
+  "ЗНО-001598372": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "A.Sviridov",
+    "History": [
+      {
+        "NOTE_DONE": "28.08.2020 11:14:13 MSK"
+      },
+      {
+        "DONE": "28.08.2020 15:10:36 MSK"
+      }
+    ]
+  },
   "ЗНО-001555689": {
     "Assigned": "batanov",
     "Comment": null,
@@ -2247,6 +2654,17 @@
     "History": [
       {
         "NOTE_DONE": "18.08.2020 12:13:01 MSK"
+      }
+    ]
+  },
+  "ЗНО-001598371": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "A.Sviridov",
+    "History": [
+      {
+        "NOTE_DONE": "28.08.2020 11:13:51 MSK"
       }
     ]
   },
@@ -2373,6 +2791,17 @@
     "History": [
       {
         "NOTE_DONE": "13.08.2020 09:58:14 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002035521": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Ma.AndrianovaDeyneka",
+    "History": [
+      {
+        "NOTE_DONE": "02.09.2020 15:39:39 MSK"
       }
     ]
   },
@@ -2561,6 +2990,9 @@
       },
       {
         "DONE": "17.08.2020 16:34:24 MSK"
+      },
+      {
+        "DONE": "31.08.2020 11:28:35 MSK"
       }
     ]
   },
@@ -2689,6 +3121,20 @@
       }
     ]
   },
+  "ЗНО-001611256": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Evgeniya.Gornova",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 11:36:04 MSK"
+      },
+      {
+        "DONE": "01.09.2020 12:43:24 MSK"
+      }
+    ]
+  },
   "ЗНО-001480149": {
     "Assigned": "pestov",
     "Comment": "",
@@ -2716,12 +3162,15 @@
   },
   "ИНЦ-002001571": {
     "Assigned": "pestov",
-    "Comment": null,
-    "Current status": "NOTE_DONE",
+    "Comment": "",
+    "Current status": "DONE",
     "Author": "Mariya.Ershova",
     "History": [
       {
         "NOTE_DONE": "27.08.2020 11:20:41 MSK"
+      },
+      {
+        "DONE": "27.08.2020 15:49:23 MSK"
       }
     ]
   },
@@ -2826,6 +3275,20 @@
       },
       {
         "DONE": "26.08.2020 12:12:12 MSK"
+      }
+    ]
+  },
+  "ЗНО-001614551": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "M.Popov",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 16:17:46 MSK"
+      },
+      {
+        "DONE": "02.09.2020 11:44:16 MSK"
       }
     ]
   },
@@ -2941,6 +3404,17 @@
       }
     ]
   },
+  "ИНЦ-002002896": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Naina.Mamkhyagova",
+    "History": [
+      {
+        "NOTE_DONE": "27.08.2020 15:32:47 MSK"
+      }
+    ]
+  },
   "ЗНО-001427547": {
     "Assigned": "pestov",
     "Current status": "DONE",
@@ -2995,6 +3469,17 @@
     "History": [
       {
         "NOTE_DONE": "25.08.2020 14:12:00 MSK"
+      }
+    ]
+  },
+  "ЗНО-001597481": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Anton.Syuskov",
+    "History": [
+      {
+        "NOTE_DONE": "28.08.2020 11:12:36 MSK"
       }
     ]
   },
@@ -3390,6 +3875,20 @@
       }
     ]
   },
+  "ИНЦ-002002233": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Dmitry.Palkin",
+    "History": [
+      {
+        "NOTE_DONE": "27.08.2020 15:25:18 MSK"
+      },
+      {
+        "DONE": "27.08.2020 15:54:04 MSK"
+      }
+    ]
+  },
   "ЗНО-001590162": {
     "Assigned": "pestov",
     "Comment": "",
@@ -3467,6 +3966,17 @@
       }
     ]
   },
+  "ИНЦ-002037597": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "A.Silantev",
+    "History": [
+      {
+        "NOTE_DONE": "02.09.2020 15:51:33 MSK"
+      }
+    ]
+  },
   "ЗНО-001583620": {
     "Assigned": "batanov",
     "Comment": null,
@@ -3524,6 +4034,31 @@
       },
       {
         "DONE": "26.08.2020 12:22:03 MSK"
+      }
+    ]
+  },
+  "ЗНО-001612385": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "D.Finko",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 11:38:53 MSK"
+      },
+      {
+        "DONE": "01.09.2020 16:33:24 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002037352": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "K.Rogozhinskiy",
+    "History": [
+      {
+        "NOTE_DONE": "02.09.2020 15:49:22 MSK"
       }
     ]
   },
@@ -3604,14 +4139,28 @@
       }
     ]
   },
-  "ЗНО-001593404": {
-    "Assigned": "pestov",
+  "ЗНО-001601276": {
+    "Assigned": "batanov",
     "Comment": null,
     "Current status": "NOTE_DONE",
+    "Author": "Dmitr.Kochetov",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 09:56:10 MSK"
+      }
+    ]
+  },
+  "ЗНО-001593404": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
     "Author": "V.Zimina",
     "History": [
       {
         "NOTE_DONE": "27.08.2020 11:18:36 MSK"
+      },
+      {
+        "DONE": "27.08.2020 11:53:05 MSK"
       }
     ]
   },
@@ -3677,6 +4226,17 @@
     "History": [
       {
         "NOTE_DONE": "24.07.2020 10:01:08 MSK"
+      }
+    ]
+  },
+  "ЗНО-001612176": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Maria.Snopok",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 11:38:20 MSK"
       }
     ]
   },
@@ -3795,6 +4355,17 @@
       },
       {
         "DONE": "05.08.2020 12:29:58 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002029996": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Evgeny.Bukhenko",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 16:16:18 MSK"
       }
     ]
   },
@@ -4302,6 +4873,20 @@
       }
     ]
   },
+  "ЗНО-001614129": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Aleksey.Kondratenkov",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 16:16:50 MSK"
+      },
+      {
+        "DONE": "01.09.2020 16:40:55 MSK"
+      }
+    ]
+  },
   "ЗНО-001588495": {
     "Assigned": "batanov",
     "Comment": null,
@@ -4322,6 +4907,17 @@
       },
       {
         "DONE": "16.07.2020 17:23:58 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002024492": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Maria.Albitskaya",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 11:34:36 MSK"
       }
     ]
   },
@@ -4549,6 +5145,17 @@
       }
     ]
   },
+  "ЗНО-001613052": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Artem.Firstov",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 16:15:03 MSK"
+      }
+    ]
+  },
   "ЗНО-001559966": {
     "Assigned": "pestov",
     "Comment": "",
@@ -4641,6 +5248,20 @@
       },
       {
         "DONE": "31.07.2020 16:46:51 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002031648": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Evgeniya.Polynskaya",
+    "History": [
+      {
+        "NOTE_DONE": "02.09.2020 09:44:29 MSK"
+      },
+      {
+        "DONE": "02.09.2020 15:36:40 MSK"
       }
     ]
   },
@@ -4795,6 +5416,17 @@
       }
     ]
   },
+  "ИНЦ-002032976": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Vl.Illarionov",
+    "History": [
+      {
+        "NOTE_DONE": "02.09.2020 09:47:02 MSK"
+      }
+    ]
+  },
   "ЗНО-001546047": {
     "Assigned": "pestov",
     "Comment": "",
@@ -4940,14 +5572,28 @@
       }
     ]
   },
-  "ЗНО-001594353": {
-    "Assigned": "pestov",
+  "ЗНО-001615494": {
+    "Assigned": "batanov",
     "Comment": null,
     "Current status": "NOTE_DONE",
+    "Author": "Yury.Shabrov",
+    "History": [
+      {
+        "NOTE_DONE": "02.09.2020 09:45:11 MSK"
+      }
+    ]
+  },
+  "ЗНО-001594353": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
     "Author": "Maria.Fedyakina",
     "History": [
       {
         "NOTE_DONE": "27.08.2020 11:19:31 MSK"
+      },
+      {
+        "DONE": "27.08.2020 12:02:41 MSK"
       }
     ]
   },
@@ -5087,7 +5733,7 @@
   "ИНЦ-001880792": {
     "Assigned": "pestov",
     "Comment": "",
-    "Current status": "WAITING",
+    "Current status": "NOTE_DONE",
     "Author": "Vyaches.Nizamutdinov",
     "History": [
       {
@@ -5119,6 +5765,29 @@
       },
       {
         "WAITING": "26.08.2020 13:41:36 MSK"
+      },
+      {
+        "WAITING": "28.08.2020 10:19:58 MSK"
+      },
+      {
+        "WAITING": "28.08.2020 13:24:35 MSK"
+      },
+      {
+        "NOTE_DONE": "01.09.2020 16:18:52 MSK"
+      },
+      {
+        "NOTE_DONE": "01.09.2020 16:19:00 MSK"
+      }
+    ]
+  },
+  "ЗНО-001595433": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Yury.Akimkin",
+    "History": [
+      {
+        "NOTE_DONE": "27.08.2020 15:26:12 MSK"
       }
     ]
   },
@@ -5216,6 +5885,17 @@
       }
     ]
   },
+  "ЗНО-001609845": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Denis.Shaykhislamov",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 11:34:12 MSK"
+      }
+    ]
+  },
   "ИНЦ-001776534": {
     "Assigned": "pestov",
     "Current status": "DONE",
@@ -5228,6 +5908,23 @@
       },
       {
         "DONE": "22.07.2020 14:37:24 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002022729": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "N.Benevolenskaya",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 15:16:53 MSK"
+      },
+      {
+        "WAITING": "31.08.2020 15:34:43 MSK"
+      },
+      {
+        "DONE": "01.09.2020 11:57:06 MSK"
       }
     ]
   },
@@ -5350,6 +6047,17 @@
       }
     ]
   },
+  "ИНЦ-002039323": {
+    "Assigned": "pestov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Dmitry.Palkin",
+    "History": [
+      {
+        "NOTE_DONE": "03.09.2020 11:49:04 MSK"
+      }
+    ]
+  },
   "ЗНО-001504682": {
     "Assigned": "pestov",
     "Comment": "",
@@ -5413,6 +6121,20 @@
       },
       {
         "DONE": "05.08.2020 10:45:44 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002005162": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Irina.Panova",
+    "History": [
+      {
+        "NOTE_DONE": "28.08.2020 11:13:01 MSK"
+      },
+      {
+        "DONE": "28.08.2020 14:57:42 MSK"
       }
     ]
   },
@@ -5539,6 +6261,17 @@
       }
     ]
   },
+  "ИНЦ-002038003": {
+    "Assigned": "pestov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Igor.Seryaev",
+    "History": [
+      {
+        "NOTE_DONE": "03.09.2020 11:47:37 MSK"
+      }
+    ]
+  },
   "ИНЦ-001834444": {
     "Assigned": "pestov",
     "Comment": "",
@@ -5600,6 +6333,17 @@
       }
     ]
   },
+  "ИНЦ-002005393": {
+    "Assigned": "pestov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Vladislav.Zaversky",
+    "History": [
+      {
+        "NOTE_DONE": "28.08.2020 11:13:22 MSK"
+      }
+    ]
+  },
   "ИНЦ-001750342": {
     "Assigned": "pestov",
     "Current status": "DONE",
@@ -5626,6 +6370,20 @@
     "History": [
       {
         "NOTE_DONE": "06.08.2020 14:41:51 MSK"
+      }
+    ]
+  },
+  "ЗНО-001619419": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "WAITING",
+    "Author": "Yuriy.Korneenkov",
+    "History": [
+      {
+        "NOTE_DONE": "02.09.2020 15:50:30 MSK"
+      },
+      {
+        "WAITING": "02.09.2020 17:26:36 MSK"
       }
     ]
   },
@@ -5796,6 +6554,20 @@
       }
     ]
   },
+  "ЗНО-001608540": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Sem.Klimov",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 15:19:56 MSK"
+      },
+      {
+        "DONE": "31.08.2020 15:39:45 MSK"
+      }
+    ]
+  },
   "ЗНО-001513376": {
     "Assigned": "batanov",
     "Comment": null,
@@ -5867,6 +6639,28 @@
       }
     ]
   },
+  "ИНЦ-002037175": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Dmitry.Latunov",
+    "History": [
+      {
+        "NOTE_DONE": "02.09.2020 15:47:03 MSK"
+      }
+    ]
+  },
+  "ЗНО-001600826": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Alena.Sologub",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 09:55:03 MSK"
+      }
+    ]
+  },
   "ЗНО-001444786": {
     "Assigned": "pestov",
     "Current status": "DONE",
@@ -5891,6 +6685,17 @@
       },
       {
         "DONE": "22.07.2020 13:22:33 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002018431": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Vasiliy.Tarasevich",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 09:59:34 MSK"
       }
     ]
   },
@@ -6048,6 +6853,20 @@
       }
     ]
   },
+  "ИНЦ-002002925": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "NOT_US",
+    "Author": "Kristina.Maslenkova",
+    "History": [
+      {
+        "NOTE_DONE": "27.08.2020 15:33:08 MSK"
+      },
+      {
+        "NOT_US": "28.08.2020 10:38:22 MSK"
+      }
+    ]
+  },
   "ИНЦ-001886114": {
     "Assigned": "pestov",
     "Comment": "",
@@ -6096,6 +6915,20 @@
       }
     ]
   },
+  "ИНЦ-002036933": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "TASK",
+    "Author": "Tatyan.Sergeeva1",
+    "History": [
+      {
+        "NOTE_DONE": "02.09.2020 15:45:50 MSK"
+      },
+      {
+        "TASK": "02.09.2020 16:52:43 MSK"
+      }
+    ]
+  },
   "ЗНО-001498819": {
     "Assigned": "pestov",
     "Comment": "",
@@ -6130,6 +6963,17 @@
       }
     ]
   },
+  "ЗНО-001608335": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "A.Arefeva",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 15:19:23 MSK"
+      }
+    ]
+  },
   "ЗНО-001564893": {
     "Assigned": "batanov",
     "Comment": null,
@@ -6138,6 +6982,20 @@
     "History": [
       {
         "NOTE_DONE": "20.08.2020 12:23:21 MSK"
+      }
+    ]
+  },
+  "ЗНО-001601939": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Elen.Makarova7",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 09:57:47 MSK"
+      },
+      {
+        "DONE": "31.08.2020 11:21:11 MSK"
       }
     ]
   },
@@ -6194,6 +7052,17 @@
       }
     ]
   },
+  "ЗНО-001596251": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Dmitry.Grekov",
+    "History": [
+      {
+        "NOTE_DONE": "27.08.2020 15:33:55 MSK"
+      }
+    ]
+  },
   "ИНЦ-001796788": {
     "Assigned": "batanov",
     "Current status": "NOTE_DONE",
@@ -6234,6 +7103,20 @@
       },
       {
         "DONE": "20.08.2020 12:03:40 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002036703": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Alexander.Grigorets",
+    "History": [
+      {
+        "NOTE_DONE": "02.09.2020 15:43:44 MSK"
+      },
+      {
+        "DONE": "02.09.2020 16:27:30 MSK"
       }
     ]
   },
@@ -6415,6 +7298,17 @@
       }
     ]
   },
+  "ИНЦ-002008437": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Natalia.Khaperskaya",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 09:53:04 MSK"
+      }
+    ]
+  },
   "ЗНО-001458105": {
     "Assigned": "pestov",
     "Comment": "",
@@ -6517,6 +7411,20 @@
       }
     ]
   },
+  "ЗНО-001611998": {
+    "Assigned": "pestov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Artem.Firstov",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 11:38:01 MSK"
+      },
+      {
+        "NOTE_DONE": "01.09.2020 11:39:39 MSK"
+      }
+    ]
+  },
   "ЗНО-001460650": {
     "Assigned": "pestov",
     "Current status": "DONE",
@@ -6577,6 +7485,31 @@
     "History": [
       {
         "NOTE_DONE": "26.08.2020 10:58:35 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002021643": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Vl.Illarionov",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 15:12:42 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002021407": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Yulia.Mitasova",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 10:00:27 MSK"
+      },
+      {
+        "DONE": "31.08.2020 11:24:02 MSK"
       }
     ]
   },
@@ -6693,9 +7626,23 @@
       }
     ]
   },
+  "ЗНО-001594289": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Ok.Pavlova",
+    "History": [
+      {
+        "NOTE_DONE": "28.08.2020 11:11:12 MSK"
+      },
+      {
+        "DONE": "28.08.2020 15:02:34 MSK"
+      }
+    ]
+  },
   "ИНЦ-001957439": {
     "Assigned": "pestov",
-    "Comment": "3-Поддержка Jira",
+    "Comment": "",
     "Current status": "TASK",
     "Author": "Artur.Temirov",
     "History": [
@@ -6707,6 +7654,12 @@
       },
       {
         "TASK": "20.08.2020 12:09:04 MSK"
+      },
+      {
+        "DONE": "28.08.2020 10:06:06 MSK"
+      },
+      {
+        "TASK": "02.09.2020 11:42:01 MSK"
       }
     ]
   },
@@ -6826,6 +7779,20 @@
       }
     ]
   },
+  "ИНЦ-002022987": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "A.Malyshev",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 15:18:41 MSK"
+      },
+      {
+        "DONE": "31.08.2020 15:35:49 MSK"
+      }
+    ]
+  },
   "ЗНО-001438972": {
     "Assigned": "batanov",
     "Current status": "NOTE_DONE",
@@ -6863,6 +7830,20 @@
       },
       {
         "DONE": "25.08.2020 13:55:20 MSK"
+      }
+    ]
+  },
+  "ЗНО-001600412": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Faina.Egorova",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 09:53:31 MSK"
+      },
+      {
+        "DONE": "31.08.2020 11:10:21 MSK"
       }
     ]
   },
@@ -6955,6 +7936,17 @@
       },
       {
         "DONE": "17.08.2020 12:59:02 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002035812": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Boris.Murashin",
+    "History": [
+      {
+        "NOTE_DONE": "02.09.2020 15:40:38 MSK"
       }
     ]
   },
@@ -7298,6 +8290,26 @@
       }
     ]
   },
+  "ЗНО-001600670": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Olga.Khudoleeva",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 09:54:01 MSK"
+      },
+      {
+        "TASK": "31.08.2020 11:08:55 MSK"
+      },
+      {
+        "WAITING": "31.08.2020 11:08:59 MSK"
+      },
+      {
+        "DONE": "31.08.2020 15:26:03 MSK"
+      }
+    ]
+  },
   "ЗНО-001551559": {
     "Assigned": "pestov",
     "Comment": "",
@@ -7315,6 +8327,20 @@
       },
       {
         "DONE": "18.08.2020 17:24:30 MSK"
+      }
+    ]
+  },
+  "ЗНО-001601767": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Ni.Melnikova",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 09:57:27 MSK"
+      },
+      {
+        "DONE": "31.08.2020 11:20:01 MSK"
       }
     ]
   },
@@ -7427,6 +8453,17 @@
       },
       {
         "DONE": "28.07.2020 15:25:39 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002032327": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Ruslan.Denisov",
+    "History": [
+      {
+        "NOTE_DONE": "02.09.2020 09:46:08 MSK"
       }
     ]
   },
@@ -7898,6 +8935,20 @@
       }
     ]
   },
+  "ИНЦ-002024345": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "WAITING",
+    "Author": "Irina.Kabesheva",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 11:33:51 MSK"
+      },
+      {
+        "WAITING": "01.09.2020 12:20:49 MSK"
+      }
+    ]
+  },
   "ИНЦ-001963261": {
     "Assigned": "batanov",
     "Comment": null,
@@ -7943,7 +8994,7 @@
   "ИНЦ-001943667": {
     "Assigned": "pestov",
     "Comment": "",
-    "Current status": "TASK",
+    "Current status": "DONE",
     "Author": "Nikolay.Gorshkov",
     "History": [
       {
@@ -7951,6 +9002,9 @@
       },
       {
         "TASK": "17.08.2020 16:29:07 MSK"
+      },
+      {
+        "DONE": "28.08.2020 10:07:17 MSK"
       }
     ]
   },
@@ -8016,12 +9070,15 @@
   },
   "ИНЦ-002001409": {
     "Assigned": "pestov",
-    "Comment": null,
-    "Current status": "NOTE_DONE",
+    "Comment": "",
+    "Current status": "DONE",
     "Author": "Yuliya.Bogdanova",
     "History": [
       {
         "NOTE_DONE": "27.08.2020 11:20:00 MSK"
+      },
+      {
+        "DONE": "27.08.2020 15:44:53 MSK"
       }
     ]
   },
@@ -8135,7 +9192,7 @@
   "ИНЦ-001943683": {
     "Assigned": "pestov",
     "Comment": "",
-    "Current status": "DONE",
+    "Current status": "TASK",
     "Author": "Anatoliy.Bochkarev",
     "History": [
       {
@@ -8143,6 +9200,12 @@
       },
       {
         "DONE": "17.08.2020 16:30:45 MSK"
+      },
+      {
+        "DONE": "28.08.2020 10:08:23 MSK"
+      },
+      {
+        "TASK": "28.08.2020 11:00:31 MSK"
       }
     ]
   },
@@ -8213,7 +9276,7 @@
   "ЗНО-001580701": {
     "Assigned": "pestov",
     "Comment": "",
-    "Current status": "TASK",
+    "Current status": "DONE",
     "Author": "Aleksey.Nikiforov",
     "History": [
       {
@@ -8227,6 +9290,12 @@
       },
       {
         "TASK": "26.08.2020 12:08:32 MSK"
+      },
+      {
+        "DONE": "28.08.2020 10:12:01 MSK"
+      },
+      {
+        "DONE": "28.08.2020 10:35:50 MSK"
       }
     ]
   },
@@ -8333,6 +9402,23 @@
       },
       {
         "DONE": "13.07.2020 17:52:31 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002002791": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Yuliya.Bogdanova",
+    "History": [
+      {
+        "NOTE_DONE": "27.08.2020 15:30:17 MSK"
+      },
+      {
+        "WAITING": "27.08.2020 15:55:24 MSK"
+      },
+      {
+        "DONE": "28.08.2020 10:39:50 MSK"
       }
     ]
   },
@@ -8583,6 +9669,17 @@
       }
     ]
   },
+  "ЗНО-001602200": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Illarion.Gudimov",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 09:58:15 MSK"
+      }
+    ]
+  },
   "ИНЦ-001997280": {
     "Assigned": "pestov",
     "Comment": "",
@@ -8829,6 +9926,20 @@
       }
     ]
   },
+  "ЗНО-001596040": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Kirill.Demchenko",
+    "History": [
+      {
+        "NOTE_DONE": "28.08.2020 11:12:15 MSK"
+      },
+      {
+        "DONE": "28.08.2020 15:15:35 MSK"
+      }
+    ]
+  },
   "ИНЦ-001884550": {
     "Assigned": "batanov",
     "Comment": null,
@@ -8941,6 +10052,34 @@
       },
       {
         "DONE": "18.08.2020 17:27:44 MSK"
+      }
+    ]
+  },
+  "ЗНО-001603788": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Baatr.Tserenov",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 09:59:08 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002023455": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Artem.Devichev",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 15:21:13 MSK"
+      },
+      {
+        "DONE": "31.08.2020 15:37:30 MSK"
+      },
+      {
+        "DONE": "01.09.2020 12:00:06 MSK"
       }
     ]
   },
@@ -9247,6 +10386,20 @@
       },
       {
         "DONE": "27.08.2020 10:51:21 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002037462": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Alexander.Grigorets",
+    "History": [
+      {
+        "NOTE_DONE": "02.09.2020 15:49:58 MSK"
+      },
+      {
+        "DONE": "02.09.2020 17:00:56 MSK"
       }
     ]
   },
@@ -9596,6 +10749,17 @@
       }
     ]
   },
+  "ЗНО-001595942": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Kristina.Maslenkova",
+    "History": [
+      {
+        "NOTE_DONE": "28.08.2020 11:09:37 MSK"
+      }
+    ]
+  },
   "ЗНО-001526921": {
     "Assigned": "batanov",
     "Comment": null,
@@ -9615,6 +10779,17 @@
     "History": [
       {
         "NOTE_DONE": "14.08.2020 10:30:53 MSK"
+      }
+    ]
+  },
+  "ЗНО-001623187": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Oleg.Dzhurinskiy",
+    "History": [
+      {
+        "NOTE_DONE": "03.09.2020 11:51:58 MSK"
       }
     ]
   },
@@ -9829,6 +11004,17 @@
       }
     ]
   },
+  "ИНЦ-002041512": {
+    "Assigned": "pestov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Andrey.Shaburov",
+    "History": [
+      {
+        "NOTE_DONE": "03.09.2020 11:51:01 MSK"
+      }
+    ]
+  },
   "ИНЦ-001940556": {
     "Assigned": "pestov",
     "Comment": "",
@@ -9846,6 +11032,17 @@
       },
       {
         "DONE": "18.08.2020 17:36:19 MSK"
+      }
+    ]
+  },
+  "ЗНО-001613372": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Nikolay.Guzenok",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 16:15:51 MSK"
       }
     ]
   },
@@ -9872,6 +11069,20 @@
     "History": [
       {
         "DONE": "13.07.2020 11:27:26 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002004105": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Maksim.Baksheev",
+    "History": [
+      {
+        "NOTE_DONE": "27.08.2020 15:34:17 MSK"
+      },
+      {
+        "DONE": "28.08.2020 10:44:49 MSK"
       }
     ]
   },
@@ -9935,6 +11146,17 @@
     "History": [
       {
         "NOTE_DONE": "19.08.2020 14:32:32 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002041922": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Vl.Illarionov",
+    "History": [
+      {
+        "NOTE_DONE": "03.09.2020 11:51:29 MSK"
       }
     ]
   },
@@ -10106,6 +11328,26 @@
       },
       {
         "DONE": "24.07.2020 11:58:31 MSK"
+      }
+    ]
+  },
+  "ЗНО-001607960": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "O.Minkina",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 15:14:48 MSK"
+      },
+      {
+        "DONE": "31.08.2020 15:28:27 MSK"
+      },
+      {
+        "TASK": "31.08.2020 15:30:02 MSK"
+      },
+      {
+        "DONE": "01.09.2020 11:59:37 MSK"
       }
     ]
   },
@@ -10331,6 +11573,26 @@
       }
     ]
   },
+  "ИНЦ-002036118": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "WAITING",
+    "Author": "Andrey.Geranin",
+    "History": [
+      {
+        "NOTE_DONE": "02.09.2020 15:41:51 MSK"
+      },
+      {
+        "NOTE_DONE": "02.09.2020 15:52:17 MSK"
+      },
+      {
+        "DONE": "02.09.2020 16:17:49 MSK"
+      },
+      {
+        "WAITING": "02.09.2020 16:36:06 MSK"
+      }
+    ]
+  },
   "ИНЦ-001996104": {
     "Assigned": "batanov",
     "Comment": null,
@@ -10526,6 +11788,31 @@
       }
     ]
   },
+  "ИНЦ-002036123": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "N.Barinov",
+    "History": [
+      {
+        "NOTE_DONE": "02.09.2020 15:42:39 MSK"
+      },
+      {
+        "DONE": "02.09.2020 16:25:40 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002039872": {
+    "Assigned": "pestov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Asel.Dairova",
+    "History": [
+      {
+        "NOTE_DONE": "03.09.2020 11:49:28 MSK"
+      }
+    ]
+  },
   "ЗНО-001533236": {
     "Assigned": "batanov",
     "Comment": null,
@@ -10563,6 +11850,17 @@
       },
       {
         "DONE": "13.07.2020 17:36:52 MSK"
+      }
+    ]
+  },
+  "ЗНО-001608606": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Ol.Zaykova",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 15:20:24 MSK"
       }
     ]
   },
@@ -10715,6 +12013,17 @@
     "History": [
       {
         "NOTE_DONE": "04.08.2020 14:03:35 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002025099": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Sem.Klimov",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 11:35:37 MSK"
       }
     ]
   },
@@ -11060,6 +12369,17 @@
       }
     ]
   },
+  "ИНЦ-002018524": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Elvina.Granzhe",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 09:59:59 MSK"
+      }
+    ]
+  },
   "ИНЦ-001784264": {
     "Assigned": "pestov",
     "Current status": "NOT_US",
@@ -11238,6 +12558,17 @@
       }
     ]
   },
+  "ИНЦ-002030877": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Valentin.Drozdov",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 16:17:13 MSK"
+      }
+    ]
+  },
   "ИНЦ-001720823": {
     "Assigned": "pestov",
     "Current status": "DONE",
@@ -11306,6 +12637,17 @@
       }
     ]
   },
+  "ИНЦ-002037267": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Andrey.Kuryachiy",
+    "History": [
+      {
+        "NOTE_DONE": "02.09.2020 15:47:35 MSK"
+      }
+    ]
+  },
   "ИНЦ-001749014": {
     "Assigned": "pestov",
     "Current status": "DONE",
@@ -11352,6 +12694,23 @@
       }
     ]
   },
+  "ЗНО-001596860": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Ol.Zaykova",
+    "History": [
+      {
+        "NOTE_DONE": "27.08.2020 15:34:37 MSK"
+      },
+      {
+        "DONE": "28.08.2020 10:45:49 MSK"
+      },
+      {
+        "DONE": "28.08.2020 14:49:48 MSK"
+      }
+    ]
+  },
   "ЗНО-001590084": {
     "Assigned": "batanov",
     "Comment": null,
@@ -11360,6 +12719,20 @@
     "History": [
       {
         "NOTE_DONE": "26.08.2020 11:09:31 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002009869": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Ale.MaslovMonstovich",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 09:57:04 MSK"
+      },
+      {
+        "DONE": "31.08.2020 11:14:13 MSK"
       }
     ]
   },
@@ -11388,6 +12761,20 @@
       },
       {
         "DONE": "10.08.2020 11:25:31 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002029650": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Yulia.Sheykova",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 16:15:29 MSK"
+      },
+      {
+        "DONE": "01.09.2020 16:34:28 MSK"
       }
     ]
   },
@@ -11433,6 +12820,20 @@
       },
       {
         "DONE": "29.07.2020 16:47:27 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002003089": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "K.Rogozhinskiy",
+    "History": [
+      {
+        "NOTE_DONE": "27.08.2020 15:33:31 MSK"
+      },
+      {
+        "DONE": "28.08.2020 10:43:10 MSK"
       }
     ]
   },
@@ -11575,6 +12976,20 @@
       }
     ]
   },
+  "ИНЦ-002006361": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "IRomanov",
+    "History": [
+      {
+        "NOTE_DONE": "28.08.2020 11:14:44 MSK"
+      },
+      {
+        "DONE": "28.08.2020 15:09:04 MSK"
+      }
+    ]
+  },
   "ИНЦ-001751791": {
     "Assigned": "pestov",
     "Current status": "DONE",
@@ -11639,6 +13054,31 @@
       },
       {
         "DONE": "31.07.2020 11:32:50 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002010851": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "AlexMorozov",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 09:58:42 MSK"
+      },
+      {
+        "DONE": "31.08.2020 11:18:10 MSK"
+      }
+    ]
+  },
+  "ИНЦ-002028579": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Andrey.Kulikov",
+    "History": [
+      {
+        "NOTE_DONE": "01.09.2020 11:39:15 MSK"
       }
     ]
   },
@@ -11713,6 +13153,20 @@
       }
     ]
   },
+  "ЗНО-001608665": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Evgeny.Bulbenkov",
+    "History": [
+      {
+        "NOTE_DONE": "31.08.2020 15:20:49 MSK"
+      },
+      {
+        "DONE": "31.08.2020 15:42:02 MSK"
+      }
+    ]
+  },
   "ЗНО-001475376": {
     "Assigned": "pestov",
     "Comment": "",
@@ -11746,8 +13200,8 @@
   },
   "ИНЦ-001953828": {
     "Assigned": "pestov",
-    "Comment": "3-Поддержка Jira",
-    "Current status": "TASK",
+    "Comment": "",
+    "Current status": "DONE",
     "Author": "Artem.Devichev",
     "History": [
       {
@@ -11758,6 +13212,9 @@
       },
       {
         "TASK": "21.08.2020 10:49:18 MSK"
+      },
+      {
+        "DONE": "01.09.2020 11:59:12 MSK"
       }
     ]
   },
@@ -11941,6 +13398,20 @@
       }
     ]
   },
+  "ЗНО-001594405": {
+    "Assigned": "pestov",
+    "Comment": "",
+    "Current status": "DONE",
+    "Author": "Tatyana.Strelnikova",
+    "History": [
+      {
+        "NOTE_DONE": "28.08.2020 11:11:52 MSK"
+      },
+      {
+        "DONE": "28.08.2020 15:03:33 MSK"
+      }
+    ]
+  },
   "ИНЦ-001744804": {
     "Assigned": "pestov",
     "Current status": "DONE",
@@ -12022,6 +13493,17 @@
       },
       {
         "DONE": "23.07.2020 11:06:18 MSK"
+      }
+    ]
+  },
+  "ЗНО-001608671": {
+    "Assigned": "batanov",
+    "Comment": null,
+    "Current status": "NOTE_DONE",
+    "Author": "Evgeny.Bulbenkov",
+    "History": [
+      {
+        "NOTE_DONE": "03.09.2020 11:48:40 MSK"
       }
     ]
   },

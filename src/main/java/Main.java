@@ -41,6 +41,7 @@ public class Main {
             System.out.println("6. Вывод моих обращений");
             System.out.println("7. Ручное назначение обращений");
             System.out.println("8. Поиск обращения");
+            System.out.println("9. Статистика");
             System.out.println("q. Выход из программы");
             String command = scanLine();
             switch (command) {
@@ -72,8 +73,12 @@ public class Main {
                     manualAssignment();
                     break;
                 }
-                case "8":   {
+                case "8": {
                     search();
+                    break;
+                }
+                case "9": {
+                    stat();
                     break;
                 }
                 case "q": {
@@ -131,10 +136,10 @@ public class Main {
 //            return employee;
 //        }
         Integer size = Employee.employees.size();
-        for(;;) {
+        for (; ; ) {
             Integer random = (int) (Math.random() * size);
             Employee empl = Employee.employees.get(random);
-            if(empl.currentVacation())    {
+            if (empl.currentVacation()) {
                 random = (int) (Math.random() * size);
                 continue;
             }
@@ -331,21 +336,21 @@ public class Main {
         boolean flag2 = false;
         task = Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(false), assignee));
         task.setDateResolved(new Date());
-        if (task.getAssigned()!=null) {
+        if (task.getAssigned() != null) {
             System.out.println("Сейчас оно назначено на " + task.getAssigned().getFamily());
         }
 
         while (flag) {
-            if (enterNumber < i+1 && enterNumber != 0) {
-                assignee = Employee.employees.get(enterNumber-1);
+            if (enterNumber < i + 1 && enterNumber != 0) {
+                assignee = Employee.employees.get(enterNumber - 1);
                 task.setAssigned(assignee);
                 task.setStatus(TaskStatus.NOTE_DONE);
                 System.out.println("Обращение " + task.getNumber() + " назначено на " + assignee.getFamily());
                 flag = false;
                 continue;
             }
-            if (enterNumber == 0 && flag2 == true && enterNumber > i-1) {
-                System.out.println("Значение должно быть больше 0 и меньше " + (i-1));
+            if (enterNumber == 0 && flag2 == true && enterNumber > i - 1) {
+                System.out.println("Значение должно быть больше 0 и меньше " + (i - 1));
             }
             for (Employee empl : Employee.employees) {
                 i++;
@@ -375,36 +380,36 @@ public class Main {
         }
     }
 
-    private static Integer counter()    {
+    private static Integer counter() {
         Integer count = 0;
         Employee empl = Employee.getEmployee("pestov");
-        for (Tasks task : Employee.listTasks)   {
-            if (task.getAssigned() == empl && compareDate(task.getDateResolved()) && task.getStatus() != TaskStatus.NOTE_DONE)  {
+        for (Tasks task : Employee.listTasks) {
+            if (task.getAssigned() == empl && compareDate(task.getDateResolved()) && task.getStatus() != TaskStatus.NOTE_DONE) {
                 count++;
             }
         }
         return count;
     }
 
-    private static boolean compareDate(Date dateResolved)  {
-        Calendar calNow =dateToCalendar(new Date());
+    private static boolean compareDate(Date dateResolved) {
+        Calendar calNow = dateToCalendar(new Date());
         Calendar calResolved = dateToCalendar(dateResolved);
         if ((calNow.get(Calendar.DAY_OF_MONTH) == calResolved.get(Calendar.DAY_OF_MONTH)) &&
                 (calNow.get(Calendar.MONTH) == calResolved.get(Calendar.MONTH)) &&
-                (calNow.get(Calendar.YEAR) == calResolved. get(Calendar.YEAR))) {
+                (calNow.get(Calendar.YEAR) == calResolved.get(Calendar.YEAR))) {
             return true;
         }
         return false;
     }
 
-    private static Calendar dateToCalendar(Date date)   {
+    private static Calendar dateToCalendar(Date date) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         return cal;
     }
 
-    public static Employee tasksOfAuthor (String author) {
-        for(Employee employee : Employee.employees) {
+    public static Employee tasksOfAuthor(String author) {
+        for (Employee employee : Employee.employees) {
             Long count = Employee.listTasks.stream().filter(t -> t.getAssigned() == employee && t.getAuthor().equals(author)).count();
             employee.setCountTasksOfAuthor(count);
         }
@@ -416,7 +421,7 @@ public class Main {
     public static void search() throws IOException {
         String number = enterCorrectNumber(false);
         Tasks task = returnTask(number);
-        if (task != null)   {
+        if (task != null) {
             System.out.println("Текущий статус " + Tasks.statusToString(task.getStatus()));
             String author = task.getAuthor();
             if (author != null) {
@@ -424,17 +429,50 @@ public class Main {
             }
             System.out.println("Назначен на " + task.getAssigned().getFamily());
             System.out.println("История изменения статусов:");
-            HashMap <Date, TaskStatus> history = task.getHistory();
-            for (Map.Entry <Date, TaskStatus> hist : history.entrySet())    {
+            HashMap<Date, TaskStatus> history = task.getHistory();
+            for (Map.Entry<Date, TaskStatus> hist : history.entrySet()) {
                 String status = Tasks.statusToString(hist.getValue());
                 String date = hist.getKey().toString();
                 System.out.println("Статус " + status);
                 System.out.println("Дата " + date);
                 System.out.println();
             }
-        }
-        else    {
+        } else {
             System.out.println("Обращение не найдено");
         }
+    }
+
+    private static void stat() {
+        System.out.println("\nСегодняшний счёт");
+        for (Employee employee : Employee.employees) {
+            long count = Employee.listTasks.stream().filter(t -> t.getAssigned().getFamily().equals(employee.getFamily()) && searchInHistory(t)).count();
+            System.out.println(employee.getFamily() + " " + count);
+        }
+        System.out.println("\nОбщий счёт");
+        for (Employee employee : Employee.employees) {
+            long countTasks = Employee.listTasks.stream().filter(t -> t.getAssigned().getFamily().equals(employee.getFamily())).count();
+            System.out.println(employee.getFamily() + " " + countTasks);
+        }
+        System.out.println("\nВсего назначено обращений " + Employee.listTasks.size() + "\n");
+    }
+
+    private static boolean searchInHistory (Tasks task) {
+        boolean flag = false;
+        HashMap <Date, TaskStatus> history = task.getHistory();
+        for (Date date : history.keySet())  {
+            if (task.getStatus() == TaskStatus.NOTE_DONE && isNowDate(date))   {
+                flag = true;
+
+                break;
+            }
+        }
+        return flag;
+    }
+    private static boolean isNowDate (Date date)    {
+        long dayInMill = 24 * 60 * 60 * 1000;
+        long startDay = ((new Date()).getTime())/dayInMill * dayInMill;
+        long endDay = startDay + dayInMill;
+        long dateTime = date.getTime();
+        return dateTime >= startDay && dateTime <= endDay;
     }
 }
