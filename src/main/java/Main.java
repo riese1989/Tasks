@@ -459,10 +459,12 @@ public class Main {
     private static boolean searchInHistory (Tasks task) {
         boolean flag = false;
         HashMap <Date, TaskStatus> history = task.getHistory();
-        for (Date date : history.keySet())  {
-            if (task.getStatus() == TaskStatus.NOTE_DONE && isNowDate(date))   {
+        if(task.getNumber().equals("ÇÍÎ-001654894"))    {
+            System.out.println();
+        }
+        for (Map.Entry<Date, TaskStatus> map : history.entrySet())  {
+            if(map.getValue() == TaskStatus.NOTE_DONE && isNowDate(map.getKey())) {
                 flag = true;
-
                 break;
             }
         }
