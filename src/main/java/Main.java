@@ -114,12 +114,13 @@ public class Main {
             System.out.println("Инициатор");
             String author = scanLine();
             Employee empl = choiceAssignTask(author);
+            empl.setCountTaskOne(empl.getCountTaskOne() + 1);
             empl.incTaskOfThisSession();
             Tasks task = new Tasks(number, empl, TaskStatus.NOTE_DONE, new Date(), author);
             Employee.listTasks.add(task);
             System.out.println("Назначено на " + empl.getFamily());
             empl.setCountTaskOne(empl.getCountTaskOne() + 1);
-            Employee.setAppCountTask(Employee.getAppCountTask() + 1);
+            Employee.setCountTasks(Employee.getCountTasks() + 1);
             log(" " + empl.getFamily() + " назначен ", number, "NaTasks");
             JSONOperations.makeJSON(task);
             JSONOperations.writeJSON();
@@ -445,7 +446,7 @@ public class Main {
     private static void stat() {
         System.out.println("\nСегодняшний счёт");
         for (Employee employee : Employee.employees) {
-            long count = Employee.listTasks.stream().filter(t -> t.getAssigned().getFamily().equals(employee.getFamily()) && searchInHistory(t)).count();
+            long count = employee.getCountTaskOne();
             System.out.println(employee.getFamily() + " " + count);
         }
         System.out.println("\nОбщий счёт");

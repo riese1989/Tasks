@@ -1,13 +1,10 @@
-import org.json.simple.parser.ParseException;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Employee {
-    private static Integer appCountTask = 0;
+    private static Integer countTasks = 0;
     private Integer  countTaskOne = 0;
     private Integer activeTask = 0;
     private String family;
@@ -44,12 +41,12 @@ public class Employee {
         return family;
     }
 
-    public static Integer getAppCountTask() {
-        return appCountTask;
+    public static Integer getCountTasks() {
+        return countTasks;
     }
 
-    public static void setAppCountTask(Integer appCountTask) {
-        Employee.appCountTask = appCountTask;
+    public static void setCountTasks(Integer countTasks) {
+        Employee.countTasks = countTasks;
     }
 
     public void setCountTaskOne(Integer countTaskOne) {
