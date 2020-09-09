@@ -119,7 +119,6 @@ public class Main {
             Tasks task = new Tasks(number, empl, TaskStatus.NOTE_DONE, new Date(), author);
             Employee.listTasks.add(task);
             System.out.println("Назначено на " + empl.getFamily());
-            empl.setCountTaskOne(empl.getCountTaskOne() + 1);
             Employee.setCountTasks(Employee.getCountTasks() + 1);
             log(" " + empl.getFamily() + " назначен ", number, "NaTasks");
             JSONOperations.makeJSON(task);
@@ -446,7 +445,7 @@ public class Main {
     private static void stat() {
         System.out.println("\nСегодняшний счёт");
         for (Employee employee : Employee.employees) {
-            long count = employee.getCountTaskOne();
+            long count = countAssignTaskNow(employee);
             System.out.println(employee.getFamily() + " " + count);
         }
         System.out.println("\nОбщий счёт");
@@ -460,9 +459,6 @@ public class Main {
     private static boolean searchInHistory (Tasks task) {
         boolean flag = false;
         HashMap <Date, TaskStatus> history = task.getHistory();
-        if(task.getNumber().equals("ЗНО-001654894"))    {
-            System.out.println();
-        }
         for (Map.Entry<Date, TaskStatus> map : history.entrySet())  {
             if(map.getValue() == TaskStatus.NOTE_DONE && isNowDate(map.getKey())) {
                 flag = true;
@@ -477,5 +473,15 @@ public class Main {
         long endDay = startDay + dayInMill;
         long dateTime = date.getTime();
         return dateTime >= startDay && dateTime <= endDay;
+    }
+
+    private static long countAssignTaskNow(Employee employee)    {
+        long count = 0;
+        for(Tasks task : Employee.listTasks)    {
+            if (task.getAssigned() == employee && searchInHistory(task))    {
+                count++;
+            }
+        }
+        return count;
     }
 }
