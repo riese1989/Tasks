@@ -216,14 +216,23 @@ public class Main {
 
     //переключение статуса
     private static void switchStatus(Tasks task, TaskStatus status) throws IOException {
+        HashMap<Integer, HashMap<Groups, String>> nameGroups = setNameGroups();
         int index = Employee.listTasks.indexOf(task);
         String stat = "";
         task.setStatus(status);
         task.setDateResolved(new Date());
-        System.out.println("Комментарий ");
-        task.setComment(scanLine());
+        if (status != TaskStatus.TASK) {
+            System.out.println("Комментарий ");
+            task.setComment(scanLine());
+        }
         Employee.listTasks.set(index, task);
         if (status == TaskStatus.TASK) {
+            String names = new String();
+            for(Integer i = 1; i <= nameGroups.size(); i++) {
+                names += i + " " + getValues(nameGroups.get(i)) + "\n";
+            }
+            Integer group = scanInteger("На какую группу назначить?\n" + names);
+            task.setComment(getValues(nameGroups.get(group)));
             log(" выписано задание ", task.getNumber(), "TTasks");
             stat = "выписано задание";
         }
@@ -483,5 +492,27 @@ public class Main {
             }
         }
         return count;
+    }
+
+    private static HashMap<Integer, HashMap<Groups, String>> setNameGroups() {
+        HashMap<Integer, HashMap<Groups, String>> nameGroups = new HashMap<>();
+        HashMap<Groups, String> maps = new HashMap<>();
+        maps.put(Groups.CREDENTIALS_1HD, "1-HD Полномочия");
+        maps.put(Groups.JIRA_3, "3-Поддержка Jira");
+        Integer i = 1;
+        for (Map.Entry<Groups, String> map : maps.entrySet())    {
+            HashMap<Groups, String> buffer = new HashMap<>();
+            buffer.put(map.getKey(), map.getValue());
+            nameGroups.put(i , buffer);
+            i++;
+        }
+        return nameGroups;
+    }
+
+    private static String getValues(HashMap <Groups, String> map) {
+        for (Map.Entry <Groups, String> entry : map.entrySet())    {
+            return entry.getValue();
+        }
+        return null;
     }
 }
