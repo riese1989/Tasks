@@ -10,20 +10,19 @@ public class Tasks {
     private Date dateResolved;
     private String comment;
     private String author;
+    private Iniciator iniciator;
+    private HashMap <Date, TaskStatus> history = new HashMap<>();
 
     public HashMap<Date, TaskStatus> getHistory() {
         return history;
     }
 
-    private HashMap <Date, TaskStatus> history;
-
     public Tasks(String number, Employee assigned, TaskStatus status) {
         this.number = number;
         this.assigned = assigned;
         this.status = status;
-
+        history.put(new Date(), status);
     }
-
 
     public Tasks(String number, Employee assigned, TaskStatus status, Date date, String author) {
         this.number = number;
@@ -31,6 +30,8 @@ public class Tasks {
         this.status = status;
         this.dateResolved = date;
         this.author = author;
+        history.put(date,status);
+        addIniciator(author);
     }
 
     public Tasks(String number, Employee assigned, TaskStatus status, Date date, String author, String comment, HashMap<Date, TaskStatus> history) {
@@ -41,6 +42,11 @@ public class Tasks {
         this.author = author;
         this.comment = comment;
         this.history = history;
+        addIniciator(author);
+    }
+
+    public Iniciator getIniciator() {
+        return iniciator;
     }
 
     public String getComment() {
@@ -152,5 +158,16 @@ public class Tasks {
             }
         }
         return "";
+    }
+
+    private void addIniciator(String author) {
+        Iniciator iniciator = Iniciator.searchIniciator(author);
+        if (iniciator != null)  {
+            this.iniciator = iniciator;
+        }
+        else    {
+            this.iniciator = new Iniciator(author);
+        }
+        this.iniciator.addTask(this);
     }
 }

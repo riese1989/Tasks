@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.util.JsonUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
@@ -42,6 +43,7 @@ public class Main {
             System.out.println("7. Ручное назначение обращений");
             System.out.println("8. Поиск обращения");
             System.out.println("9. Статистика");
+            System.out.println("10. Топ инициаторов");
             System.out.println("q. Выход из программы");
             String command = scanLine();
             switch (command) {
@@ -81,6 +83,12 @@ public class Main {
                     stat();
                     break;
                 }
+
+                case "10":  {
+                    top();
+                    break;
+                }
+
                 case "q": {
                     flag = false;
                     break;
@@ -463,6 +471,29 @@ public class Main {
             System.out.println(employee.getFamily() + " " + countTasks);
         }
         System.out.println("\nВсего назначено обращений " + Employee.listTasks.size() + "\n");
+    }
+
+    private static void top() {
+        IniciatorComparator iniciatorComparator = new IniciatorComparator();
+        Iniciator.listIniciators.sort(iniciatorComparator);
+        Integer limit = 0;
+        while (true)    {
+            limit = scanInteger("Введите лимит");
+            if (limit > 0)  {
+                break;
+            }
+            System.out.println("Лимит должен быть больше 0");
+        }
+        System.out.println("Топ-" + limit + " инициаторов");
+        Integer i = 1;
+        for (Iniciator iniciator : Iniciator.listIniciators)    {
+            System.out.println(i + " " + iniciator.getName() + " " + iniciator.getCountTasks());
+            i++;
+            if (i.equals(limit))    {
+                break;
+            }
+        }
+
     }
 
     private static boolean searchInHistory (Tasks task) {
