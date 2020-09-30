@@ -487,9 +487,12 @@ public class Main {
         System.out.println("Топ-" + limit + " инициаторов");
         Integer i = 1;
         for (Iniciator iniciator : Iniciator.listIniciators)    {
+            if (iniciator.getName().equals("")) {
+                continue;
+            }
             System.out.println(i + " " + iniciator.getName() + " " + iniciator.getCountTasks());
             i++;
-            if (i.equals(limit))    {
+            if (i > limit)    {
                 break;
             }
         }
