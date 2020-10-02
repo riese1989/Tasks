@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Stream;
 
+import javafx.concurrent.Task;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.util.JsonUtils;
@@ -136,17 +137,14 @@ public class Main {
 
     //выбор исполнителя
     public static Employee choiceAssignTask(String author) {
-//        Employee employee = tasksOfAuthor(author);
-//        if (employee.getTaskOfThisSession() < 0.6 * Tasks.getNoneAppTasks())    {
-//            return employee;
-//        }
-//        if (!employee.currentVacation())    {
-//            return employee;
-//        }
         Integer size = Employee.employees.size();
         for (; ; ) {
             Integer random = (int) (Math.random() * size);
-            Employee empl = Employee.employees.get(random);
+            Employee empl = nowTaskOfAuthor(author);
+            if (empl != null)   {
+                return empl;
+            }
+            empl = Employee.employees.get(random);
             if (empl.currentVacation()) {
                 random = (int) (Math.random() * size);
                 continue;
@@ -154,6 +152,7 @@ public class Main {
             return empl;
         }
     }
+
 
     //решение обращения
     public static void solveMyTasks(String haveNumber) throws IOException {
@@ -546,6 +545,15 @@ public class Main {
     private static String getValues(HashMap <Groups, String> map) {
         for (Map.Entry <Groups, String> entry : map.entrySet())    {
             return entry.getValue();
+        }
+        return null;
+    }
+
+    private static Employee nowTaskOfAuthor (String author) {
+        long count = Employee.listTasks.stream().filter(t -> t.getAuthor().equals(author) && isNowDate(t.getDateResolved())).count();
+        if (count > 0)  {
+            Tasks task = Employee.listTasks.stream().filter(t -> t.getAuthor().equals(author) && isNowDate(t.getDateResolved())).findFirst().get();
+            return task.getAssigned();
         }
         return null;
     }
