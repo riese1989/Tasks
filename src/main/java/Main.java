@@ -531,6 +531,7 @@ public class Main {
         HashMap<Integer, HashMap<Groups, String>> nameGroups = new HashMap<>();
         HashMap<Groups, String> maps = new HashMap<>();
         maps.put(Groups.CREDENTIALS_1HD, "1-HD Полномочия");
+        maps.put(Groups.SAP_SM_2, "2-Поддержка SAP SM");
         maps.put(Groups.JIRA_3, "3-Поддержка Jira");
         Integer i = 1;
         for (Map.Entry<Groups, String> map : maps.entrySet())    {

@@ -1,4 +1,5 @@
 public enum Groups {
     CREDENTIALS_1HD,
-    JIRA_3
+    SAP_SM_2,
+    JIRA_3,
 }
