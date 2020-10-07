@@ -252,6 +252,11 @@ public class Main {
             stat = "решен";
         }
         if (status == TaskStatus.NOT_US) {
+            if (task.getAuthor() == null)  {
+                System.out.println("Инициатор");
+                String author = scanLine();
+                task.setAuthor(author);
+            }
             log(" переквалифицировано ", task.getNumber(), "NTasks");
             stat = "переквалифицировано";
         }
