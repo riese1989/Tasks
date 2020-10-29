@@ -169,5 +169,6 @@ public class Tasks {
             this.iniciator = new Iniciator(author);
         }
         this.iniciator.addTask(this);
+        Iniciator.returnOldSirname();
     }
 }

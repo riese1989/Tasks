@@ -26,6 +26,7 @@ public class Main {
         readEmployees();
         JSONOperations.JSONtoArray();
         fullJSON = JSONOperations.getJSON(filePath);
+
         menu();
     }
 
@@ -538,6 +539,7 @@ public class Main {
         maps.put(Groups.CREDENTIALS_1HD, "1-HD Полномочия");
         maps.put(Groups.SAP_SM_2, "2-Поддержка SAP SM");
         maps.put(Groups.JIRA_3, "3-Поддержка Jira");
+        maps.put(Groups.CO_1, "2-ЦО Х5");
         Integer i = 1;
         for (Map.Entry<Groups, String> map : maps.entrySet())    {
             HashMap<Groups, String> buffer = new HashMap<>();
@@ -563,4 +565,5 @@ public class Main {
         }
         return null;
     }
+
 }

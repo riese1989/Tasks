@@ -47,4 +47,17 @@ public class Iniciator {
         }
         return null;
     }
+
+    public static void returnOldSirname   ()  {
+        HashMap<Iniciator, Iniciator> oldSitrname = new HashMap<>();
+        oldSitrname.put(searchIniciator("SvFedorova"), searchIniciator("Svetlana.Kostikova"));
+        for (Iniciator iniciator : listIniciators)  {
+            Iniciator oldIniciator = oldSitrname.get(iniciator);
+            if (iniciator.getName().equals("SvFedorova"))   {
+                System.out.println("");
+            }
+            if (oldIniciator != null)   {
+            }
+        }
+    }
 }
