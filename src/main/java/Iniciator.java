@@ -54,7 +54,6 @@ public class Iniciator {
         for (Iniciator iniciator : listIniciators)  {
             Iniciator oldIniciator = oldSitrname.get(iniciator);
             if (iniciator.getName().equals("SvFedorova"))   {
-                System.out.println("");
             }
             if (oldIniciator != null)   {
             }
