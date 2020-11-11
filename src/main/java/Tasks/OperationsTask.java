@@ -150,7 +150,7 @@ public class OperationsTask {
                 return empl;
             }
             empl = Employee.listEmployees.get(random);
-            if (empl.currentVacation() || empl.getStatus()) {
+            if (empl.currentVacation() || !empl.getStatus()) {
                 continue;
             }
             return empl;

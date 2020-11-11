@@ -49,8 +49,10 @@ public class OperationsEmployee {
     public static void stat() {
         System.out.println("\nСегодняшний счёт");
         for (Employee employee : listEmployees) {
-            long count = countAssignTaskNow(employee);
-            System.out.println(employee.getFamily() + " " + count);
+            if(employee.getStatus()) {
+                long count = countAssignTaskNow(employee);
+                System.out.println(employee.getFamily() + " " + count);
+            }
         }
         System.out.println("\nОбщий счёт");
         for (Employee employee : listEmployees) {
