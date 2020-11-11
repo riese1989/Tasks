@@ -14,7 +14,7 @@ import static Tasks.OperationsTask.*;
 import static Inic.OperationsIniciators.*;
 
 public class Menu {
-    public void menu() throws IOException, ParseException {
+    public static void menu() throws IOException, ParseException {
         boolean flag = true;
         while (flag) {
             OperationsTask.getWaitTasks();
