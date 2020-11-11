@@ -1,3 +1,8 @@
+package Employees;
+
+import Tasks.Task;
+import Tasks.TaskStatus;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -10,11 +15,12 @@ public class Employee {
     private String family;
     private Integer taskWaiting = 0;
     private Integer tasksWithTasks = 0;
-    public static ArrayList<Tasks> listTasks = new ArrayList<>();
-    public static ArrayList<Employee> employees = new ArrayList<>();
+    public static ArrayList<Task> listTasks = new ArrayList<>();
+    public static ArrayList<Employee> listEmployees = new ArrayList<>();
     private HashMap<Date, Date> vacations = new HashMap<>();
-    private  Long countTasksOfAuthor;
+    private Long countTasksOfAuthor;
     private Integer taskOfThisSession = 0;
+    private boolean status;
 
     public HashMap<Date, Date> getVacations() {
         return vacations;
@@ -24,9 +30,11 @@ public class Employee {
         this.vacations = vacations;
     }
 
-    public Employee(Integer countTaskOne, String family) {
+    public Employee (Integer countTaskOne, String family, HashMap<Date, Date> vacations, boolean status)    {
         this.countTaskOne = countTaskOne;
         this.family = family;
+        this.vacations = vacations;
+        this.status = status;
     }
 
     public void setTasksWithTasks(Integer tasksWithTasks) {
@@ -65,19 +73,10 @@ public class Employee {
         this.taskOfThisSession++;
     }
 
-    public static Employee getEmployee  (String family) {
-        for (Employee employee : employees) {
-            if (employee.getFamily().equals(family))    {
-                return  employee;
-            }
-        }
-        return new Employee(0, family);
-    }
-
     public static Integer getTaskWithStatus (Employee employee, TaskStatus status)   {
         //flag = true когда надо искать все обращения
         Integer count = 0;
-        for (Tasks task : Employee.listTasks)   {
+        for (Task task : Employee.listTasks)   {
             if ((task.getStatus() == status ||
                     (status == TaskStatus.ALL &&
                             task.getStatus() != TaskStatus.DONE &&
@@ -121,5 +120,7 @@ public class Employee {
         this.countTasksOfAuthor = countTasksOfAuthor;
     }
 
-
+    public boolean getStatus() {
+        return status;
+    }
 }

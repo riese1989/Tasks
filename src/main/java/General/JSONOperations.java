@@ -1,26 +1,46 @@
+package General;
+
+import Employees.Employee;
+import Employees.OperationsEmployee;
+import Main.Main;
+import Tasks.Task;
+import Tasks.TaskStatus;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.*;
-import java.security.spec.RSAOtherPrimeInfo;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class JSONOperations {
-    static SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss z");
     public static JSONObject getJSON(String path) throws IOException, ParseException {
-//        if (searchFile(Main.filePath)) {
-//            return new JSONObject();
-//        }
         searchFile(path);
         FileReader reader = new FileReader(path);
         JSONParser jsonParser = new JSONParser();
         return (JSONObject) jsonParser.parse(reader);
     }
 
-    public static void JSONtoArray() throws IOException, ParseException, java.text.ParseException {
+    public static void JSONToArrayEmployee() throws IOException, ParseException, java.text.ParseException {
+        JSONObject objs = getJSON(Main.fileEmployeesJSON);
+        Set maps = objs.keySet();
+        for (Object map : maps) {
+            String family = map.toString();
+            JSONObject obj = (JSONObject) objs.get(family);
+            boolean status = Boolean.parseBoolean(obj.get("status").toString());
+            JSONArray vacationsJSON = (JSONArray) obj.get("vacations");
+            HashMap<Date, Date> vacations = new HashMap<>();
+            for (Object vacationJSON : vacationsJSON)   {
+                String[] parts = vacationJSON.toString().split("\"");
+                Date start = Main.formatDate.parse(parts[3]);
+                Date end = Main.formatDate.parse(parts[7]);
+                vacations.put(start,end);
+            }
+            Employee.listEmployees.add(new Employee(0,family,vacations, status));
+        }
+    }
+
+    public static void JSONToArrayTask() throws IOException, ParseException, java.text.ParseException {
         JSONObject objs = getJSON(Main.filePath);
         Set maps = objs.keySet();
         for (Object map : maps) {
@@ -32,22 +52,21 @@ public class JSONOperations {
             JSONArray history = (JSONArray) obj.get("History");
             String stringDate = history.get(history.size()-1).toString().split("\"")[3];
             HashMap <Date, TaskStatus> historyTask = new HashMap<>();
-            SimpleDateFormat format = new SimpleDateFormat("dd.MM.y HH:mm:ss z");
-            Date date = format.parse(stringDate);
+            Date date = Main.formatDate.parse(stringDate);
             for (int i = 0; i < history.size(); i++)    {
                 String[] str = history.get(i).toString().split("\"");
-                Date dateHist = format.parse(str[3]);
-                TaskStatus status = Tasks.toStatus(str[1]);
+                Date dateHist = Main.formatDate.parse(str[3]);
+                TaskStatus status = Operations.convertToStatus(str[1]);
                 historyTask.put(dateHist, status);
             }
-            TaskStatus status = Tasks.toStatus(obj.get("Current status").toString());
-            Tasks task = new Tasks(number, Employee.getEmployee(assigned), status, date, author, comment, historyTask);
+            TaskStatus status = Operations.convertToStatus(obj.get("Current status").toString());
+            Task task = new Task(number, OperationsEmployee.getEmployee(assigned), status, date, author, comment, historyTask);
             Employee.listTasks.add(task);
         }
     }
 
     //поиск в json
-    public static void makeJSON(Tasks task) {
+    public static void makeJSON(Task task) {
         JSONObject taskJSON = new JSONObject();
         JSONObject obj = (JSONObject) Main.fullJSON.get(task.getNumber());
         JSONArray historyTaskJSON = new JSONArray();
@@ -55,7 +74,7 @@ public class JSONOperations {
         if (obj != null) {
             historyTaskJSON = (JSONArray) obj.get("History");
         }
-        partHistoryTaskJSON.put(task.getStatus(), dateFormat.format(new Date()));
+        partHistoryTaskJSON.put(task.getStatus(), Main.formatDate.format(new Date()));
         historyTaskJSON.add(partHistoryTaskJSON);
         taskJSON.put("Assigned", task.getAssigned().getFamily());
         taskJSON.put("Author", task.getAuthor());
@@ -67,7 +86,7 @@ public class JSONOperations {
     }
 
     //запись в json
-    static void writeJSON() throws IOException {
+    public static void writeJSON() throws IOException {
         searchFile(Main.filePath);
         try (FileWriter file = new FileWriter(Main.filePath)) {
             file.write(Main.fullJSON.toString());
@@ -87,9 +106,9 @@ public class JSONOperations {
         return true;
     }
 
-    public static HashMap<Date, Date> JSONtoHashMap(Employee employee) throws IOException, ParseException, java.text.ParseException {
+    public static HashMap<Date, Date> JSONtoHashMapVacations(Employee employee) throws IOException, ParseException, java.text.ParseException {
         HashMap<Date, Date> vacations = new HashMap<>();
-        JSONObject objs = getJSON(Main.filePathVactions);
+        JSONObject objs = getJSON(Main.filePathVacations);
         Set maps = objs.keySet();
         for (Object map : maps) {
             JSONObject obj = (JSONObject) objs.get(map.toString());
@@ -98,8 +117,8 @@ public class JSONOperations {
                 JSONArray vacationsFamilyJSON = (JSONArray)obj.get("vacations");
                 for (Object vacationFamily : vacationsFamilyJSON)   {
                     String[] parts = vacationFamily.toString().split("\"");
-                    Date start = dateFormat.parse(parts[3]);
-                    Date end = dateFormat.parse(parts[7]);
+                    Date start = Main.formatDate.parse(parts[3]);
+                    Date end = Main.formatDate.parse(parts[7]);
                     vacations.put(start,end);
                 }
 

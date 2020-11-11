@@ -1,7 +1,12 @@
+package Tasks;
+import Employees.Employee;
+import Inic.Iniciator;
+
+
 import java.util.Date;
 import java.util.HashMap;
 
-public class Tasks {
+public class Task {
     private static Integer countTasksAll;
     private static Integer noneAppTasks;
     private Employee assigned;
@@ -17,14 +22,14 @@ public class Tasks {
         return history;
     }
 
-    public Tasks(String number, Employee assigned, TaskStatus status) {
+    public Task(String number, Employee assigned, TaskStatus status) {
         this.number = number;
         this.assigned = assigned;
         this.status = status;
         history.put(new Date(), status);
     }
 
-    public Tasks(String number, Employee assigned, TaskStatus status, Date date, String author) {
+    public Task(String number, Employee assigned, TaskStatus status, Date date, String author) {
         this.number = number;
         this.assigned = assigned;
         this.status = status;
@@ -34,7 +39,7 @@ public class Tasks {
         addIniciator(author);
     }
 
-    public Tasks(String number, Employee assigned, TaskStatus status, Date date, String author, String comment, HashMap<Date, TaskStatus> history) {
+    public Task(String number, Employee assigned, TaskStatus status, Date date, String author, String comment, HashMap<Date, TaskStatus> history) {
         this.number = number;
         this.assigned = assigned;
         this.status = status;
@@ -99,7 +104,7 @@ public class Tasks {
 
 
     public static void setNoneAppTasks(Integer noneAppTasks) {
-        Tasks.noneAppTasks = noneAppTasks;
+        Task.noneAppTasks = noneAppTasks;
     }
 
     public static Integer getNoneAppTasks() {
@@ -111,53 +116,11 @@ public class Tasks {
     }
 
     public static void setCountTasksAll(Integer countTasksAll) {
-        Tasks.countTasksAll = countTasksAll;
+        Task.countTasksAll = countTasksAll;
     }
 
     public static Integer countAppTasks() {
         return countTasksAll - noneAppTasks;
-    }
-
-    public static TaskStatus toStatus(String status) {
-        switch (status) {
-            case "DONE": {
-                return TaskStatus.DONE;
-            }
-            case "NOTE_DONE": {
-                return TaskStatus.NOTE_DONE;
-            }
-            case "WAITING": {
-                return TaskStatus.WAITING;
-            }
-            case "NOT_US": {
-                return TaskStatus.NOT_US;
-            }
-            case "TASK": {
-                return TaskStatus.TASK;
-            }
-        }
-        return TaskStatus.NOTE_DONE;
-    }
-
-    public static String statusToString(TaskStatus status)  {
-        switch (status) {
-            case DONE:   {
-                return "DONE";
-            }
-            case NOTE_DONE: {
-                return "NOTE_DONE";
-            }
-            case NOT_US: {
-                return "NOT_US";
-            }
-            case WAITING: {
-                return "WAITING";
-            }
-            case TASK: {
-                return "TASK";
-            }
-        }
-        return "";
     }
 
     private void addIniciator(String author) {
@@ -169,6 +132,5 @@ public class Tasks {
             this.iniciator = new Iniciator(author);
         }
         this.iniciator.addTask(this);
-        Iniciator.returnOldSirname();
     }
 }

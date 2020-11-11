@@ -1,3 +1,5 @@
+package Inic;
+
 import java.util.Comparator;
 
 public class IniciatorComparator implements Comparator<Iniciator> {

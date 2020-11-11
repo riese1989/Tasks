@@ -1,3 +1,5 @@
+package Groups;
+
 public enum Groups {
     CREDENTIALS_1HD,
     SAP_SM_2,

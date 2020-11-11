@@ -1,0 +1,24 @@
+{
+  "batanov": {
+    "status": false,
+    "vacations":  [
+      {
+        "Start": "27.07.2020 00:00:00 MSK",
+        "End": "03.08.2020 00:00:00 MSK"
+      }
+    ]
+  },
+  "pestov": {
+    "status": true,
+    "vacations": [
+      {
+        "Start": "25.12.2020 00:00:00 MSK",
+        "End": "31.12.2020 00:00:00 MSK"
+      }
+    ]
+  },
+  "zaustinsky": {
+    "status": true,
+    "vacations": []
+  }
+}
