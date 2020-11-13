@@ -25,7 +25,8 @@ public class JSONOperations {
         searchFile(path);
         FileReader reader = new FileReader(path);
         JSONParser jsonParser = new JSONParser();
-        return (JSONObject) jsonParser.parse(reader);
+        fullJSON = (JSONObject) jsonParser.parse(reader);
+        return fullJSON;
     }
 
     public static void JSONToArrayEmployee() throws IOException, ParseException, java.text.ParseException {

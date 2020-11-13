@@ -9,3 +9,5 @@ src/META-INF/
 /out/artifacts/Tasts_jar/logs/NazTasks.log
 target/classes/Tasks.class
 
+!/out/artifacts/tasks_jar/map.json
+
