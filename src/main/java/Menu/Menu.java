@@ -10,6 +10,7 @@ import java.io.IOException;
 
 import static Employees.OperationsEmployee.*;
 import static General.Operations.scanLine;
+import static Prompt.MenuPrompt.menuPrompt;
 import static Tasks.OperationsTask.*;
 import static Inic.OperationsIniciators.*;
 
@@ -30,6 +31,7 @@ public class Menu {
             System.out.println("8. Поиск обращения");
             System.out.println("9. Статистика");
             System.out.println("10. Топ инициаторов");
+            System.out.println("11. Разные подсказки");
             System.out.println("q. Выход из программы");
             String command = scanLine();
             switch (command) {
@@ -73,6 +75,10 @@ public class Menu {
                 case "10":  {
                     top();
                     break;
+                }
+
+                case "11":  {
+                    menuPrompt();
                 }
 
                 case "q": {
