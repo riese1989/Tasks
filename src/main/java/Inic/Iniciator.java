@@ -80,6 +80,7 @@ public class Iniciator {
     public static String returnNewSirname (String name)  {
         HashMap<String, String> oldSirname = new HashMap<>();
         oldSirname.put("SvFedorova", "Svetlana.Kostikova");
+        oldSirname.put("Olga.Frolkova", "Olga.HernandezCruz");
         String newName = oldSirname.get(name);
         return newName;
     }
