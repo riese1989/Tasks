@@ -4,7 +4,9 @@ import Employees.Employee;
 import Employees.OperationsEmployee;
 import General.JSONOperations;
 import General.Operations;
-import Groups.Groups;
+import Groups.EnumGroups;
+import Groups.Group;
+import Groups.OperationGroups;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -169,7 +171,8 @@ public class OperationsTask {
     //переключение статуса
     public static void switchStatus(String numberTask, TaskStatus status) throws IOException {
         Task task = Employee.listTasks.get(searchAndCreateTask(numberTask, getEmployee("pestov")));
-        HashMap<Integer, HashMap<Groups, String>> nameGroups = setNameGroups();
+        //HashMap<Integer, HashMap<EnumGroups, String>> nameGroups = setNameGroups();
+        ArrayList<Group> nameGroups = OperationGroups.getListGroups();
         int index = Employee.listTasks.indexOf(task);
         String stat = "";
         task.setStatus(status);
@@ -182,12 +185,16 @@ public class OperationsTask {
         if (status == TaskStatus.TASK) {
             String names = new String();
             for(Integer i = 1; i <= nameGroups.size(); i++) {
-                names += i + " " + getValues(nameGroups.get(i)) + "\n";
+                names += i + " " + nameGroups.get(i-1).getName() + "\n";
             }
             Integer group = Operations.scanInteger("На какую группу назначить?\n" + names);
-            task.setComment(getValues(nameGroups.get(group)));
-            Operations.log(" выписано задание ", task.getNumber(), "TTasks");
-            stat = "выписано задание";
+            if (group > nameGroups.size() || group < 1) {
+                System.out.println("Неверный id группы");
+            }   else {
+                task.setComment(nameGroups.get(group).getName());
+                Operations.log(" выписано задание ", task.getNumber(), "TTasks");
+                stat = "выписано задание";
+            }
         }
         if (status == TaskStatus.WAITING) {
             Operations.log(" переведен в ожидание ", task.getNumber(), "WTasks");
@@ -211,28 +218,22 @@ public class OperationsTask {
         System.out.println("У " + task.getNumber() + " статус переключен на " + stat);
     }
 
-    private static HashMap<Integer, HashMap<Groups, String>> setNameGroups() {
-        HashMap<Integer, HashMap<Groups, String>> nameGroups = new HashMap<>();
-        HashMap<Groups, String> maps = new HashMap<>();
-        maps.put(Groups.CREDENTIALS_1HD, "1-HD Полномочия");
-        maps.put(Groups.SAP_SM_2, "2-Поддержка SAP SM");
-        maps.put(Groups.JIRA_3, "3-Поддержка Jira");
-        maps.put(Groups.CO_1, "2-ЦО Х5");
+    private static HashMap<Integer, HashMap<EnumGroups, String>> setNameGroups() {
+        HashMap<Integer, HashMap<EnumGroups, String>> nameGroups = new HashMap<>();
+        HashMap<EnumGroups, String> maps = new HashMap<>();
+        maps.put(EnumGroups.CREDENTIALS_1HD, "1-HD Полномочия");
+        maps.put(EnumGroups.SAP_SM_2, "2-Поддержка SAP SM");
+        maps.put(EnumGroups.JIRA_3, "3-Поддержка Jira");
+        maps.put(EnumGroups.CO_1, "2-ЦО Х5");
+        maps.put(EnumGroups.COD_2, "2-Инфраструктурные сервисы ЦОД");
         Integer i = 1;
-        for (Map.Entry<Groups, String> map : maps.entrySet())    {
-            HashMap<Groups, String> buffer = new HashMap<>();
+        for (Map.Entry<EnumGroups, String> map : maps.entrySet())    {
+            HashMap<EnumGroups, String> buffer = new HashMap<>();
             buffer.put(map.getKey(), map.getValue());
             nameGroups.put(i , buffer);
             i++;
         }
         return nameGroups;
-    }
-
-    private static String getValues(HashMap <Groups, String> map) {
-        for (Map.Entry <Groups, String> entry : map.entrySet())    {
-            return entry.getValue();
-        }
-        return null;
     }
 
     //решение обращения
