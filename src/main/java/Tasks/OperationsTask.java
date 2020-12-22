@@ -191,7 +191,7 @@ public class OperationsTask {
             if (group > nameGroups.size() || group < 1) {
                 System.out.println("Неверный id группы");
             }   else {
-                task.setComment(nameGroups.get(group).getName());
+                task.setComment(nameGroups.get(group-1).getName());
                 Operations.log(" выписано задание ", task.getNumber(), "TTasks");
                 stat = "выписано задание";
             }
