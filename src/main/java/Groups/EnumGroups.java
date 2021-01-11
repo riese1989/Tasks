@@ -6,4 +6,5 @@ public enum EnumGroups {
     JIRA_3,
     CO_1,
     COD_2,
+    MFSM_2,
 }

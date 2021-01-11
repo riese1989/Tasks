@@ -19,6 +19,7 @@ public class OperationGroups  {
         groupArrayList.add(new Group(EnumGroups.JIRA_3, "3-Поддержка Jira"));
         groupArrayList.add(new Group(EnumGroups.CO_1, "2-ЦО Х5"));
         groupArrayList.add(new Group(EnumGroups.COD_2, "2-Инфраструктурные сервисы ЦОД"));
+        groupArrayList.add(new Group(EnumGroups.MFSM_2, "2-Поддержка MFSM"));
         return groupArrayList;
     }
 }
