@@ -12,16 +12,16 @@ import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.util.*;
 
-import static Employees.OperationsEmployee.getEmployee;
 import static General.Operations.isNowDate;
 import static General.Operations.scanInteger;
 
 public class OperationsTask {
-    public static void getWaitTasks()   {
+    private OperationsEmployee operationsEmployee = new OperationsEmployee();
+    public void getWaitTasks()   {
         waitTasks();
     }
-    private static void waitTasks() {
-        ArrayList<Tasks.Task> arrWait = new ArrayList<>();
+    private ArrayList<Task> waitTasks() {
+        ArrayList<Task> arrWait = new ArrayList<>();
         Date date = new Date();
         Integer countDaysWait = 2;
         Employee.listTasks.forEach((tasks -> {
@@ -36,9 +36,10 @@ public class OperationsTask {
                 System.out.println(t.getNumber() + " " + t.getDateResolved());
             });
         }
+        return arrWait;
     }
 
-    private static boolean isDifTrue(Date date, Date taskDate, Integer countWaitDays) {
+    private boolean isDifTrue(Date date, Date taskDate, Integer countWaitDays) {
         Integer difference = 0;
         Calendar calNov = new GregorianCalendar();
         Calendar calStart = new GregorianCalendar();
@@ -59,7 +60,7 @@ public class OperationsTask {
     }
 
     //ввод номера обращения
-    public static void enterTasks() throws IOException, ParseException {
+    public void enterTasks() throws IOException, ParseException {
         String str = "========================";
         Task.setNoneAppTasks(Operations.scanInteger("Сколько неназначенных?"));
         System.out.println(str + "\nРезультат\n" + str);
@@ -87,7 +88,7 @@ public class OperationsTask {
     }
 
     //правильность ввода номера обращения
-    public static String enterCorrectNumber(boolean flag) throws IOException {
+    public String enterCorrectNumber(boolean flag) throws IOException {
         for (; ; ) {
             System.out.println("Введите номер");
             String number = Operations.scanLine();
@@ -112,7 +113,7 @@ public class OperationsTask {
         }
     }
 
-    public static boolean isCorrectNumber(String number) {
+    public boolean isCorrectNumber(String number) {
         String[] splitNubmer = number.split("-");
         number = number.replace(" ", "");
         if ((number.length() == 13 && splitNubmer.length == 2) || (number.length() == 17 && splitNubmer.length == 3)) {
@@ -122,7 +123,7 @@ public class OperationsTask {
     }
 
     //поиск обращения в Employess.listTasks
-    public static Integer searchAndCreateTask(String number, Employee empl) {
+    public Integer searchAndCreateTask(String number, Employee empl) {
         Task task = returnTask(number);
         if (task != null) {
             return Employee.listTasks.indexOf(task);
@@ -133,7 +134,7 @@ public class OperationsTask {
     }
 
     //вовзращает обращение
-    private static Task returnTask(String number) {
+    private Task returnTask(String number) {
         for (Task taskEmpl : Employee.listTasks) {
             if (taskEmpl.getNumber().equals(number)) {
                 return taskEmpl;
@@ -143,7 +144,7 @@ public class OperationsTask {
     }
 
     //выбор исполнителя
-    public static Employee choiceAssignTask(String author) {
+    public Employee choiceAssignTask(String author) {
         Integer size = Employee.listEmployees.size();
         for (; ; ) {
             Integer random = (int) (Math.random() * size);
@@ -159,7 +160,7 @@ public class OperationsTask {
         }
     }
 
-    private static Employee nowTaskOfAuthor (String author) {
+    private Employee nowTaskOfAuthor (String author) {
         long count = Employee.listTasks.stream().filter(t -> t.getAuthor().equals(author) && isNowDate(t.getDateResolved())).count();
         if (count > 0)  {
             Task task = Employee.listTasks.stream().filter(t -> t.getAuthor().equals(author) && isNowDate(t.getDateResolved())).findFirst().get();
@@ -169,10 +170,12 @@ public class OperationsTask {
     }
 
     //переключение статуса
-    public static void switchStatus(String numberTask, TaskStatus status) throws IOException {
-        Task task = Employee.listTasks.get(searchAndCreateTask(numberTask, getEmployee("pestov")));
+    public void switchStatus(String numberTask, TaskStatus status) throws IOException {
+        OperationGroups operationGroups = new OperationGroups();
+        Employee pestov = operationsEmployee.getEmployee("pestov");
+        Task task = Employee.listTasks.get(searchAndCreateTask(numberTask, pestov));
         //HashMap<Integer, HashMap<EnumGroups, String>> nameGroups = setNameGroups();
-        ArrayList<Group> nameGroups = OperationGroups.getListGroups();
+        ArrayList<Group> nameGroups = operationGroups.getListGroups();
         int index = Employee.listTasks.indexOf(task);
         String stat = "";
         task.setStatus(status);
@@ -218,7 +221,7 @@ public class OperationsTask {
         System.out.println("У " + task.getNumber() + " статус переключен на " + stat);
     }
 
-    private static HashMap<Integer, HashMap<EnumGroups, String>> setNameGroups() {
+    private HashMap<Integer, HashMap<EnumGroups, String>> setNameGroups() {
         HashMap<Integer, HashMap<EnumGroups, String>> nameGroups = new HashMap<>();
         HashMap<EnumGroups, String> maps = new HashMap<>();
         maps.put(EnumGroups.CREDENTIALS_1HD, "1-HD Полномочия");
@@ -237,7 +240,7 @@ public class OperationsTask {
     }
 
     //решение обращения
-    public static void solveMyTasks(String haveNumber) throws IOException {
+    public void solveMyTasks(String haveNumber) throws IOException {
         String number = "";
         if (!haveNumber.equals("")) {
             number = haveNumber;
@@ -245,13 +248,13 @@ public class OperationsTask {
             number = enterCorrectNumber(false);
         }
         if (!number.equals("exit")) {
-            Task task = Employee.listTasks.get(searchAndCreateTask(number, OperationsEmployee.getEmployee("pestov")));
+            Task task = Employee.listTasks.get(searchAndCreateTask(number, operationsEmployee.getEmployee("pestov")));
             switchStatus(task.getNumber(), TaskStatus.DONE);
         }
     }
 
     //распечатывание моих обращений
-    public static void printTasks() {
+    public static boolean printTasks() {
         for (Task task : Employee.listTasks) {
             String str = "****************\n";
             if (task.getAssigned().getFamily().equals("pestov") &&
@@ -261,16 +264,23 @@ public class OperationsTask {
                         "Статус  " + task.getStatus());
             }
         }
+        return true;
     }
 
-    public static void manualAssignment() throws IOException {
+    public boolean manualAssignment() {
         Employee assignee = null;
         Integer i = 0;
         Integer enterNumber = 0;
         Tasks.Task task;
         boolean flag = true;
         boolean flag2 = false;
-        task = Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(false), assignee));
+        try {
+            task = Employee.listTasks.get(searchAndCreateTask(enterCorrectNumber(false), assignee));
+        }
+        catch (IOException ex)  {
+            ex.printStackTrace();
+            return false;
+        }
         task.setDateResolved(new Date());
         if (task.getAssigned() != null) {
             System.out.println("Сейчас оно назначено на " + task.getAssigned().getFamily());
@@ -298,10 +308,17 @@ public class OperationsTask {
             enterNumber = scanInteger("На кого назначить это обращение (введите номер)?");
         }
         JSONOperations.makeJSON(task);
-        JSONOperations.writeJSON();
+        try {
+            JSONOperations.writeJSON();
+            return true;
+        }
+        catch (IOException ex)  {
+            ex.printStackTrace();
+            return false;
+        }
     }
 
-    public static void search() throws IOException {
+    public boolean search() throws IOException {
         String number = enterCorrectNumber(false);
         Task task = returnTask(number);
         if (task != null) {
@@ -320,12 +337,14 @@ public class OperationsTask {
                 System.out.println("Дата " + date);
                 System.out.println();
             }
+            return true;
         } else {
             System.out.println("Обращение не найдено");
+            return false;
         }
     }
 
-    public static boolean searchInHistory (Task task) {
+    public boolean searchInHistory (Task task) {
         boolean flag = false;
         HashMap<Date, TaskStatus> history = task.getHistory();
         for (Map.Entry<Date, TaskStatus> map : history.entrySet())  {

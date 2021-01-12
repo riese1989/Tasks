@@ -1,32 +1,35 @@
 package Employees;
 
 import General.JSONOperations;
+import Tasks.OperationsTask;
 import Tasks.Task;
 import Tasks.TaskStatus;
 import org.json.simple.parser.ParseException;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.stream.Stream;
 
 import static Employees.Employee.listEmployees;
 import static General.Operations.compareDate;
-import static Tasks.OperationsTask.searchInHistory;
 
 public class OperationsEmployee {
 
-    public static Integer getCounter()  {
+    public Integer getCounter()  {
         return counter();
     }
 
-    public static void readEmployeesFromJSON() throws ParseException, java.text.ParseException, IOException {
-        JSONOperations.JSONToArrayEmployee();
+    public boolean readEmployeesFromJSON() {
+        try {
+            JSONOperations.JSONToArrayEmployee();
+            return true;
+        }
+        catch (ParseException | java.text.ParseException | IOException ex) {
+            ex.printStackTrace();
+            return false;
+        }
     }
 
-    private static Integer counter() {
+    private Integer counter() {
         Integer count = 0;
         Employee empl = getEmployee("pestov");
         for (Task task : Employee.listTasks) {
@@ -37,7 +40,7 @@ public class OperationsEmployee {
         return count;
     }
 
-    public static Employee getEmployee  (String family) {
+    public Employee getEmployee  (String family) {
         for (Employee employee : listEmployees) {
             if (employee.getFamily().equals(family))    {
                 return employee;
@@ -46,7 +49,7 @@ public class OperationsEmployee {
         return new Employee(0, family, null, true);
     }
 
-    public static void stat() {
+    public boolean stat() {
         System.out.println("\nСегодняшний счёт");
         for (Employee employee : listEmployees) {
             if(employee.getStatus()) {
@@ -60,19 +63,21 @@ public class OperationsEmployee {
             System.out.println(employee.getFamily() + " " + countTasks);
         }
         System.out.println("\nВсего назначено обращений " + Employee.listTasks.size() + "\n");
+        return true;
     }
 
-    private static long countAssignTaskNow(Employee employee)    {
+    private long countAssignTaskNow(Employee employee)    {
         long count = 0;
+        OperationsTask operationsTask = new OperationsTask();
         for(Task task : Employee.listTasks)    {
-            if (task.getAssigned() == employee && searchInHistory(task))    {
+            if (task.getAssigned() == employee && operationsTask.searchInHistory(task))    {
                 count++;
             }
         }
         return count;
     }
 
-    public static Employee tasksOfAuthor(String author) {
+    public Employee tasksOfAuthor(String author) {
         for (Employee employee : listEmployees) {
             Long count = Employee.listTasks.stream().filter(t -> t.getAssigned() == employee && t.getAuthor().equals(author)).count();
             employee.setCountTasksOfAuthor(count);

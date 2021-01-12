@@ -58,7 +58,7 @@ public class Iniciator {
         return null;
     }
 
-    private static boolean isTaskInInic (String name, String number)   {
+    private boolean isTaskInInic (String name, String number)   {
         Iniciator glInic = null;
         for (Iniciator iniciator:listIniciators)    {
             if (iniciator.getName().equals(name))   {
@@ -85,7 +85,7 @@ public class Iniciator {
         return newName;
     }
 
-    private static Iniciator circleInic(String name)   {
+    private Iniciator circleInic(String name)   {
         for (Iniciator iniciator : listIniciators)  {
             if (iniciator.getName().equals(name))   {
                 return iniciator;

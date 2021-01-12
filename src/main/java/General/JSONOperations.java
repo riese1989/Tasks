@@ -86,7 +86,8 @@ public class JSONOperations {
                 historyTask.put(dateHist, status);
             }
             TaskStatus status = Operations.convertToStatus(obj.get("Current status").toString());
-            Task task = new Task(number, OperationsEmployee.getEmployee(assigned), status, date, author, comment, historyTask);
+            OperationsEmployee operationsEmployee = new OperationsEmployee();
+            Task task = new Task(number, operationsEmployee.getEmployee(assigned), status, date, author, comment, historyTask);
             Employee.listTasks.add(task);
         }
     }

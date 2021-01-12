@@ -2,6 +2,7 @@ package Menu;
 
 import Employees.Employee;
 import Employees.OperationsEmployee;
+import General.Operations;
 import Tasks.OperationsTask;
 import Tasks.TaskStatus;
 import org.json.simple.parser.ParseException;
@@ -18,8 +19,10 @@ public class Menu {
     public static void menu() throws IOException, ParseException {
         boolean flag = true;
         while (flag) {
-            OperationsTask.getWaitTasks();
-            System.out.println("За сегодняшний день я обработал " + OperationsEmployee.getCounter() + " обращений");
+            OperationsTask operationsTask = new OperationsTask();
+            OperationsEmployee operationsEmployee = new OperationsEmployee();
+            operationsTask.getWaitTasks();
+            System.out.println("За сегодняшний день я обработал " + operationsEmployee.getCounter() + " обращений");
             System.out.println("Введите команду\n");
             System.out.println("1. Автоматическое назначение новых обращений");
             System.out.println("2. Решение моих обращений");
@@ -36,23 +39,23 @@ public class Menu {
             String command = scanLine();
             switch (command) {
                 case "1": {
-                    enterTasks();
+                    operationsTask.enterTasks();
                     break;
                 }
                 case "2": {
-                    solveMyTasks("");
+                    operationsTask.solveMyTasks("");
                     break;
                 }
                 case "3": {
-                    switchStatus(enterCorrectNumber(false), TaskStatus.WAITING);
+                    operationsTask.switchStatus(operationsTask.enterCorrectNumber(false), TaskStatus.WAITING);
                     break;
                 }
                 case "4": {
-                    switchStatus(enterCorrectNumber(false), TaskStatus.TASK);
+                    operationsTask.switchStatus(operationsTask.enterCorrectNumber(false), TaskStatus.TASK);
                     break;
                 }
                 case "5": {
-                    switchStatus(enterCorrectNumber(false), TaskStatus.NOT_US);
+                    operationsTask.switchStatus(operationsTask.enterCorrectNumber(false), TaskStatus.NOT_US);
                     break;
                 }
                 case "6": {
@@ -60,15 +63,15 @@ public class Menu {
                     break;
                 }
                 case "7": {
-                    manualAssignment();
+                    operationsTask.manualAssignment();
                     break;
                 }
                 case "8": {
-                    search();
+                    operationsTask.search();
                     break;
                 }
                 case "9": {
-                    stat();
+                    operationsEmployee.stat();
                     break;
                 }
 
@@ -86,8 +89,8 @@ public class Menu {
                     break;
                 }
                 default: {
-                    if (isCorrectNumber(command)) {
-                        solveMyTasks(command);
+                    if (operationsTask.isCorrectNumber(command)) {
+                        operationsTask.solveMyTasks(command);
                     } else {
                         System.out.println("Неправильная команда");
                     }
