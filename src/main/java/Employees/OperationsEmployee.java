@@ -22,7 +22,7 @@ public class OperationsEmployee {
         return counter();
     }
 
-    public static void readEmployeesFromJSON(String fileEmployees) throws ParseException, java.text.ParseException, IOException {
+    public static void readEmployeesFromJSON() throws ParseException, java.text.ParseException, IOException {
         JSONOperations.JSONToArrayEmployee();
     }
 

@@ -2,9 +2,10 @@ package General;
 
 import Employees.Employee;
 import Employees.OperationsEmployee;
+import Groups.EnumGroups;
+import Groups.Group;
 import Tasks.Task;
 import Tasks.TaskStatus;
-import jdk.nashorn.api.scripting.ScriptUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -16,10 +17,11 @@ import java.util.*;
 
 
 public class JSONOperations {
-    private static SimpleDateFormat formatDate = Options.getFormatDate();
+    private static SimpleDateFormat formatDate = Options.DATE_FORMAT;
     private static JSONObject fullJSON = Options.getFullJSON();
-    private static String filePath = Options.getFilePath();
-    private static String filePathVacations = Options.getFilePathVacations();
+    private static String filePath = Options.FILE_PATH;
+    private String fileGroups = Options.FILE_GROUPS;
+    private static String filePathEmployee = Options.FILE_EMPLOYEES_JSON;
 
     public static JSONObject getJSON(String path) throws IOException, ParseException {
         searchFile(path);
@@ -29,8 +31,24 @@ public class JSONOperations {
         return fullJSON;
     }
 
+    public ArrayList<Group> getGroupsFromJSON() throws IOException, ParseException {
+        ArrayList<Group> groups = new ArrayList<>();
+        JSONObject objs = getJSON(fileGroups);
+        Set maps = objs.keySet();
+        for (Object map : maps) {
+            String key = map.toString();
+            EnumGroups enumGroups = EnumGroups.valueOf(key);
+            String name = objs.get(key).toString();
+            Group group = new Group(enumGroups,name);
+            groups.add(group);
+
+        }
+
+        return groups;
+    }
+
     public static void JSONToArrayEmployee() throws IOException, ParseException, java.text.ParseException {
-        JSONObject objs = getJSON(Options.getFileEmployeesJSON());
+        JSONObject objs = getJSON(filePathEmployee);
         Set maps = objs.keySet();
         for (Object map : maps) {
             String family = map.toString();
@@ -49,7 +67,7 @@ public class JSONOperations {
     }
 
     public static void JSONToArrayTask() throws IOException, ParseException, java.text.ParseException {
-        JSONObject objs = getJSON(Options.getFilePath());
+        JSONObject objs = getJSON(filePath);
         Set maps = objs.keySet();
         for (Object map : maps) {
             JSONObject obj = (JSONObject) objs.get(map.toString());
@@ -112,29 +130,6 @@ public class JSONOperations {
             return false;
         }
         return true;
-    }
-
-    public static HashMap<Date, Date> JSONtoHashMapVacations(Employee employee) throws IOException, ParseException, java.text.ParseException {
-        HashMap<Date, Date> vacations = new HashMap<>();
-        JSONObject objs = getJSON(filePathVacations);
-        Set maps = objs.keySet();
-        for (Object map : maps) {
-            JSONObject obj = (JSONObject) objs.get(map.toString());
-            String familyJSON = map.toString();
-            if (familyJSON.equals(employee.getFamily()))  {
-                JSONArray vacationsFamilyJSON = (JSONArray)obj.get("vacations");
-                for (Object vacationFamily : vacationsFamilyJSON)   {
-                    String[] parts = vacationFamily.toString().split("\"");
-                    Date start = formatDate.parse(parts[3]);
-                    Date end = formatDate.parse(parts[7]);
-                    vacations.put(start,end);
-                }
-
-            }
-        }
-        employee.setVacations(vacations);
-        return vacations;
-
     }
 
     private static String newStringField (JSONObject obj, String field) {

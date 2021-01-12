@@ -1,7 +1,8 @@
 package Groups;
 
+import General.JSONOperations;
+
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class OperationGroups  {
     private static GroupComparator groupComparator = new GroupComparator();
@@ -13,13 +14,14 @@ public class OperationGroups  {
     }
 
     private static ArrayList<Group> nameGroups()    {
-        ArrayList<Group> groupArrayList = new ArrayList<>();
-        groupArrayList.add(new Group(EnumGroups.CREDENTIALS_1HD, "1-HD Полномочия"));
-        groupArrayList.add(new Group(EnumGroups.SAP_SM_2, "2-Поддержка SAP SM"));
-        groupArrayList.add(new Group(EnumGroups.JIRA_3, "3-Поддержка Jira"));
-        groupArrayList.add(new Group(EnumGroups.CO_1, "2-ЦО Х5"));
-        groupArrayList.add(new Group(EnumGroups.COD_2, "2-Инфраструктурные сервисы ЦОД"));
-        groupArrayList.add(new Group(EnumGroups.MFSM_2, "2-Поддержка MFSM"));
+        ArrayList<Group> groupArrayList = null;
+        try {
+            JSONOperations jsonOperations = new JSONOperations();
+            groupArrayList = jsonOperations.getGroupsFromJSON();
+        }
+        catch (Exception ex)    {
+            System.out.println();
+        }
         return groupArrayList;
     }
 }

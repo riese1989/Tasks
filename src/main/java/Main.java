@@ -12,9 +12,8 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException, ParseException, java.text.ParseException {
-        String fileEmployees = Options.getFileEmployees();
-        String filePath = Options.getFilePath();
-        OperationsEmployee.readEmployeesFromJSON(fileEmployees);
+        String filePath = Options.FILE_PATH;
+        OperationsEmployee.readEmployeesFromJSON();
         JSONOperations.JSONToArrayTask();
         Options.setFullJSON(JSONOperations.getJSON(filePath));
         Menu.menu();
