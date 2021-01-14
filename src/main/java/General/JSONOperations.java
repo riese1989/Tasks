@@ -4,6 +4,8 @@ import Employees.Employee;
 import Employees.OperationsEmployee;
 import Groups.EnumGroups;
 import Groups.Group;
+import Repositories.Repo;
+import Tasks.AccessRepo;
 import Tasks.Task;
 import Tasks.TaskStatus;
 import org.json.simple.JSONArray;
@@ -22,6 +24,7 @@ public class JSONOperations {
     private static String filePath = Options.FILE_PATH;
     private String fileGroups = Options.FILE_GROUPS;
     private static String filePathEmployee = Options.FILE_EMPLOYEES_JSON;
+    private static Repo<Employee> employeeRepo = AccessRepo.getRepoEmpl();
 
     public static JSONObject getJSON(String path) throws IOException, ParseException {
         searchFile(path);
@@ -62,7 +65,7 @@ public class JSONOperations {
                 Date end = formatDate.parse(parts[7]);
                 vacations.put(start,end);
             }
-            Employee.listEmployees.add(new Employee(0,family,vacations, status));
+            employeeRepo.add(new Employee(0,family,vacations, status));
         }
     }
 

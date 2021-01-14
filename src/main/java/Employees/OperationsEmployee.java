@@ -1,6 +1,8 @@
 package Employees;
 
 import General.JSONOperations;
+import Repositories.Repo;
+import Tasks.AccessRepo;
 import Tasks.OperationsTask;
 import Tasks.Task;
 import Tasks.TaskStatus;
@@ -9,10 +11,10 @@ import java.io.IOException;
 import java.util.Comparator;
 import java.util.stream.Stream;
 
-import static Employees.Employee.listEmployees;
 import static General.Operations.compareDate;
 
 public class OperationsEmployee {
+    private Repo<Employee> repoEmployees = AccessRepo.getRepoEmpl();
 
     public Integer getCounter()  {
         return counter();
@@ -41,7 +43,7 @@ public class OperationsEmployee {
     }
 
     public Employee getEmployee  (String family) {
-        for (Employee employee : listEmployees) {
+        for (Employee employee : repoEmployees.get()) {
             if (employee.getFamily().equals(family))    {
                 return employee;
             }
@@ -51,14 +53,14 @@ public class OperationsEmployee {
 
     public boolean stat() {
         System.out.println("\nСегодняшний счёт");
-        for (Employee employee : listEmployees) {
+        for (Employee employee : repoEmployees.get()) {
             if(employee.getStatus()) {
                 long count = countAssignTaskNow(employee);
                 System.out.println(employee.getFamily() + " " + count);
             }
         }
         System.out.println("\nОбщий счёт");
-        for (Employee employee : listEmployees) {
+        for (Employee employee : repoEmployees.get()) {
             long countTasks = Employee.listTasks.stream().filter(t -> t.getAssigned().getFamily().equals(employee.getFamily())).count();
             System.out.println(employee.getFamily() + " " + countTasks);
         }
@@ -78,11 +80,11 @@ public class OperationsEmployee {
     }
 
     public Employee tasksOfAuthor(String author) {
-        for (Employee employee : listEmployees) {
+        for (Employee employee : repoEmployees.get()) {
             Long count = Employee.listTasks.stream().filter(t -> t.getAssigned() == employee && t.getAuthor().equals(author)).count();
             employee.setCountTasksOfAuthor(count);
         }
-        Stream<Employee> stream = listEmployees.stream();
+        Stream<Employee> stream = repoEmployees.get().stream();
         Employee empl = stream.max(Comparator.comparing(Employee::getCountTasksOfAuthor)).get();
         return empl;
     }

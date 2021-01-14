@@ -7,6 +7,7 @@ import General.Operations;
 import Groups.EnumGroups;
 import Groups.Group;
 import Groups.OperationGroups;
+import Repositories.Repo;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -145,14 +146,15 @@ public class OperationsTask {
 
     //выбор исполнителя
     public Employee choiceAssignTask(String author) {
-        Integer size = Employee.listEmployees.size();
+        Repo<Employee> employeeRepo = AccessRepo.getRepoEmpl();
+        Integer size = employeeRepo.get().size();
         for (; ; ) {
             Integer random = (int) (Math.random() * size);
             Employee empl = nowTaskOfAuthor(author);
             if (empl != null)   {
                 return empl;
             }
-            empl = Employee.listEmployees.get(random);
+            empl = employeeRepo.get().get(random);
             if (empl.currentVacation() || !empl.getStatus()) {
                 continue;
             }
