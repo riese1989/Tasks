@@ -1,5 +1,6 @@
 package Employees;
 
+import Repositories.RepoTasks;
 import Tasks.Task;
 import Tasks.TaskStatus;
 
@@ -11,16 +12,16 @@ import java.util.Map;
 
 public class Employee implements Serializable {
     private static Integer countTasks = 0;
-    private Integer  countTaskOne = 0;
+    private Integer countTaskOne = 0;
     private Integer activeTask = 0;
     private String family;
     private Integer taskWaiting = 0;
     private Integer tasksWithTasks = 0;
-    public static ArrayList<Task> listTasks = new ArrayList<>();
     private HashMap<Date, Date> vacations = new HashMap<>();
     private Long countTasksOfAuthor;
     private Integer taskOfThisSession = 0;
     private boolean status;
+    private RepoTasks repoTasks;
 
     public HashMap<Date, Date> getVacations() {
         return vacations;
@@ -30,7 +31,7 @@ public class Employee implements Serializable {
         this.vacations = vacations;
     }
 
-    public Employee (Integer countTaskOne, String family, HashMap<Date, Date> vacations, boolean status)    {
+    public Employee(Integer countTaskOne, String family, HashMap<Date, Date> vacations, boolean status) {
         this.countTaskOne = countTaskOne;
         this.family = family;
         this.vacations = vacations;
@@ -65,18 +66,18 @@ public class Employee implements Serializable {
         return countTaskOne;
     }
 
-    public Integer getCountActiveTasks()    {
+    public Integer getCountActiveTasks() {
         return countTaskOne - taskWaiting - tasksWithTasks;
     }
 
-    public void incTaskOfThisSession()  {
+    public void incTaskOfThisSession() {
         this.taskOfThisSession++;
     }
 
-    public static Integer getTaskWithStatus (Employee employee, TaskStatus status)   {
+    public Integer getTaskWithStatus(Employee employee, TaskStatus status) {
         //flag = true когда надо искать все обращения
         Integer count = 0;
-        for (Task task : Employee.listTasks)   {
+        for (Task task : repoTasks.get()) {
             if ((task.getStatus() == status ||
                     (status == TaskStatus.ALL &&
                             task.getStatus() != TaskStatus.DONE &&
@@ -92,6 +93,7 @@ public class Employee implements Serializable {
         activeTask = countTaskOne - taskWaiting - tasksWithTasks;
         return activeTask;
     }
+
     public Integer getTaskOfThisSession() {
         return taskOfThisSession;
     }
@@ -100,12 +102,12 @@ public class Employee implements Serializable {
         this.activeTask = activeTask;
     }
 
-    public boolean currentVacation()    {
+    public boolean currentVacation() {
         Date date = new Date();
-        for (Map.Entry <Date, Date> vacation : vacations.entrySet()) {
+        for (Map.Entry<Date, Date> vacation : vacations.entrySet()) {
             Long start = vacation.getKey().getTime();
             Long end = vacation.getValue().getTime();
-            if (date.getTime() >= start && date.getTime() <= end)   {
+            if (date.getTime() >= start && date.getTime() <= end) {
                 return true;
             }
         }

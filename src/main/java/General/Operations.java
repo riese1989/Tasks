@@ -39,7 +39,7 @@ public class Operations {
         logger.info(message + number);
     }
 
-    //СЃРєР°РЅРЅРµСЂ С‡РёСЃР»Р° РІРІРѕРґР° РёР· РєРѕРјРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё
+    //сканнер числа ввода из коммандной строки
     public static Integer scanInteger(String message) {
         String string;
         for (; ; ) {
@@ -48,7 +48,7 @@ public class Operations {
             if (string.matches("[-+]?\\d+")) {
                 return Integer.parseInt(string);
             }
-            System.out.println("Р’С‹ РІРІРµР»Рё РЅРµ С‡РёСЃР»Рѕ");
+            System.out.println("Вы ввели не число");
         }
     }
 
@@ -80,6 +80,11 @@ public class Operations {
         }
         return TaskStatus.NOTE_DONE;
     }
+
+//    public static String translate(String string)   {
+//        string.replace("ЗНО", "ZNO").replace("ИНЦ","INC");
+//        return string;
+//    }
 
     public static String statusToString(TaskStatus status)  {
         switch (status) {

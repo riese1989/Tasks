@@ -2,10 +2,11 @@ package Inic;
 
 import Tasks.Task;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Iniciator {
+public class Iniciator implements Serializable {
     private String name;
     private ArrayList<Task> taskInic = new ArrayList<>();
     private Integer countTasks = taskInic.size();

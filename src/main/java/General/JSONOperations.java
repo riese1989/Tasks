@@ -4,6 +4,7 @@ import Employees.Employee;
 import Employees.OperationsEmployee;
 import Groups.EnumGroups;
 import Groups.Group;
+import Repositories.Access;
 import Repositories.Repo;
 import Tasks.AccessRepo;
 import Tasks.Task;
@@ -65,7 +66,7 @@ public class JSONOperations {
                 Date end = formatDate.parse(parts[7]);
                 vacations.put(start,end);
             }
-            employeeRepo.add(new Employee(0,family,vacations, status));
+            employeeRepo.append(new Employee(0,family,vacations, status));
         }
     }
 
@@ -91,7 +92,7 @@ public class JSONOperations {
             TaskStatus status = Operations.convertToStatus(obj.get("Current status").toString());
             OperationsEmployee operationsEmployee = new OperationsEmployee();
             Task task = new Task(number, operationsEmployee.getEmployee(assigned), status, date, author, comment, historyTask);
-            Employee.listTasks.add(task);
+            Access.getRepoTasks().append(task);
         }
     }
 

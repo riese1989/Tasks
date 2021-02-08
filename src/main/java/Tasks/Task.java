@@ -1,12 +1,15 @@
 package Tasks;
 import Employees.Employee;
+import General.Options;
 import Inic.Iniciator;
+import com.sun.org.apache.xpath.internal.operations.Operation;
 
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 
-public class Task {
+public class Task implements Serializable {
     private static Integer countTasksAll;
     private static Integer noneAppTasks;
     private Employee assigned;

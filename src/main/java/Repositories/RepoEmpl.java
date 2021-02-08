@@ -6,10 +6,10 @@ import General.Options;
 import java.util.ArrayList;
 
 public class RepoEmpl implements Repo<Employee> {
-    private static ArrayList<Employee> employeesList = new ArrayList<>();
+    private ArrayList<Employee> employeesList = new ArrayList<>();
 
     @Override
-    public boolean add (Employee employee)   {
+    public boolean append(Employee employee)   {
         employeesList.add(employee);
         return true;
     }
@@ -18,9 +18,5 @@ public class RepoEmpl implements Repo<Employee> {
     public ArrayList<Employee> get() {
         Options options = new Options();
         return (ArrayList<Employee>) options.copy(employeesList);
-    }
-
-    public static ArrayList<Employee> getEmployeesList() {
-        return employeesList;
     }
 }
