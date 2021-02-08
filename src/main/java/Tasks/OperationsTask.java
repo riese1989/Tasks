@@ -8,6 +8,7 @@ import Groups.EnumGroups;
 import Groups.Group;
 import Groups.OperationGroups;
 import Repositories.Repo;
+import Repositories.RepoEmpl;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -287,10 +288,19 @@ public class OperationsTask {
         if (task.getAssigned() != null) {
             System.out.println("Сейчас оно назначено на " + task.getAssigned().getFamily());
         }
-
+        ArrayList<Employee> trueEmpl = new ArrayList<>();
         while (flag) {
+            for (Employee empl : RepoEmpl.getEmployeesList()) {
+                if (empl.getStatus())   {
+                    i++;
+                    System.out.println(i + " " + empl.getFamily());
+                    trueEmpl.add(empl);
+                    flag2 = true;
+                }
+            }
+            enterNumber = scanInteger("На кого назначить это обращение (введите номер)?");
             if (enterNumber < i + 1 && enterNumber != 0) {
-                assignee = Employee.listEmployees.get(enterNumber - 1);
+                assignee = trueEmpl.get(enterNumber - 1);
                 task.setAssigned(assignee);
                 task.setStatus(TaskStatus.NOTE_DONE);
                 System.out.println("Обращение " + task.getNumber() + " назначено на " + assignee.getFamily());
@@ -300,14 +310,6 @@ public class OperationsTask {
             if (enterNumber == 0 && flag2 && enterNumber > i - 1) {
                 System.out.println("Значение должно быть больше 0 и меньше " + (i - 1));
             }
-            for (Employee empl : Employee.listEmployees) {
-                if (empl.getStatus())   {
-                    i++;
-                    System.out.println(i + " " + empl.getFamily());
-                    flag2 = true;
-                }
-            }
-            enterNumber = scanInteger("На кого назначить это обращение (введите номер)?");
         }
         JSONOperations.makeJSON(task);
         try {

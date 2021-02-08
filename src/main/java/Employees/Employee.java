@@ -3,12 +3,13 @@ package Employees;
 import Tasks.Task;
 import Tasks.TaskStatus;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Employee {
+public class Employee implements Serializable {
     private static Integer countTasks = 0;
     private Integer  countTaskOne = 0;
     private Integer activeTask = 0;
@@ -16,7 +17,6 @@ public class Employee {
     private Integer taskWaiting = 0;
     private Integer tasksWithTasks = 0;
     public static ArrayList<Task> listTasks = new ArrayList<>();
-    public static ArrayList<Employee> listEmployees = new ArrayList<>();
     private HashMap<Date, Date> vacations = new HashMap<>();
     private Long countTasksOfAuthor;
     private Integer taskOfThisSession = 0;

@@ -30,7 +30,7 @@ public class Menu {
             System.out.println("4. Задание");
             System.out.println("5. Не к нам");
             System.out.println("6. Вывод моих обращений");
-            System.out.println("7. Ручное назначение обращений");
+            System.out.println("7. Переназначение");
             System.out.println("8. Поиск обращения");
             System.out.println("9. Статистика");
             System.out.println("10. Топ инициаторов");

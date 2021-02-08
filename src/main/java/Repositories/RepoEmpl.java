@@ -19,4 +19,8 @@ public class RepoEmpl implements Repo<Employee> {
         Options options = new Options();
         return (ArrayList<Employee>) options.copy(employeesList);
     }
+
+    public static ArrayList<Employee> getEmployeesList() {
+        return employeesList;
+    }
 }
