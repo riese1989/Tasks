@@ -132,16 +132,14 @@ public class OperationsTask {
             return Access.getRepoTasks().getIndex(task);
         }
         task = new Task(number, empl, TaskStatus.NOTE_DONE);
-        Access.getRepoTasks().get().add(task);
+        Access.getRepoTasks().append(task);
         return Access.getRepoTasks().getIndex(task);
     }
 
     //вовзращает обращение
     private Task returnTask(String number) {
         for (Task taskEmpl : Access.getRepoTasks().get()) {
-            String numberAfterList = taskEmpl.getNumber().split("-")[1];
-            String numberAfter = number.split("-")[1];
-            if (numberAfter.equals(numberAfterList)) {
+            if (taskEmpl.getNumber().equals(number)) {
                 return taskEmpl;
             }
         }
@@ -255,7 +253,8 @@ public class OperationsTask {
             number = enterCorrectNumber(false);
         }
         if (!number.equals("exit")) {
-            Task task = Access.getRepoTasks().get().get(searchAndCreateTask(number, operationsEmployee.getEmployee("pestov")));
+            int index = searchAndCreateTask(number, operationsEmployee.getEmployee("pestov"));
+            Task task = Access.getRepoTasks().get().get(index);
             switchStatus(task.getNumber(), TaskStatus.DONE);
         }
     }

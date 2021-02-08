@@ -31,8 +31,11 @@ public class JSONOperations {
         searchFile(path);
         FileReader reader = new FileReader(path);
         JSONParser jsonParser = new JSONParser();
-        fullJSON = (JSONObject) jsonParser.parse(reader);
-        return fullJSON;
+        if(path.equals("map.json")) {
+            fullJSON = (JSONObject) jsonParser.parse(reader);
+            return fullJSON;
+        }
+        return (JSONObject) jsonParser.parse(reader);
     }
 
     public ArrayList<Group> getGroupsFromJSON() throws IOException, ParseException {
