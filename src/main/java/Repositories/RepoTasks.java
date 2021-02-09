@@ -2,6 +2,7 @@ package Repositories;
 
 import General.Options;
 import Tasks.Task;
+import Tasks.TaskStatus;
 
 import java.util.ArrayList;
 
@@ -28,5 +29,14 @@ public class RepoTasks implements Repo<Task> {
             i++;
         }
         return -1;
+    }
+
+    public boolean setStatus(Task task)  {
+        for (Task taskFromList : listTasks) {
+            if (taskFromList.getNumber().equals(task.getNumber()))  {
+                taskFromList.setStatus(task.getStatus());
+            }
+        }
+        return true;
     }
 }

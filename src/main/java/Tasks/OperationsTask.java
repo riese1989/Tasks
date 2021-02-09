@@ -189,7 +189,7 @@ public class OperationsTask {
             System.out.println("Комментарий ");
             task.setComment(Operations.scanLine());
         }
-        Access.getRepoTasks().get().set(index, task);
+        Access.getRepoTasks().setStatus(task);
         if (status == TaskStatus.TASK) {
             String names = new String();
             for(Integer i = 1; i <= nameGroups.size(); i++) {
