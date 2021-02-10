@@ -94,7 +94,9 @@ public class JSONOperations {
             }
             TaskStatus status = Operations.convertToStatus(obj.get("Current status").toString());
             OperationsEmployee operationsEmployee = new OperationsEmployee();
-            Task task = new Task(number, operationsEmployee.getEmployee(assigned), status, date, author, comment, historyTask);
+            Employee employee = operationsEmployee.getEmployee(assigned);
+            Task task = new Task(number, employee, status, date, author, comment, historyTask);
+            employee.incCountAllTasksEmpl();
             Access.getRepoTasks().append(task);
         }
     }

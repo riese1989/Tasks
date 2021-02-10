@@ -34,9 +34,9 @@ public class OperationsEmployee {
 
     private Integer counter() {
         Integer count = 0;
-        Employee empl = getEmployee("pestov");
+        String family = "pestov";
         for (Task task : Access.getRepoTasks().get()) {
-            if (task.getAssigned() == empl && compareDate(task.getDateResolved()) && task.getStatus() != TaskStatus.NOTE_DONE) {
+            if (task.getAssigned().getFamily().equals(family) && compareDate(task.getDateResolved()) && task.getStatus() != TaskStatus.NOTE_DONE) {
                 count++;
             }
         }
@@ -53,7 +53,7 @@ public class OperationsEmployee {
     }
 
     public boolean stat() {
-        System.out.println("\nСегодняшний счёт");
+        System.out.println("\nЗа сегодня назначено");
         for (Employee employee : repoEmployees.get()) {
             if(employee.getStatus()) {
                 long count = countAssignTaskNow(employee);
@@ -73,7 +73,7 @@ public class OperationsEmployee {
         long count = 0;
         OperationsTask operationsTask = new OperationsTask();
         for(Task task : Access.getRepoTasks().get())    {
-            if (task.getAssigned() == employee && operationsTask.searchInHistory(task))    {
+            if (task.getAssigned().getFamily().equals(employee.getFamily()) && operationsTask.searchInHistory(task))    {
                 count++;
             }
         }

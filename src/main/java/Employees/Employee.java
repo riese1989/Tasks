@@ -21,6 +21,7 @@ public class Employee implements Serializable {
     private Long countTasksOfAuthor;
     private Integer taskOfThisSession = 0;
     private boolean status;
+    private Integer countAllTasksEmpl = 0;
     private RepoTasks repoTasks;
 
     public HashMap<Date, Date> getVacations() {
@@ -124,5 +125,13 @@ public class Employee implements Serializable {
 
     public boolean getStatus() {
         return status;
+    }
+
+    public Integer getCountAllTasksEmpl() {
+        return countAllTasksEmpl;
+    }
+
+    public void incCountAllTasksEmpl()  {
+        countAllTasksEmpl++;
     }
 }
