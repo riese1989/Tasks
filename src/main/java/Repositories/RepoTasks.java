@@ -5,6 +5,7 @@ import Tasks.Task;
 import Tasks.TaskStatus;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class RepoTasks implements Repo<Task> {
     private ArrayList<Task> listTasks = new ArrayList<>();
@@ -35,6 +36,7 @@ public class RepoTasks implements Repo<Task> {
         for (Task taskFromList : listTasks) {
             if (taskFromList.getNumber().equals(task.getNumber()))  {
                 taskFromList.setStatus(task.getStatus());
+                taskFromList.setDateResolved(new Date());
             }
         }
         return true;

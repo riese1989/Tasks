@@ -9,7 +9,6 @@ import Groups.Group;
 import Groups.OperationGroups;
 import Repositories.Access;
 import Repositories.Repo;
-import Repositories.RepoEmpl;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -223,6 +222,7 @@ public class OperationsTask {
         }
         JSONOperations.makeJSON(task);
         JSONOperations.writeJSON();
+        Access.getRepoTasks().setStatus(task);
         System.out.println("У " + task.getNumber() + " статус переключен на " + stat);
     }
 

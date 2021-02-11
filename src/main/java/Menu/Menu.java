@@ -9,7 +9,6 @@ import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 
-import static Employees.OperationsEmployee.*;
 import static General.Operations.scanLine;
 import static Prompt.MenuPrompt.menuPrompt;
 import static Tasks.OperationsTask.*;
