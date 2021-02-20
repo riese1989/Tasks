@@ -8,37 +8,21 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class RepoTasks implements Repo<Task> {
-    private ArrayList<Task> listTasks = new ArrayList<>();
-    @Override
-    public boolean append(Task task) {
-        listTasks.add(task);
-        return true;
-    }
 
-    @Override
-    public ArrayList<Task> get() {
-        Options options = new Options();
-        return (ArrayList<Task>) options.copy(listTasks);
-    }
+  private ArrayList<Task> listTasks = new ArrayList<>();
 
-    public int getIndex(Task taskEmpl)  {
-        int i = 0;
-        for (Task task : listTasks) {
-            if (task.getNumber().equals(taskEmpl.getNumber()))  {
-                return i;
-            }
-            i++;
-        }
-        return -1;
-    }
+  @Override
+  public boolean append(Task task) {
+    listTasks.add(task);
+    return true;
+  }
 
-    public boolean setStatus(Task task)  {
-        for (Task taskFromList : listTasks) {
-            if (taskFromList.getNumber().equals(task.getNumber()))  {
-                taskFromList.setStatus(task.getStatus());
-                taskFromList.setDateResolved(new Date());
-            }
-        }
-        return true;
-    }
+  @Override
+  public ArrayList<Task> get() {
+    return listTasks;
+  }
+
+  public int getIndex(Task taskEmpl) {
+    return listTasks.indexOf(taskEmpl);
+  }
 }
