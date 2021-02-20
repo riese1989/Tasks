@@ -50,7 +50,6 @@ public class JSONOperations {
             groups.add(group);
 
         }
-
         return groups;
     }
 
