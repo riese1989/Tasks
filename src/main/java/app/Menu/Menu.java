@@ -1,24 +1,36 @@
 package app.Menu;
 
 import app.Employees.OperationsEmployee;
+import app.General.Operations;
+import app.Prompt.MenuPrompt;
 import app.Tasks.OperationsTask;
 import app.Tasks.TaskStatus;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
 
 import static app.General.Operations.scanLine;
-import static app.Prompt.MenuPrompt.menuPrompt;
 import static app.Tasks.OperationsTask.*;
 import static app.Inic.OperationsIniciators.*;
 
+@Component
 public class Menu {
 
-  public static void menu() throws IOException, ParseException {
+  private ApplicationContext context;
+
+  public Menu (@Autowired ApplicationContext context) {
+    this.context = context;
+  }
+
+  public void menu() throws IOException, ParseException {
     boolean flag = true;
+    OperationsTask operationsTask = context.getBean(OperationsTask.class);
+    OperationsEmployee operationsEmployee = context.getBean(OperationsEmployee.class);
+    MenuPrompt menuPrompt = context.getBean(MenuPrompt.class);
     while (flag) {
-      OperationsTask operationsTask = new OperationsTask();
-      OperationsEmployee operationsEmployee = new OperationsEmployee();
       operationsTask.getWaitTasks();
       System.out.println(
           "За сегодняшний день я обработал " + operationsEmployee.getCounter() + " обращений");
@@ -58,7 +70,7 @@ public class Menu {
           break;
         }
         case "6": {
-          printTasks();
+          operationsTask.printTasks();
           break;
         }
         case "7": {
@@ -80,7 +92,7 @@ public class Menu {
         }
 
         case "11": {
-          menuPrompt();
+          menuPrompt.menuPrompt();
         }
 
         case "q": {

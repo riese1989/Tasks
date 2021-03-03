@@ -3,7 +3,9 @@ package app.Repositories;
 import app.Tasks.Task;
 
 import java.util.ArrayList;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RepoTasks implements Repo<Task> {
 
   private ArrayList<Task> listTasks = new ArrayList<>();

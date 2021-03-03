@@ -1,5 +1,6 @@
 package app.General;
 
+import app.Application;
 import app.Employees.Employee;
 import app.Employees.OperationsEmployee;
 import app.Groups.EnumGroups;
@@ -9,6 +10,8 @@ import app.Repositories.Repo;
 import app.Tasks.AccessRepo;
 import app.Tasks.Task;
 import app.Tasks.TaskStatus;
+import app.config.Config;
+import app.config.FileConfig;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -17,18 +20,36 @@ import org.json.simple.parser.ParseException;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
 
+@Component
 
 public class JSONOperations {
 
-  private static SimpleDateFormat formatDate = Options.DATE_FORMAT;
-  private static JSONObject fullJSON = new JSONObject();
-  private static String filePath = Options.FILE_PATH;
-  private String fileGroups = Options.FILE_GROUPS;
-  private static String filePathEmployee = Options.FILE_EMPLOYEES_JSON;
-  private static Repo<Employee> employeeRepo = AccessRepo.getRepoEmpl();
+  private SimpleDateFormat formatDate = Options.DATE_FORMAT;
+  private JSONObject fullJSON = new JSONObject();
+  private String filePath;
+  private String fileGroups;
+  private String filePathEmployee;
+  private Access access;
+  private Repo<Employee> employeeRepo;
+  private ApplicationContext context = null;
 
-  public static JSONObject getJSON(String path) throws IOException, ParseException {
+  public JSONOperations(@Autowired FileConfig fileConfig,
+      @Autowired ApplicationContext context,
+      @Autowired Access access)  {
+    filePath = fileConfig.getMapPath();
+    fileGroups = fileConfig.getGroupPath();
+    filePathEmployee = fileConfig.getPathEmployee();
+    this.context = context;
+    this.access = access;
+    employeeRepo = access.getRepoEmpl();
+  }
+
+
+  public JSONObject getJSON(String path) throws IOException, ParseException {
 
     searchFile(path);
     FileReader reader = new FileReader(path);
@@ -55,7 +76,7 @@ public class JSONOperations {
     return groups;
   }
 
-  public static void JSONToArrayEmployee()
+  public void JSONToArrayEmployee()
       throws IOException, ParseException, java.text.ParseException {
     JSONObject objs = getJSON(filePathEmployee);
     Set maps = objs.keySet();
@@ -72,12 +93,13 @@ public class JSONOperations {
         Date end = formatDate.parse(parts[7]);
         vacations.put(start, end);
       }
-      Employee employee = new Employee(0, family, vacations, status, isCurrent);
+      Employee employee = context.getBean(Employee.class);
+      employee.setFields(0, family, vacations, status, isCurrent);
       employeeRepo.append(employee);
     }
   }
 
-  public static void JSONToArrayTask()
+  public void JSONToArrayTask()
       throws IOException, ParseException, java.text.ParseException {
     JSONObject objs = getJSON(filePath);
     Set maps = objs.keySet();
@@ -98,16 +120,16 @@ public class JSONOperations {
         historyTask.put(dateHist, status);
       }
       TaskStatus status = Operations.convertToStatus(obj.get("Current status").toString());
-      OperationsEmployee operationsEmployee = new OperationsEmployee();
+      OperationsEmployee operationsEmployee = context.getBean(OperationsEmployee.class);
       Employee employee = operationsEmployee.getEmployee(assigned);
       Task task = new Task(number, employee, status, date, author, comment, historyTask);
       employee.incCountAllTasksEmpl();
-      Access.getRepoTasks().append(task);
+      access.getRepoTasks().append(task);
     }
   }
 
   //поиск в json
-  public static void makeJSON(Task task) {
+  public void makeJSON(Task task) {
     JSONObject taskJSON = new JSONObject();
     JSONObject obj = (JSONObject) fullJSON.get(task.getNumber());
     JSONArray historyTaskJSON = new JSONArray();
@@ -127,7 +149,7 @@ public class JSONOperations {
   }
 
   //запись в json
-  public static void writeJSON() throws IOException {
+  public void writeJSON() throws IOException {
     searchFile(filePath);
     try (FileWriter file = new FileWriter(filePath)) {
       file.write(fullJSON.toString());

@@ -9,17 +9,35 @@ import app.Groups.Group;
 import app.Groups.OperationGroups;
 import app.Repositories.Access;
 import app.Repositories.Repo;
+import app.Repositories.RepoEmpl;
+import app.Repositories.RepoTasks;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.util.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import static app.General.Operations.isNowDate;
 import static app.General.Operations.scanInteger;
 
+@Component
 public class OperationsTask {
 
-  private OperationsEmployee operationsEmployee = new OperationsEmployee();
+  private OperationsEmployee operationsEmployee = null;
+  private JSONOperations jsonOperations = null;
+  private RepoTasks repoTasks;
+  private RepoEmpl repoEmpl;
+
+  public OperationsTask(@Autowired OperationsEmployee operationsEmployee,
+      @Autowired JSONOperations jsonOperations,
+      @Autowired RepoTasks repoTasks,
+      @Autowired RepoEmpl repoEmpl) {
+    this.operationsEmployee = operationsEmployee;
+    this.jsonOperations = jsonOperations;
+    this.repoTasks = repoTasks;
+    this.repoEmpl = repoEmpl;
+  }
 
   public void getWaitTasks() {
     waitTasks();
@@ -29,7 +47,7 @@ public class OperationsTask {
     ArrayList<Task> arrWait = new ArrayList<>();
     Date date = new Date();
     Integer countDaysWait = 2;
-    Access.getRepoTasks().get().forEach((tasks -> {
+    repoTasks.get().forEach((tasks -> {
       if (tasks.getStatus() == TaskStatus.WAITING &&
           !isDifTrue(date, tasks.getDateResolved(), countDaysWait)) {
         arrWait.add(tasks);
@@ -83,12 +101,12 @@ public class OperationsTask {
       empl.setCountTaskOne(empl.getCountTaskOne() + 1);
       empl.incTaskOfThisSession();
       Task task = new Task(number, empl, TaskStatus.NOTE_DONE, new Date(), author);
-      Access.getRepoTasks().get().add(task);
+      repoTasks.get().add(task);
       System.out.println("Назначено на " + empl.getFamily());
       Employee.setCountTasks(Employee.getCountTasks() + 1);
       Operations.log(" " + empl.getFamily() + " назначен ", number, "NaTasks");
-      JSONOperations.makeJSON(task);
-      JSONOperations.writeJSON();
+      jsonOperations.makeJSON(task);
+      jsonOperations.writeJSON();
     }
   }
 
@@ -132,16 +150,16 @@ public class OperationsTask {
   public Integer searchAndCreateTask(String number, Employee empl) {
     Task task = returnTask(number);
     if (task != null) {
-      return Access.getRepoTasks().getIndex(task);
+      return repoTasks.getIndex(task);
     }
     task = new Task(number, empl, TaskStatus.NOTE_DONE);
-    Access.getRepoTasks().append(task);
-    return Access.getRepoTasks().getIndex(task);
+    repoTasks.append(task);
+    return repoTasks.getIndex(task);
   }
 
   //вовзращает обращение
   private Task returnTask(String number) {
-    for (Task taskEmpl : Access.getRepoTasks().get()) {
+    for (Task taskEmpl : repoTasks.get()) {
       if (taskEmpl.getNumber().equals(number)) {
         return taskEmpl;
       }
@@ -151,7 +169,7 @@ public class OperationsTask {
 
   //выбор исполнителя
   public Employee choiceAssignTask(String author) {
-    Repo<Employee> employeeRepo = AccessRepo.getRepoEmpl();
+    Repo<Employee> employeeRepo = repoEmpl;
     Integer size = employeeRepo.get().size();
     for (; ; ) {
       Integer random = (int) (Math.random() * size);
@@ -168,10 +186,10 @@ public class OperationsTask {
   }
 
   private Employee nowTaskOfAuthor(String author) {
-    long count = Access.getRepoTasks().get().stream()
+    long count = repoTasks.get().stream()
         .filter(t -> t.getAuthor().equals(author) && isNowDate(t.getDateResolved())).count();
     if (count > 0) {
-      Task task = Access.getRepoTasks().get().stream()
+      Task task = repoTasks.get().stream()
           .filter(t -> t.getAuthor().equals(author) && isNowDate(t.getDateResolved())).findFirst()
           .get();
       return task.getAssigned();
@@ -183,11 +201,10 @@ public class OperationsTask {
   public void switchStatus(String numberTask, TaskStatus status) throws IOException {
     OperationGroups operationGroups = new OperationGroups();
     Employee pestov = operationsEmployee.getEmployee("pestov");
-    Task task = Access.getRepoTasks().get().get(searchAndCreateTask(numberTask, pestov));
+    Task task = repoTasks.get().get(searchAndCreateTask(numberTask, pestov));
     //HashMap<Integer, HashMap<EnumGroups, String>> nameGroups = setNameGroups();
     ArrayList<Group> nameGroups = operationGroups.getListGroups();
     //int index = Access.getRepoTasks().get().indexOf(task);
-    int index = Access.getRepoTasks().getIndex(task);
     String stat = "";
     task.setStatus(status);
     task.setDateResolved(new Date());
@@ -196,11 +213,11 @@ public class OperationsTask {
       task.setComment(Operations.scanLine());
     }
     if (status == TaskStatus.TASK) {
-      String names = new String();
-      for (Integer i = 1; i <= nameGroups.size(); i++) {
-        names += i + " " + nameGroups.get(i - 1).getName() + "\n";
+      StringBuilder names = new StringBuilder();
+      for (int i = 1; i <= nameGroups.size(); i++) {
+        names.append(i).append(" ").append(nameGroups.get(i - 1).getName()).append("\n");
       }
-      Integer group = Operations.scanInteger("На какую группу назначить?\n" + names);
+      int group = Operations.scanInteger("На какую группу назначить?\n" + names);
       if (group > nameGroups.size() || group < 1) {
         System.out.println("Неверный id группы");
       } else {
@@ -226,8 +243,8 @@ public class OperationsTask {
       Operations.log(" переквалифицировано ", task.getNumber(), "NTasks");
       stat = "переквалифицировано";
     }
-    JSONOperations.makeJSON(task);
-    JSONOperations.writeJSON();
+    jsonOperations.makeJSON(task);
+    jsonOperations.writeJSON();
     System.out.println("У " + task.getNumber() + " статус переключен на " + stat);
   }
 
@@ -259,14 +276,14 @@ public class OperationsTask {
     }
     if (!number.equals("exit")) {
       int index = searchAndCreateTask(number, operationsEmployee.getEmployee("pestov"));
-      Task task = Access.getRepoTasks().get().get(index);
+      Task task = repoTasks.get().get(index);
       switchStatus(task.getNumber(), TaskStatus.DONE);
     }
   }
 
   //распечатывание моих обращений
-  public static boolean printTasks() {
-    for (Task task : Access.getRepoTasks().get()) {
+  public boolean printTasks() {
+    for (Task task : repoTasks.get()) {
       String str = "****************\n";
       if (task.getAssigned().getFamily().equals("pestov") &&
           task.getStatus() != TaskStatus.DONE &&
@@ -286,7 +303,7 @@ public class OperationsTask {
     boolean flag = true;
     boolean flag2 = false;
     try {
-      task = Access.getRepoTasks().get()
+      task = repoTasks.get()
           .get(searchAndCreateTask(enterCorrectNumber(false), assignee));
     } catch (IOException ex) {
       ex.printStackTrace();
@@ -298,7 +315,7 @@ public class OperationsTask {
     }
     ArrayList<Employee> trueEmpl = new ArrayList<>();
     while (flag) {
-      for (Employee empl : Access.getRepoEmpl().get()) {
+      for (Employee empl : repoEmpl.get()) {
         if (empl.getStatus()) {
           i++;
           System.out.println(i + " " + empl.getFamily());
@@ -320,9 +337,9 @@ public class OperationsTask {
         System.out.println("Значение должно быть больше 0 и меньше " + (i - 1));
       }
     }
-    JSONOperations.makeJSON(task);
+    jsonOperations.makeJSON(task);
     try {
-      JSONOperations.writeJSON();
+      jsonOperations.writeJSON();
       return true;
     } catch (IOException ex) {
       ex.printStackTrace();

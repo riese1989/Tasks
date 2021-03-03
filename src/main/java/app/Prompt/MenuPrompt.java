@@ -1,16 +1,25 @@
 package app.Prompt;
 
+import app.Menu.Menu;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import static app.General.Operations.scanLine;
-import static app.Menu.Menu.menu;
 import static app.Prompt.AnalizPrompt.analiz;
 
+@Component
 public class MenuPrompt {
 
-  public static void menuPrompt() throws IOException, ParseException {
+  private Menu menu;
+
+  public MenuPrompt(@Autowired Menu menu) {
+    this.menu = menu;
+  }
+
+  public void menuPrompt() throws IOException, ParseException {
     System.out.println("==================");
     boolean flag = true;
     while (flag) {
@@ -23,7 +32,7 @@ public class MenuPrompt {
           analiz();
         }
         case "q": {
-          menu();
+          menu.menu();
           break;
         }
         default: {

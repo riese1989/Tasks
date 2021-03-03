@@ -7,7 +7,9 @@ import app.Tasks.TaskStatus;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Employee {
 
   private static Integer countTasks = 0;
@@ -32,8 +34,8 @@ public class Employee {
     this.vacations = vacations;
   }
 
-  public Employee(Integer countTaskOne, String family, HashMap<Date, Date> vacations,
-      boolean status, boolean isCurrent) {
+  public void setFields(int countTaskOne, String family, HashMap<Date, Date> vacations,
+      boolean status, boolean isCurrent)  {
     this.countTaskOne = countTaskOne;
     this.family = family;
     this.vacations = vacations;

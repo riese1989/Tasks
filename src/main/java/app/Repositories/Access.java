@@ -1,15 +1,25 @@
 package app.Repositories;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Access {
 
-  private static RepoTasks repoTasks = new RepoTasks();
-  private static RepoEmpl repoEmpl = new RepoEmpl();
+  private RepoTasks repoTasks;
+  private RepoEmpl repoEmpl;
 
-  public static RepoTasks getRepoTasks() {
+  public Access (@Autowired RepoTasks repoTasks,
+      @Autowired RepoEmpl repoEmpl) {
+    this.repoEmpl = repoEmpl;
+    this.repoTasks = repoTasks;
+  }
+
+  public RepoTasks getRepoTasks() {
     return repoTasks;
   }
 
-  public static RepoEmpl getRepoEmpl() {
+  public RepoEmpl getRepoEmpl() {
     return repoEmpl;
   }
 }

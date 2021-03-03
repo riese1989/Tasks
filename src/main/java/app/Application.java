@@ -1,6 +1,8 @@
 package app;
 
+import app.General.Options;
 import java.io.IOException;
+import javax.swing.text.html.Option;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -22,7 +24,8 @@ public class Application implements ApplicationListener<ContextRefreshedEvent> {
 
   @Override
   public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-    Start start = context.getBean(Start.class);
+    Options.setContext(context);
+    Start start = Options.context.getBean(Start.class);
     try {
       start.begin(context);
     } catch (IOException e) {

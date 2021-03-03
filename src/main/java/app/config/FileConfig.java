@@ -1,20 +1,28 @@
 package app.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+
+@Configuration
+
 public class FileConfig {
 
-  private static int i = 0;
+  private Config config;
+
+  @Value("${spring.file.employee.path}")
   private String pathEmployee;
+
+  @Value("${map.path}")
   private String mapPath;
+
+  @Value("${spring.file.group.path}")
   private String groupPath;
 
-  public FileConfig(String pathEmployee, String mapPath, String groupPath) {
-    this.pathEmployee = pathEmployee;
-    this.mapPath = mapPath;
-    this.groupPath = groupPath;
-    String className = new Exception().getStackTrace()[1].getClassName();
-    System.out.println(className);
+  public FileConfig(@Autowired Config config) {
+    this.config = config;
   }
-
 
   public String getPathEmployee() {
     return pathEmployee;

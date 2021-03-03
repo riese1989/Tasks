@@ -2,6 +2,7 @@ package app.Groups;
 
 import app.General.JSONOperations;
 
+import app.General.Options;
 import java.util.ArrayList;
 
 public class OperationGroups {
@@ -17,7 +18,7 @@ public class OperationGroups {
   private ArrayList<Group> nameGroups() {
     ArrayList<Group> groupArrayList = null;
     try {
-      JSONOperations jsonOperations = new JSONOperations();
+      JSONOperations jsonOperations = Options.context.getBean(JSONOperations.class);
       groupArrayList = jsonOperations.getGroupsFromJSON();
     } catch (Exception ex) {
       System.out.println();
