@@ -32,6 +32,7 @@ public class JSONOperations {
   private String filePath;
   private String fileGroups;
   private String filePathEmployee;
+  private String fileFamiliesPath;
   private Access access;
   private Repo<Employee> employeeRepo;
   private ApplicationContext context = null;
@@ -43,12 +44,24 @@ public class JSONOperations {
     filePath = fileConfig.getMapPath();
     fileGroups = fileConfig.getGroupPath();
     filePathEmployee = fileConfig.getPathEmployee();
+    fileFamiliesPath = fileConfig.getFamiliesPath();
     this.context = context;
     this.access = access;
     employeeRepo = access.getRepoEmpl();
     repoInic = context.getBean(RepoInic.class);
   }
 
+  public HashMap<String, String> getFamilies() throws IOException, ParseException {
+    JSONObject objs = getJSON(fileFamiliesPath);
+    HashMap<String, String> families = new HashMap<>();
+    Set maps = objs.keySet();
+    for (Object map : maps) {
+      String oldFamily = map.toString();
+      String newFamily = objs.get(map).toString();
+      families.put(oldFamily,newFamily);
+    }
+    return families;
+  }
 
   public JSONObject getJSON(String path) throws IOException, ParseException {
 

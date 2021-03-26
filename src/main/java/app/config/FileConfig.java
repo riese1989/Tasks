@@ -20,6 +20,9 @@ public class FileConfig {
   @Value("${spring.file.group.path}")
   private String groupPath;
 
+  @Value("${spring.file.families.path}")
+  private String familiesPath;
+
   public FileConfig(@Autowired Config config) {
     this.config = config;
   }
@@ -34,5 +37,9 @@ public class FileConfig {
 
   public String getGroupPath() {
     return groupPath;
+  }
+
+  public String getFamiliesPath() {
+    return familiesPath;
   }
 }

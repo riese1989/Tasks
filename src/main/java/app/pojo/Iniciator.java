@@ -56,8 +56,7 @@ public class Iniciator implements Pojo<Iniciator> {
     HashMap<String, String> oldSirname = new HashMap<>();
     oldSirname.put("SvFedorova", "Svetlana.Kostikova");
     oldSirname.put("Olga.Frolkova", "Olga.HernandezCruz");
-    String newName = oldSirname.get(name);
-    return newName;
+    return oldSirname.get(name);
   }
 
   private Iniciator circleInic(String name) {
